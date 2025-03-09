@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>UE5-蓝图基础(下) | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="UE5蓝图基础教程变量的算数运算 变量的比较运算 获取输入 获取键盘输入     获取鼠标输入    分支节点类似与if语句  序列节点序列节点的作用就是可以将一个长的顺序执行代码划分成段，便于管理。序列节点是单线程。分段按照引脚的顺序执行。  for循环节点   while循环节点 Do N节点当执行到第N次后就不执行，若想再次执行需要执行一次reset  Do Once节点只执行一次，若想再次">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UE5-蓝图基础(下)">
+<meta property="og:url" content="http://example.com/2025/01/15/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="UE5蓝图基础教程变量的算数运算 变量的比较运算 获取输入 获取键盘输入     获取鼠标输入    分支节点类似与if语句  序列节点序列节点的作用就是可以将一个长的顺序执行代码划分成段，便于管理。序列节点是单线程。分段按照引脚的顺序执行。  for循环节点   while循环节点 Do N节点当执行到第N次后就不执行，若想再次执行需要执行一次reset  Do Once节点只执行一次，若想再次">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/14/6786625a58244.jpg">
+<meta property="article:published_time" content="2025-01-15T10:44:42.000Z">
+<meta property="article:modified_time" content="2025-02-06T11:24:10.516Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Unreal Engine">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.helloimg.com/i/2025/01/14/6786625a58244.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "UE5-蓝图基础(下)",
+  "url": "http://example.com/2025/01/15/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8B/",
+  "image": "https://www.helloimg.com/i/2025/01/14/6786625a58244.jpg",
+  "datePublished": "2025-01-15T10:44:42.000Z",
+  "dateModified": "2025-02-06T11:24:10.516Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "John Doe",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://www.helloimg.com/i/2025/03/09/67cd36e6e958c.png"><link rel="canonical" href="http://example.com/2025/01/15/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"Author: John Doe","link":"Link: ","source":"Source: Hexo","info":"Copyright belongs to the author. For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source."}},
+  lightbox: 'FancyBox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'UE5-蓝图基础(下)',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://www.helloimg.com/i/2024/12/23/676927e078d9d.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://www.helloimg.com/i/2025/03/09/67cd36e6e958c.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://www.helloimg.com/i/2025/01/14/6786625a58244.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">UE5-蓝图基础(下)</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">UE5-蓝图基础(下)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-15T10:44:42.000Z" title="Created 2025-01-15 18:44:42">2025-01-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-02-06T11:24:10.516Z" title="Updated 2025-02-06 19:24:10">2025-02-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Unreal-Engine/">Unreal Engine</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">384</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>1mins</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="UE5蓝图基础教程"><a href="#UE5蓝图基础教程" class="headerlink" title="UE5蓝图基础教程"></a>UE5蓝图基础教程</h1><h2 id="变量的算数运算"><a href="#变量的算数运算" class="headerlink" title="变量的算数运算"></a>变量的算数运算</h2><p><img src="https://www.helloimg.com/i/2025/01/15/6787abcf13e38.png" alt="ue31.png"></p>
+<h2 id="变量的比较运算"><a href="#变量的比较运算" class="headerlink" title="变量的比较运算"></a>变量的比较运算</h2><p><img src="https://www.helloimg.com/i/2025/01/15/6787abce8b156.png" alt="ue32.png"></p>
+<h2 id="获取输入"><a href="#获取输入" class="headerlink" title="获取输入"></a>获取输入</h2><ul>
+<li>获取键盘输入</li>
+</ul>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abce83a85.png" alt="ue33.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abce642b0.png" alt="ue34.png"></p>
+<ul>
+<li>获取鼠标输入</li>
+</ul>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abcea9eb3.png" alt="ue35.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abd00636b.png" alt="ue36.png"></p>
+<h2 id="分支节点"><a href="#分支节点" class="headerlink" title="分支节点"></a>分支节点</h2><p>类似与if语句</p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abd2be740.png" alt="ue37.png"></p>
+<h2 id="序列节点"><a href="#序列节点" class="headerlink" title="序列节点"></a>序列节点</h2><p>序列节点的作用就是可以将一个长的顺序执行代码划分成段，便于管理。序列节点是单线程。分段<strong>按照引脚的顺序</strong>执行。</p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abd1dbaf2.png" alt="ue38.png"></p>
+<h2 id="for循环节点"><a href="#for循环节点" class="headerlink" title="for循环节点"></a>for循环节点</h2><p><img src="https://www.helloimg.com/i/2025/01/15/6787abd440199.png" alt="ue39.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abdb9d9aa.png" alt="ue40.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abd3e6861.png" alt="ue41.png"></p>
+<h2 id="while循环节点"><a href="#while循环节点" class="headerlink" title="while循环节点"></a>while循环节点</h2><p><img src="https://www.helloimg.com/i/2025/01/15/6787abd751d55.png" alt="ue42.png"></p>
+<h2 id="Do-N节点"><a href="#Do-N节点" class="headerlink" title="Do N节点"></a>Do N节点</h2><p>当执行到第N次后就不执行，若想再次执行需要执行一次reset</p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abd4a7b8d.png" alt="ue43.png"></p>
+<h2 id="Do-Once节点"><a href="#Do-Once节点" class="headerlink" title="Do Once节点"></a>Do Once节点</h2><p>只执行一次，若想再次执行需要执行一次reset</p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abd74fbd9.png" alt="ue44.png"></p>
+<h2 id="Flip-Flop节点"><a href="#Flip-Flop节点" class="headerlink" title="Flip Flop节点"></a>Flip Flop节点</h2><p>翻转节点，可以输出两个功能，单数执行A，双数执行B</p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abd6d6775.png" alt="ue45.png"></p>
+<h2 id="Gate节点"><a href="#Gate节点" class="headerlink" title="Gate节点"></a>Gate节点</h2><p><img src="https://www.helloimg.com/i/2025/01/15/6787abd8c0cef.png" alt="ue46.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abd873a84.png" alt="ue47.png"></p>
+<h2 id="Multi-Gate节点"><a href="#Multi-Gate节点" class="headerlink" title="Multi Gate节点"></a>Multi Gate节点</h2><p><img src="https://www.helloimg.com/i/2025/01/15/6787abdb497a2.png" alt="ue48.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abdaea61e.png" alt="ue49.png"></p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>和C++的数组一样</p>
+<ul>
+<li>定义数组</li>
+</ul>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abda92af7.png" alt="ue50.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abdacace5.png" alt="ue51.png"></p>
+<ul>
+<li>数组元素获取</li>
+</ul>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abde711b1.png" alt="ue52.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abdf7e657.png" alt="ue53.png"></p>
+<ul>
+<li>数组常见操作<ul>
+<li>查找项目(FindItem)：查找指定元素的下标</li>
+<li>获取数组长度(Length)</li>
+<li>获取数组最后一个元素的下标(LastIndex)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abddea443.png" alt="ue54.png"></p>
+<ul>
+<li>插入数组元素</li>
+<li>移除元素</li>
+<li>判断数组中是否有指定元素</li>
+</ul>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abdf3ca02.png" alt="ue55.png"></p>
+<ul>
+<li>数组的遍历</li>
+</ul>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abdebee0c.png" alt="ue56.png"></p>
+<h2 id="修改关卡对象的材质"><a href="#修改关卡对象的材质" class="headerlink" title="修改关卡对象的材质"></a>修改关卡对象的材质</h2><ol>
+<li>选中关卡对象，创建数组，并将数组提升为变量(Promote to variable)</li>
+<li>创建材质与材质实例(双击材质，右键可以将材质的性质转换为参数)</li>
+<li>创建材质数组</li>
+<li>在材质数组中持有材质实例</li>
+<li>当按下鼠标左键的时候遍历关卡对象数组，实现材质的随即赋值</li>
+</ol>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abdf3d618.png" alt="ue57.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abe1ea64f.png" alt="ue58.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abe3efcc0.png" alt="ue59.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abe5c228d.png" alt="ue60.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abe478af1.png" alt="ue61.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abe38311d.png" alt="ue62.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/15/6787abe449eea.png" alt="ue63.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/01/15/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8B/">http://example.com/2025/01/15/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Unreal-Engine/">Unreal Engine</a></div><div class="post-share"><div class="social-share" data-image="https://www.helloimg.com/i/2025/01/14/6786625a58244.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/01/14/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8A/" title="UE5-蓝图基础(上)"><img class="cover" src="https://www.helloimg.com/i/2025/01/14/6786625a58244.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">UE5-蓝图基础(上)</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a><a class="pagination-related" href="/2025/01/22/Springboot-%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" title="Springboot-项目创建"><img class="cover" src="https://www.helloimg.com/i/2025/01/22/679071c920edf.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">Springboot-项目创建</div></div><div class="info-2"><div class="info-item-1">项目功能 配置git环境 安装Git Bash（使用Mac和Linux的可以跳过这一步）：https://gitforwindows.org/  全部默认即可   输入cd回车进入家目录，执行命令ssh-keygen生成秘钥  我们使用Gitee(Github、Acgit)的时候，通信的方式通过ssh 由于Gitee不支持用户名密码，因此需要借助秘钥来操作上      然后进入.ssh文件夹，id_rsa和id_rsa.pub分别代表私钥和公钥文件，我们将公钥取出。    将id_rsa.pub的内容复制到Gitee上    使用SSH公钥可以让你在你的电脑和 Gitee...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/01/14/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8A/" title="UE5-蓝图基础(上)"><img class="cover" src="https://www.helloimg.com/i/2025/01/14/6786625a58244.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-14</div><div class="info-item-2">UE5-蓝图基础(上)</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://www.helloimg.com/i/2025/03/09/67cd36e6e958c.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lzhiscoding/"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UE5%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">UE5蓝图基础教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">1.1.</span> <span class="toc-text">变量的算数运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97"><span class="toc-number">1.2.</span> <span class="toc-text">变量的比较运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%BE%93%E5%85%A5"><span class="toc-number">1.3.</span> <span class="toc-text">获取输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.</span> <span class="toc-text">分支节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E8%8A%82%E7%82%B9"><span class="toc-number">1.5.</span> <span class="toc-text">序列节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for%E5%BE%AA%E7%8E%AF%E8%8A%82%E7%82%B9"><span class="toc-number">1.6.</span> <span class="toc-text">for循环节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#while%E5%BE%AA%E7%8E%AF%E8%8A%82%E7%82%B9"><span class="toc-number">1.7.</span> <span class="toc-text">while循环节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Do-N%E8%8A%82%E7%82%B9"><span class="toc-number">1.8.</span> <span class="toc-text">Do N节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Do-Once%E8%8A%82%E7%82%B9"><span class="toc-number">1.9.</span> <span class="toc-text">Do Once节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flip-Flop%E8%8A%82%E7%82%B9"><span class="toc-number">1.10.</span> <span class="toc-text">Flip Flop节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gate%E8%8A%82%E7%82%B9"><span class="toc-number">1.11.</span> <span class="toc-text">Gate节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-Gate%E8%8A%82%E7%82%B9"><span class="toc-number">1.12.</span> <span class="toc-text">Multi Gate节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">1.13.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%85%B3%E5%8D%A1%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%9D%90%E8%B4%A8"><span class="toc-number">1.14.</span> <span class="toc-text">修改关卡对象的材质</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/24/Springboot-%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E5%92%8C%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/" title="Springboot-创建对战列表和排行榜页面"><img src="https://www.helloimg.com/i/2025/01/22/679071c920edf.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Springboot-创建对战列表和排行榜页面"/></a><div class="content"><a class="title" href="/2025/01/24/Springboot-%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E5%92%8C%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/" title="Springboot-创建对战列表和排行榜页面">Springboot-创建对战列表和排行榜页面</a><time datetime="2025-01-24T09:00:42.000Z" title="Created 2025-01-24 17:00:42">2025-01-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/24/Springboot-%E5%AE%9E%E7%8E%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1Bot%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C/" title="Springboot-实现微服务Bot代码的执行"><img src="https://www.helloimg.com/i/2025/01/22/679071c920edf.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Springboot-实现微服务Bot代码的执行"/></a><div class="content"><a class="title" href="/2025/01/24/Springboot-%E5%AE%9E%E7%8E%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1Bot%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C/" title="Springboot-实现微服务Bot代码的执行">Springboot-实现微服务Bot代码的执行</a><time datetime="2025-01-24T09:00:11.000Z" title="Created 2025-01-24 17:00:11">2025-01-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/24/Springboot-%E5%AE%9E%E7%8E%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F/" title="Springboot-实现微服务匹配系统"><img src="https://www.helloimg.com/i/2025/01/22/679071c920edf.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Springboot-实现微服务匹配系统"/></a><div class="content"><a class="title" href="/2025/01/24/Springboot-%E5%AE%9E%E7%8E%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F/" title="Springboot-实现微服务匹配系统">Springboot-实现微服务匹配系统</a><time datetime="2025-01-24T08:59:37.000Z" title="Created 2025-01-24 16:59:37">2025-01-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/24/Springboot-%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/" title="Springboot-创建个人中心页面"><img src="https://www.helloimg.com/i/2025/01/22/679071c920edf.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Springboot-创建个人中心页面"/></a><div class="content"><a class="title" href="/2025/01/24/Springboot-%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/" title="Springboot-创建个人中心页面">Springboot-创建个人中心页面</a><time datetime="2025-01-24T08:58:59.000Z" title="Created 2025-01-24 16:58:59">2025-01-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/24/Springboot-%E9%85%8D%E7%BD%AEMySQL%E5%92%8C%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97/" title="Springboot-配置MySQL和注册登录模块"><img src="https://www.helloimg.com/i/2025/01/22/679071c920edf.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Springboot-配置MySQL和注册登录模块"/></a><div class="content"><a class="title" href="/2025/01/24/Springboot-%E9%85%8D%E7%BD%AEMySQL%E5%92%8C%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97/" title="Springboot-配置MySQL和注册登录模块">Springboot-配置MySQL和注册登录模块</a><time datetime="2025-01-24T08:24:59.000Z" title="Created 2025-01-24 16:24:59">2025-01-24</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://www.helloimg.com/i/2025/01/14/6786625a58244.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://www.lzhiscoding.xyz">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'www.lzhiscoding.xyz',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'www.lzhiscoding.xyz',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
