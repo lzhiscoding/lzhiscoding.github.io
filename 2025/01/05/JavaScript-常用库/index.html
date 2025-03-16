@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JavaScript-常用库 | Lzh正在写代码</title><meta name="author" content="Lzh"><meta name="copyright" content="Lzh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="常用库jQuery使用方式 在元素中添加： 按jQuery官网提示下载  获取元素12345678function main() &#123;    &#x2F;&#x2F;原来获取元素的方法    let div &#x3D; document.querySelector(&#x27;div&#x27;);    console.log(div);    &#x2F;&#x2F;用jquery获取元素的方法    let $div &#x3D; $(&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript-常用库">
+<meta property="og:url" content="http://example.com/2025/01/05/JavaScript-%E5%B8%B8%E7%94%A8%E5%BA%93/index.html">
+<meta property="og:site_name" content="Lzh正在写代码">
+<meta property="og:description" content="常用库jQuery使用方式 在元素中添加： 按jQuery官网提示下载  获取元素12345678function main() &#123;    &#x2F;&#x2F;原来获取元素的方法    let div &#x3D; document.querySelector(&#x27;div&#x27;);    console.log(div);    &#x2F;&#x2F;用jquery获取元素的方法    let $div &#x3D; $(&amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg">
+<meta property="article:published_time" content="2025-01-05T11:05:16.000Z">
+<meta property="article:modified_time" content="2025-02-06T11:24:04.106Z">
+<meta property="article:author" content="Lzh">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "JavaScript-常用库",
+  "url": "http://example.com/2025/01/05/JavaScript-%E5%B8%B8%E7%94%A8%E5%BA%93/",
+  "image": "https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg",
+  "datePublished": "2025-01-05T11:05:16.000Z",
+  "dateModified": "2025-02-06T11:24:04.106Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Lzh",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://www.helloimg.com/i/2025/03/09/67cd36e6e958c.png"><link rel="canonical" href="http://example.com/2025/01/05/JavaScript-%E5%B8%B8%E7%94%A8%E5%BA%93/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: Lzh","link":"链接: ","source":"来源: Lzh正在写代码","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'FancyBox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JavaScript-常用库',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://www.helloimg.com/i/2024/12/23/676927e078d9d.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://www.helloimg.com/i/2025/03/09/67cd36e6e958c.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Lzh正在写代码</span></a><a class="nav-page-title" href="/"><span class="site-name">JavaScript-常用库</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">JavaScript-常用库</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-05T11:05:16.000Z" title="发表于 2025-01-05 19:05:16">2025-01-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-06T11:24:04.106Z" title="更新于 2025-02-06 19:24:04">2025-02-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JavaScript/">JavaScript</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="常用库"><a href="#常用库" class="headerlink" title="常用库"></a>常用库</h1><h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><ul>
+<li>在<head>元素中添加：<script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script></li>
+<li>按<a target="_blank" rel="noopener" href="https://jquery.com/download/">jQuery</a>官网提示下载</li>
+</ul>
+<h3 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//原来获取元素的方法</span></span><br><span class="line">    <span class="keyword">let</span> div = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(div);</span><br><span class="line">    <span class="comment">//用jquery获取元素的方法</span></span><br><span class="line">    <span class="keyword">let</span> $div = $(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>($div);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//选择class为mydiv的元素</span></span><br><span class="line"><span class="keyword">let</span> $mydiv = $(<span class="string">&#x27;.mydiv&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>($mydiv);</span><br><span class="line"><span class="comment">//选择id为mydiv的元素</span></span><br><span class="line"><span class="keyword">let</span> $mydiv2 = $(<span class="string">&#x27;#mydiv&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>($mydiv2);</span><br><span class="line"><span class="comment">//选择class为mydiv的元素下的p元素</span></span><br><span class="line"><span class="keyword">let</span> $p = $(<span class="string">&#x27;.mydiv &gt; p&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>($p);</span><br></pre></td></tr></table></figure>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>$(selector).on(event, func)绑定事件，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;div&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;click div&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>$(selector).off(event, func)删除事件，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;div&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;click div&quot;</span>);</span><br><span class="line"></span><br><span class="line">    $(<span class="string">&#x27;div&#x27;</span>).<span class="title function_">off</span>(<span class="string">&#x27;click&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>当存在多个相同类型的事件触发函数时，可以通过click.name来区分，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;div&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click.first&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;click div&quot;</span>);</span><br><span class="line"></span><br><span class="line">    $(<span class="string">&#x27;div&#x27;</span>).<span class="title function_">off</span>(<span class="string">&#x27;click.first&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在事件触发的函数中的<strong>return false</strong>等价于同时执行：</p>
+<ul>
+<li>e.stopPropagation()：阻止事件向上传递</li>
+<li>e.preventDefault()：阻止事件的默认行为</li>
+</ul>
+<h3 id="元素的隐藏与展现"><a href="#元素的隐藏与展现" class="headerlink" title="元素的隐藏与展现"></a>元素的隐藏与展现</h3><ul>
+<li>$A.hide()：隐藏，可以添加参数，表示消失时间</li>
+<li>$A.show()：展现，可以添加参数，表示出现时间</li>
+<li>$A.fadeOut()：慢慢消失，可以添加参数，表示消失时间</li>
+<li>$A.fadeIn()：慢慢出现，可以添加参数，表示出现时间<br>例如:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> $div = $(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">    <span class="keyword">let</span> $btn_hide = $(<span class="string">&#x27;#hide-btn&#x27;</span>);</span><br><span class="line">    <span class="keyword">let</span> $btn_show = $(<span class="string">&#x27;#show-btn&#x27;</span>);</span><br><span class="line">    $btn_hide.<span class="title function_">click</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        $div.<span class="title function_">show</span>(<span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    $btn_show.<span class="title function_">click</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        $div.<span class="title function_">hide</span>(<span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> $div = $(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">    <span class="keyword">let</span> $btn_hide = $(<span class="string">&#x27;#hide-btn&#x27;</span>);</span><br><span class="line">    <span class="keyword">let</span> $btn_show = $(<span class="string">&#x27;#show-btn&#x27;</span>);</span><br><span class="line">    $btn_hide.<span class="title function_">click</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        $div.<span class="title function_">fadeOut</span>(<span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    $btn_show.<span class="title function_">click</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        $div.<span class="title function_">fadeIn</span>(<span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="元素的添加与删除"><a href="#元素的添加与删除" class="headerlink" title="元素的添加与删除"></a>元素的添加与删除</h3><ul>
+<li>$(‘<div class="mydiv"><span>Hello World</span></div>‘)：构造一个jQuery对象</li>
+<li><code>$A.append($B)</code>：将<code>$B</code>添加到<code>$A</code>的末尾</li>
+<li><code>$A.prepend($B)</code>：将<code>$B</code>添加到<code>$A</code>的开头</li>
+<li><code>$A.remove()</code>：删除元素<code>$A</code></li>
+<li><code>$A.empty()</code>：清空元素<code>$A</code>的所有儿子<br>例如:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> $div = $(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    $div.<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> $a = $(<span class="string">`&lt;a href=&quot;https://www.liuzihao.icu&quot;&gt;MyGame&lt;/a&gt;`</span>);</span><br><span class="line">        $div.<span class="title function_">append</span>($a);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="对类的操作"><a href="#对类的操作" class="headerlink" title="对类的操作"></a>对类的操作</h3><ul>
+<li><code>$A.addClass(class_name)</code>：添加某个类</li>
+<li><code>$A.removeClass(class_name)</code>：删除某个类</li>
+<li><code>$A.hasClass(class_name)</code>：判断某个类是否存在<br>例如:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> $div = $(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    $div.<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        $div.<span class="title function_">addClass</span>(<span class="string">&#x27;my-class&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="对CSS的操作"><a href="#对CSS的操作" class="headerlink" title="对CSS的操作"></a>对CSS的操作</h3><ul>
+<li><code>$(&quot;div&quot;).css(&quot;background-color&quot;)</code>：获取某个CSS的属性</li>
+<li><code>$(&quot;div&quot;).css(&quot;background-color&quot;,&quot;yellow&quot;)</code>：设置某个CSS的属性<br>例如:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> $div = $(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    $div.<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>($div.<span class="title function_">css</span>(<span class="string">&#x27;background-color&#x27;</span>));</span><br><span class="line">        $div.<span class="title function_">css</span>(<span class="string">&#x27;background-color&#x27;</span>, <span class="string">&#x27;orange&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>同时设置多个CSS的属性：<br>例如:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> $div = $(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    $div.<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>($div.<span class="title function_">css</span>(<span class="string">&#x27;background-color&#x27;</span>));</span><br><span class="line">        $div.<span class="title function_">css</span>(&#123;</span><br><span class="line">            <span class="string">&#x27;background-color&#x27;</span>: <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">            <span class="attr">width</span>: <span class="string">&quot;100px&quot;</span>,</span><br><span class="line">            <span class="attr">height</span>: <span class="string">&quot;100px&quot;</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="对标签属性的操作"><a href="#对标签属性的操作" class="headerlink" title="对标签属性的操作"></a>对标签属性的操作</h3><ul>
+<li><code>$(&#39;div&#39;).attr(&#39;id&#39;)</code>：获取属性</li>
+<li><code>$(&#39;div&#39;).attr(&#39;id&#39;, &#39;ID&#39;)</code>：设置属性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> $div = $(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    $div.<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>($div.<span class="title function_">attr</span>(<span class="string">&#x27;lzh&#x27;</span>));</span><br><span class="line">        $div.<span class="title function_">attr</span>(<span class="string">&#x27;lzh&#x27;</span>, <span class="string">&#x27;liu&#x27;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>($div.<span class="title function_">attr</span>(<span class="string">&#x27;lzh&#x27;</span>));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="对HTML内容、文本的操作"><a href="#对HTML内容、文本的操作" class="headerlink" title="对HTML内容、文本的操作"></a>对HTML内容、文本的操作</h3><p>不需要背每个标签该用哪种，用到的时候Google或者百度即可。</p>
+<ul>
+<li><code>$A.html()</code>：获取、修改HTML内容</li>
+<li><code>$A.text()</code>：获取、修改文本信息</li>
+<li><code>$A.val()</code>：获取、修改文本的值<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> $div = $(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    $div.<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>($div.<span class="title function_">html</span>());</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>($div.<span class="title function_">text</span>());</span><br><span class="line">        $(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">val</span>(<span class="string">&#x27;Hello World&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><ul>
+<li><code>$(selector).parent(filter)</code>：查找父元素</li>
+<li><code>$(selector).parents(filter)</code>：查找所有祖先元素</li>
+<li><code>$(selector).children(filter)</code>：在所有子元素中查找</li>
+<li><code>$(selector).find(filter)</code>：在所有后代元素中查找<br>例如:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> $div1 = $(<span class="string">&#x27;.div1&#x27;</span>);</span><br><span class="line">    <span class="keyword">let</span> $div2 = $(<span class="string">&#x27;.div2&#x27;</span>);</span><br><span class="line">    <span class="keyword">let</span> $div3 = $(<span class="string">&#x27;.div3&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>($div3.<span class="title function_">parent</span>(<span class="string">&#x27;.div2&#x27;</span>));</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>($div3.<span class="title function_">parents</span>());</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>($div1.<span class="title function_">children</span>());</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>($div1.<span class="title function_">find</span>(<span class="string">&#x27;div&#x27;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h3><p>GET方法:<br>用途：用于从服务器获取数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: url,</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;GET&quot;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">dataType</span>: <span class="string">&quot;json&quot;</span>,</span><br><span class="line">    <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">resp</span>) &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>POST方法:<br>用途：用于向服务器提交数据，通常用于创建或更新资源。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: url,</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">dataType</span>: <span class="string">&quot;json&quot;</span>,</span><br><span class="line">    <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">resp</span>) &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="setTimeout与setInterval"><a href="#setTimeout与setInterval" class="headerlink" title="setTimeout与setInterval"></a>setTimeout与setInterval</h2><h3 id="setTimeout-func-delay"><a href="#setTimeout-func-delay" class="headerlink" title="setTimeout(func, delay)"></a>setTimeout(func, delay)</h3><p><code>delay</code>毫秒后，执行函数<code>func()</code>。</p>
+<h3 id="clearTimeout"><a href="#clearTimeout" class="headerlink" title="clearTimeout()"></a>clearTimeout()</h3><p>关闭定时器，例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timeout_id = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">&#125;, <span class="number">2000</span>);  <span class="comment">// 2秒后在控制台输出&quot;Hello World&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">clearTimeout</span>(timeout_id);  <span class="comment">// 清除定时器</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="setInterval-func-delay"><a href="#setInterval-func-delay" class="headerlink" title="setInterval(func, delay)"></a>setInterval(func, delay)</h3><p>每隔<code>delay</code>毫秒，执行一次函数<code>func()</code>。</p>
+<p>第一次在第<code>delay</code>毫秒后执行。</p>
+<h3 id="clearInterval"><a href="#clearInterval" class="headerlink" title="clearInterval()"></a>clearInterval()</h3><p>关闭周期执行的函数，例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> interval_id = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">&#125;, <span class="number">2000</span>);  <span class="comment">// 每隔2秒，输出一次&quot;Hello World&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">clearInterval</span>(interval_id);  <span class="comment">// 清除周期执行的函数</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="requestAnimationFrame-func"><a href="#requestAnimationFrame-func" class="headerlink" title="requestAnimationFrame(func)"></a><code>requestAnimationFrame(func)</code></h2><p>该函数会在下次浏览器刷新页面之前执行一次，通常会用递归写法使其每秒执行60次<code>func</code>函数。调用时会传入一个参数，表示函数执行的时间戳，单位为毫秒。</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title function_">step</span> = (<span class="params">timestamp</span>) =&gt; &#123;  <span class="comment">// 每帧将div的宽度增加1像素</span></span><br><span class="line">    <span class="keyword">let</span> div = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">    div.<span class="property">style</span>.<span class="property">width</span> = div.<span class="property">clientWidth</span> + <span class="number">1</span> + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">    <span class="title function_">requestAnimationFrame</span>(step);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">requestAnimationFrame</span>(step);</span><br></pre></td></tr></table></figure>
+
+<h3 id="与setTimeout和setInterval的区别："><a href="#与setTimeout和setInterval的区别：" class="headerlink" title="与setTimeout和setInterval的区别："></a>与<code>setTimeout</code>和<code>setInterval</code>的区别：</h3><ul>
+<li><code>requestAnimationFrame</code>渲染动画的效果更好，性能更加。<br>该函数可以保证每两次调用之间的时间间隔相同，但<code>setTimeout</code>与<code>setInterval</code>不能保证这点。<code>setTmeout</code>两次调用之间的间隔包含回调函数的执行时间；<code>setInterval</code>只能保证按固定时间间隔将回调函数压入栈中，但具体的执行时间间隔仍然受回调函数的执行时间影响。</li>
+<li>当页面在后台时，因为页面不再渲染，因此<code>requestAnimationFrame</code>不再执行。但<code>setTimeout</code>与<code>setInterval</code>函数会继续执行。</li>
+</ul>
+<h2 id="Map和Set"><a href="#Map和Set" class="headerlink" title="Map和Set"></a>Map和Set</h2><h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>Map 对象保存键值对。</p>
+<ul>
+<li>用<code>for...of</code>或者<code>forEach</code>可以按插入顺序遍历。</li>
+<li>键值可以为任意值，包括函数、对象或任意基本类型。</li>
+</ul>
+<p>常用API：</p>
+<ul>
+<li><code>set(key, value)</code>：插入键值对，如果<code>key</code>已存在，则会覆盖原有的<code>value</code></li>
+<li><code>get(key)</code>：查找关键字，如果不存在，返回<code>undefined</code></li>
+<li><code>size</code>：返回键值对数量</li>
+<li><code>has(key)</code>：返回是否包含关键字<code>key</code></li>
+<li><code>delete(key)</code>：删除关键字<code>key</code></li>
+<li><code>clear()</code>：删除所有元素</li>
+</ul>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>Set 对象允许你存储任何类型的唯一值，无论是原始值或者是对象引用。</p>
+<ul>
+<li>用<code>for...of</code>或者<code>forEach</code>可以按插入顺序遍历。</li>
+</ul>
+<p>常用API：</p>
+<ul>
+<li><code>add()</code>：添加元素</li>
+<li><code>has()</code>：返回是否包含某个元素</li>
+<li><code>size</code>：返回元素数量</li>
+<li><code>delete()</code>：删除某个元素</li>
+<li><code>clear()</code>：删除所有元素</li>
+</ul>
+<h2 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h2><p>可以在用户的浏览器上存储键值对。</p>
+<p>常用API：</p>
+<ul>
+<li><code>setItem(key, value)</code>：插入</li>
+<li><code>getItem(key)</code>：查找</li>
+<li><code>removeItem(key)</code>：删除</li>
+<li><code>clear()</code>：清空<br>例如:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//执行过一次后注释</span></span><br><span class="line">    <span class="comment">//localStorage.setItem(&#x27;name&#x27;, &#x27;lzh&#x27;);</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;name&#x27;</span>));</span><br><span class="line">    <span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&#x27;name&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;name&#x27;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>JSON对象用于序列化对象、数组、数值、字符串、布尔值和<code>null</code>。</p>
+<p>常用API：</p>
+<ul>
+<li><code>JSON.parse()</code>：将字符串解析成对象</li>
+<li><code>JSON.stringify()</code>：将对象转化为字符串<br>例如:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> obj = &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">        <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> str = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> str);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">    <span class="keyword">let</span> new_obj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(str);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> new_obj);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(new_obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h2><p>返回值为整数的API，数值为1970-1-1 00:00:00 UTC（世界标准时间）到某个时刻所经过的毫秒数：</p>
+<ul>
+<li><code>Date.now()</code>：返回现在时刻。</li>
+<li><code>Date.parse(&quot;2022-04-15T15:30:00.000+08:00&quot;)</code>：返回北京时间2022年4月15日 15:30:00的时刻。</li>
+</ul>
+<p>与<code>Date</code>对象的实例相关的<code>API</code>：</p>
+<ul>
+<li><code>new Date()</code>：返回现在时刻。</li>
+<li><code>new Date(&quot;2022-04-15T15:30:00.000+08:00&quot;)</code>：返回北京时间2022年4月15日 15:30:00的时刻。</li>
+<li>两个<code>Date</code>对象实例的差值为毫秒数</li>
+<li><code>getDay()</code>：返回星期，0表示星期日，1-6表示星期一至星期六</li>
+<li><code>getDate()</code>：返回日，数值为1-31</li>
+<li><code>getMonth()</code>：返回月，数值为0-11</li>
+<li><code>getFullYear()</code>：返回年份</li>
+<li><code>getHours()</code>：返回小时</li>
+<li><code>getMinutes()</code>：返回分钟</li>
+<li><code>getSeconds()</code>：返回秒</li>
+<li><code>getMilliseconds()</code>：返回毫秒</li>
+</ul>
+<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><p>与服务器建立全双工连接。</p>
+<p>常用API：</p>
+<ul>
+<li><code>new WebSocket(&#39;ws://localhost:8080&#39;);</code>：建立ws连接。</li>
+<li><code>send()</code>：向服务器端发送一个字符串。一般用JSON将传入的对象序列化为字符串。</li>
+<li><code>onopen</code>：类似于<code>onclick</code>，当连接建立时触发。</li>
+<li><code>onmessage</code>：当从服务器端接收到消息时触发。</li>
+<li><code>close()</code>：关闭连接。</li>
+<li><code>onclose</code>：当连接关闭后触发。</li>
+</ul>
+<h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><ul>
+<li><code>window.open(&quot;https://www.liuzihao.icu&quot;)</code>在新标签栏中打开页面。</li>
+<li><code>location.reload()</code>刷新页面。</li>
+<li><code>location.href = &quot;https://www.acwing.com&quot;</code>：在当前标签栏中打开页面。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="string">&#x27;div&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">window</span>.<span class="title function_">open</span>(<span class="string">&#x27;https://www.liuzihao.icu&#x27;</span>);</span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">location</span>.<span class="title function_">reload</span>();</span><br><span class="line">        location.<span class="property">href</span> = <span class="string">&quot;https://www.liuzihao.icu&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial">canvas教程</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Lzh</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/01/05/JavaScript-%E5%B8%B8%E7%94%A8%E5%BA%93/">http://example.com/2025/01/05/JavaScript-%E5%B8%B8%E7%94%A8%E5%BA%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">Lzh正在写代码</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a></div><div class="post-share"><div class="social-share" data-image="https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/01/04/JavaScript-%E4%BA%8B%E4%BB%B6/" title="JavaScript-事件"><img class="cover" src="https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">JavaScript-事件</div></div><div class="info-2"><div class="info-item-1">事件JavaScript的代码一般通过事件触发。 可以通过addEventListener函数为元素绑定事件的触发函数。 常见的触发函数有： 鼠标click：鼠标左键点击 12345678910let div = document.querySelector(&#x27;div&#x27;);function main() &#123;    div.addEventListener(&#x27;click&#x27;, (event) =&gt; &#123;        //输出事件的类型，即click        console.log(event.type);    &#125;);&#125;export &#123; main &#125;; dblclick：鼠标左键双击 1234div.addEventListener(&#x27;dblclick&#x27;, (event) =&gt; &#123;        //输出事件的类型，即dblclick        console.log(event.type);   ...</div></div></div></a><a class="pagination-related" href="/2025/01/06/Web%E9%A1%B9%E7%9B%AE-%E6%8B%B3%E7%9A%87-%E4%B8%8A/" title="Web项目---拳皇(上)"><img class="cover" src="https://www.helloimg.com/i/2025/01/06/677bc62f84cf4.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Web项目---拳皇(上)</div></div><div class="info-2"><div class="info-item-1">项目实战–拳皇创建项目新建文件夹KOF，子文件夹有static、templates，分别用来存放静态文件和html文件，static子文件夹有js，css，images，分别用来存放js代码，css文件和图片等资源 创建仓库git init 初始化文件1234567891011121314&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;   ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/01/04/JavaScript-%E4%BA%8B%E4%BB%B6/" title="JavaScript-事件"><img class="cover" src="https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-04</div><div class="info-item-2">JavaScript-事件</div></div><div class="info-2"><div class="info-item-1">事件JavaScript的代码一般通过事件触发。 可以通过addEventListener函数为元素绑定事件的触发函数。 常见的触发函数有： 鼠标click：鼠标左键点击 12345678910let div = document.querySelector(&#x27;div&#x27;);function main() &#123;    div.addEventListener(&#x27;click&#x27;, (event) =&gt; &#123;        //输出事件的类型，即click        console.log(event.type);    &#125;);&#125;export &#123; main &#125;; dblclick：鼠标左键双击 1234div.addEventListener(&#x27;dblclick&#x27;, (event) =&gt; &#123;        //输出事件的类型，即dblclick        console.log(event.type);   ...</div></div></div></a><a class="pagination-related" href="/2024/12/27/JavaScript-%E5%8F%98%E9%87%8F%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6/" title="JavaScript-变量与运算符"><img class="cover" src="https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-27</div><div class="info-item-2">JavaScript-变量与运算符</div></div><div class="info-2"><div class="info-item-1">let和const let用来定义变量 const用来定义常量例如：1234567&lt;body&gt;    &lt;script type=&quot;module&quot;&gt;        let a;        let x = 3, name = &quot;lzh&quot;;//声明多个变量        const y = 4;//声明一个常量    &lt;/script&gt;&lt;/body&gt;  变量类型 number: 数值变量，如1，2.5 string: 字符串，如”Hello”,’World’,单引号与双引号均可。字符串中的每个字符为只读类型。如果想要改变某个字符，可以用substr取子串方法重新构造一个字符串 boolean: 布尔值，例如true, false object: 对象，类似于C++中的指针，例如[1, 2, 3]，{name: “yxc”, age: 18}，null undefined: 未定义的变量  可以通过console.log(typeof...</div></div></div></a><a class="pagination-related" href="/2025/01/04/JavaScript-%E5%AF%B9%E8%B1%A1%E3%80%81%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0/" title="JavaScript-对象、数组和函数"><img class="cover" src="https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-04</div><div class="info-item-2">JavaScript-对象、数组和函数</div></div><div class="info-2"><div class="info-item-1">对象英文名称：Object。 类似于C++中的map，由key:value对构成。 value可以是变量、数组、对象、函数等。函数定义中的this用来引用该函数的“拥有者”。例如： 1234567891011121314151617181920212223let person = &#123;    name: &quot;John&quot;,    age: 30,    money: 100,    friends: [&quot;Bob&quot;, &#x27;Alice&#x27;],    clothes: &#123;        color: &quot;red&quot;,        size: &quot;XL&quot;,    &#125;,    add_money: function (x) &#123;        this.money += x;    &#125;&#125;function main() &#123;    console.log(person);    console.log(person.name);   ...</div></div></div></a><a class="pagination-related" href="/2024/12/27/JavaScript-%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F%E5%92%8C%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/" title="JavaScript-执行方式和执行顺序"><img class="cover" src="https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-27</div><div class="info-item-2">JavaScript-执行方式和执行顺序</div></div><div class="info-2"><div class="info-item-1">Javascript如何运行(在前端执行)？使用方式HTML页面中的任意位置加上&lt;script type&#x3D;”module”&gt;&lt;&#x2F;script&gt;标签即可。 常见使用方式1.直接在&lt;script type&#x3D;”module”&gt;&lt;&#x2F;script&gt;标签内写JS代码。例如： 12345678910111213141516&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;    &lt;title&gt;Document&lt;/title&gt;&lt;/head&gt;&lt;body&gt;    &lt;script...</div></div></div></a><a class="pagination-related" href="/2024/12/27/JavaScript-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E9%80%89%E6%8B%A9%E5%BE%AA%E7%8E%AF/" title="JavaScript-输入输出和选择循环"><img class="cover" src="https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-27</div><div class="info-item-2">JavaScript-输入输出和选择循环</div></div><div class="info-2"><div class="info-item-1">输入 从HTML与用户的交互中输入信息，例如通过input、textarea等标签获取用户的键盘输入，通过click、hover等事件获取用户的鼠标输入。  例如： 1234567891011121314151617181920212223242526272829303132&lt;!DOCTYPE html&gt; &lt;!-- 声明文档类型，这里是HTML5 --&gt;&lt;html lang=&quot;en&quot;&gt; &lt;!-- 根元素，设置文档的语言为英语 --&gt; &lt;head&gt; &lt;!-- 头部区域，包含文档的元数据 --&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;!-- 设置文档的字符编码为UTF-8 --&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;!-- 设置视口，以确保页面在不同设备上正确显示...</div></div></div></a><a class="pagination-related" href="/2025/01/04/JavaScript-%E7%B1%BB/" title="JavaScript-类"><img class="cover" src="https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-04</div><div class="info-item-2">JavaScript-类</div></div><div class="info-2"><div class="info-item-1">类定义与C++中的Class类似。但是不存在私有成员。 this指向类的实例。定义 123456789101112131415161718class Point &#123;    constructor(x, y) &#123;  // 构造函数        this.x = x;  // 成员变量        this.y = y;        this.init();	&#125;	init() &#123;    	this.sum = this.x + this.y;  // 成员变量可以在任意的成员函数中定义	&#125;	toString() &#123;  // 成员函数    	return &#x27;(&#x27; + this.x + &#x27;, &#x27; + this.y + &#x27;)&#x27;;	&#125;&#125;let p = new Point(3, 4);console.log(p.toString()); 继承123456789class ColorPoint extends Point &#123;   ...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://www.helloimg.com/i/2025/03/09/67cd36e6e958c.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Lzh</div><div class="author-info-description">a journey of one thousand miles begins with one step</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lzhiscoding/"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">常用库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery"><span class="toc-number">1.1.</span> <span class="toc-text">jQuery</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0"><span class="toc-number">1.1.2.</span> <span class="toc-text">获取元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.1.3.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.4.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E7%9A%84%E9%9A%90%E8%97%8F%E4%B8%8E%E5%B1%95%E7%8E%B0"><span class="toc-number">1.1.5.</span> <span class="toc-text">元素的隐藏与展现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E7%9A%84%E6%B7%BB%E5%8A%A0%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="toc-number">1.1.6.</span> <span class="toc-text">元素的添加与删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E7%B1%BB%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.7.</span> <span class="toc-text">对类的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9CSS%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.8.</span> <span class="toc-text">对CSS的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%A0%87%E7%AD%BE%E5%B1%9E%E6%80%A7%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.9.</span> <span class="toc-text">对标签属性的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9HTML%E5%86%85%E5%AE%B9%E3%80%81%E6%96%87%E6%9C%AC%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.10.</span> <span class="toc-text">对HTML内容、文本的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-number">1.1.11.</span> <span class="toc-text">查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ajax"><span class="toc-number">1.1.12.</span> <span class="toc-text">ajax</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#setTimeout%E4%B8%8EsetInterval"><span class="toc-number">1.2.</span> <span class="toc-text">setTimeout与setInterval</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#setTimeout-func-delay"><span class="toc-number">1.2.1.</span> <span class="toc-text">setTimeout(func, delay)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clearTimeout"><span class="toc-number">1.2.2.</span> <span class="toc-text">clearTimeout()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setInterval-func-delay"><span class="toc-number">1.2.3.</span> <span class="toc-text">setInterval(func, delay)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clearInterval"><span class="toc-number">1.2.4.</span> <span class="toc-text">clearInterval()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#requestAnimationFrame-func"><span class="toc-number">1.3.</span> <span class="toc-text">requestAnimationFrame(func)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8EsetTimeout%E5%92%8CsetInterval%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-number">1.3.1.</span> <span class="toc-text">与setTimeout和setInterval的区别：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map%E5%92%8CSet"><span class="toc-number">1.4.</span> <span class="toc-text">Map和Set</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-number">1.4.1.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">1.4.2.</span> <span class="toc-text">set</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#localStorage"><span class="toc-number">1.5.</span> <span class="toc-text">localStorage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON"><span class="toc-number">1.6.</span> <span class="toc-text">JSON</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F"><span class="toc-number">1.7.</span> <span class="toc-text">日期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebSocket"><span class="toc-number">1.8.</span> <span class="toc-text">WebSocket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Window"><span class="toc-number">1.9.</span> <span class="toc-text">Window</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas"><span class="toc-number">1.10.</span> <span class="toc-text">Canvas</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8B/" title="Vue实现个人空间-下"><img src="https://www.helloimg.com/i/2025/01/23/6791e036cc385.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue实现个人空间-下"/></a><div class="content"><a class="title" href="/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8B/" title="Vue实现个人空间-下">Vue实现个人空间-下</a><time datetime="2025-01-23T06:30:15.000Z" title="发表于 2025-01-23 14:30:15">2025-01-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8A/" title="Vue实现个人空间-上"><img src="https://www.helloimg.com/i/2025/01/23/6791e036cc385.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue实现个人空间-上"/></a><div class="content"><a class="title" href="/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8A/" title="Vue实现个人空间-上">Vue实现个人空间-上</a><time datetime="2025-01-23T06:29:10.000Z" title="发表于 2025-01-23 14:29:10">2025-01-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/15/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8B/" title="UE5-蓝图基础(下)"><img src="https://www.helloimg.com/i/2025/01/14/6786625a58244.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UE5-蓝图基础(下)"/></a><div class="content"><a class="title" href="/2025/01/15/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8B/" title="UE5-蓝图基础(下)">UE5-蓝图基础(下)</a><time datetime="2025-01-15T10:44:42.000Z" title="发表于 2025-01-15 18:44:42">2025-01-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/14/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8A/" title="UE5-蓝图基础(上)"><img src="https://www.helloimg.com/i/2025/01/14/6786625a58244.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UE5-蓝图基础(上)"/></a><div class="content"><a class="title" href="/2025/01/14/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8A/" title="UE5-蓝图基础(上)">UE5-蓝图基础(上)</a><time datetime="2025-01-14T13:13:47.000Z" title="发表于 2025-01-14 21:13:47">2025-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/14/Unity3D-%E9%A3%9E%E8%A1%8C%E4%B8%8E%E5%B0%84%E5%87%BB/" title="Unity3D-飞行与射击"><img src="https://www.helloimg.com/i/2025/01/10/6780e6354c8d9.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity3D-飞行与射击"/></a><div class="content"><a class="title" href="/2025/01/14/Unity3D-%E9%A3%9E%E8%A1%8C%E4%B8%8E%E5%B0%84%E5%87%BB/" title="Unity3D-飞行与射击">Unity3D-飞行与射击</a><time datetime="2025-01-14T05:36:56.000Z" title="发表于 2025-01-14 13:36:56">2025-01-14</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://www.helloimg.com/i/2024/12/27/676e5cfde7e49.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Lzh</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://www.lzhiscoding.xyz">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'www.lzhiscoding.xyz',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'www.lzhiscoding.xyz',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
