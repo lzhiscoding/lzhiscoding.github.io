@@ -1,910 +1,519 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Lzh正在写代码</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="千里之行始于足下">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lzh正在写代码">
-<meta property="og:url" content="http://example.com/page/6/index.html">
-<meta property="og:site_name" content="Lzh正在写代码">
-<meta property="og:description" content="千里之行始于足下">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Lzh">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Lzh正在写代码" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Lzh正在写代码</title><meta name="author" content="Lzh"><meta name="copyright" content="Lzh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Lzh正在写代码"><meta name="application-name" content="Lzh正在写代码"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="website"><meta property="og:title" content="Lzh正在写代码"><meta property="og:url" content="http://example.com/page/6/index.html"><meta property="og:site_name" content="Lzh正在写代码"><meta property="og:description" content="千里之行始于足下"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://www.helloimg.com/i/2025/03/09/67cd36e6e958c.png"><meta property="article:author" content="Lzh"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://www.helloimg.com/i/2025/03/09/67cd36e6e958c.png"><meta name="description" content="千里之行始于足下"><link rel="shortcut icon" href="https://www.helloimg.com/i/2025/03/09/67cd36e6e958c.png"><link rel="canonical" href="http://example.com/page/6/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"bye!","backTitle":"welcome！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: Lzh","link":"链接: ","source":"来源: Lzh正在写代码","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Lzh正在写代码',
+  title: 'Lzh正在写代码',
+  postAI: '',
+  pageFillDescription: '千里之行始于足下',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-03-28 17:12:31',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Lzh正在写代码</a>
-      </h1>
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
       
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Lzh正在写代码</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Docker/" style="font-size: 1.05rem;">Docker<sup>4</sup></a><a href="/tags/JavaScript/" style="font-size: 1.05rem;">JavaScript<sup>7</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>4</sup></a><a href="/tags/Shell/" style="font-size: 1.05rem;">Shell<sup>1</sup></a><a href="/tags/Springboot/" style="font-size: 1.05rem;">Springboot<sup>8</sup></a><a href="/tags/Unity3D/" style="font-size: 1.05rem;">Unity3D<sup>3</sup></a><a href="/tags/Unreal-Engine/" style="font-size: 1.05rem;">Unreal Engine<sup>2</sup></a><a href="/tags/Vue/" style="font-size: 1.05rem;">Vue<sup>2</sup></a><a href="/tags/Web/" style="font-size: 1.05rem;">Web<sup>4</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>7</sup></a><a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 1.05rem;">设计模式<sup>15</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">29</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav></header><main id="blog-container"><div class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div id="categoryBar"><div class="category-bar" id="category-bar"><div id="catalog-bar"><div id="catalog-list"><div class="catalog-list-item" id="首页"><a href="/">首页</a></div>
+    <div class="catalog-list-item" id="/categories/Docker/">
+      <a href="/categories/Docker/">
+        Docker
+      </a>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
+    
+    <div class="catalog-list-item" id="/categories/Web/">
+      <a href="/categories/Web/">
+        Web
+      </a>
     </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-设计模式-简单工厂模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time class="dt-published" datetime="2024-12-23T10:02:09.000Z" itemprop="datePublished">2024-12-23</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">设计模式-简单工厂模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="简单工厂模式动机与定义"><a href="#简单工厂模式动机与定义" class="headerlink" title="简单工厂模式动机与定义"></a>简单工厂模式动机与定义</h1><p>在实际的软件开发过程中，有时需要创建一些来自于相同父类的类的实例，为此可以专门定义一个类来负责创建这些类的实例，可以通过传入不同的参数来获得不同的对象，这个就是最简单的设计模式之一<em><strong>简单工厂模式</strong></em></p>
-<h1 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h1><p>现在要写一个计算器程序，实现加减乘除四则运算。</p>
-<h2 id="先来设计一下类图"><a href="#先来设计一下类图" class="headerlink" title="先来设计一下类图"></a>先来设计一下类图</h2><p><img src="https://www.helloimg.com/i/2024/12/23/6769484e25915.png" alt="简单工厂模式示例.png"><br>由于四则运算都是运算符，都可以继承自同一个父类，所以用运算类来作为他们的父类，再用一个简单工厂类来根据运算类的种类来产生不同的运算符</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义抽象运算类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Operation</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">double</span> NumberA;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">double</span> NumberB;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setNumberA</span><span class="params">(<span class="type">double</span> NumberA)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.NumberA = NumberA;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setNumberB</span><span class="params">(<span class="type">double</span> NumberB)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.NumberB = NumberB;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="type">double</span> <span class="title function_">GetResult</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//加法类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Add</span> <span class="keyword">extends</span> <span class="title class_">Operation</span> &#123;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">GetResult</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> NumberA + NumberB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//减法类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Subtract</span> <span class="keyword">extends</span> <span class="title class_">Operation</span> &#123;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">GetResult</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> NumberA - NumberB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//乘法类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Multiply</span> <span class="keyword">extends</span> <span class="title class_">Operation</span> &#123;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">GetResult</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> NumberA * NumberB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//除法类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Divide</span> <span class="keyword">extends</span> <span class="title class_">Operation</span> &#123;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">GetResult</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (NumberB == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ArithmeticException</span>(<span class="string">&quot;Cannot divide by zero.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> NumberA / NumberB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//工厂类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OperationFactory</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Operation <span class="title function_">getOperation</span><span class="params">(String operation)</span>&#123;</span><br><span class="line">        <span class="comment">//根据传入的字符串类返回不同的运算符类型</span></span><br><span class="line">        <span class="keyword">switch</span> (operation)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;add&quot;</span>: <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Add</span>();</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;subtract&quot;</span>: <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Subtract</span>();</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;multiply&quot;</span>: <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Multiply</span>();</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;divide&quot;</span>: <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Divide</span>();</span><br><span class="line">            <span class="keyword">default</span>: <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SimpleFactory</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Operation operation;</span><br><span class="line">        <span class="type">OperationFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OperationFactory</span>();</span><br><span class="line">        <span class="comment">//根据字符串来生产出不同的运算符</span></span><br><span class="line">        operation = factory.getOperation(<span class="string">&quot;add&quot;</span>);</span><br><span class="line">        operation.setNumberA(<span class="number">10</span>);</span><br><span class="line">        operation.setNumberB(<span class="number">20</span>);</span><br><span class="line">        System.out.println(operation.GetResult());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="简单工厂模式包含如下角色"><a href="#简单工厂模式包含如下角色" class="headerlink" title="简单工厂模式包含如下角色"></a>简单工厂模式包含如下角色</h1><ol>
-<li>Factory(工厂角色)，他是简单工厂模式的核心，负责实现创建所有实例的内部逻辑</li>
-<li>Product(抽象产品角色)，抽象产品角色是简单工厂模式所创建的所有对象的父类，负责描绘所有实例所共有的公共接口</li>
-<li>ConcreteProduct(具体产品角色)，具体产品角色是简单工厂模式的创建目标</li>
-</ol>
-<h1 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h1><p>要修改或扩展运算能力，只需要对相应的子类进行修改或增加新的子类，再把工厂类做适当的修改。<br>所以不符合<a target="_blank" rel="noopener" href="https://www.lzhiscoding.xyz/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E4%BB%8B/">开闭原则</a><br>实现了一个结构相对合理的程序，具备了面向对象编程的特点，算是实现了高内聚、低耦合，易维护、<br>易扩展、易复用的目的。<br>以简单工厂类为接口，工厂类根据不同输入参数创建具体的对象，实现界面和业务的解耦（界面需求改<br>变和业务需求改变不互相影响）<br>对业务进行封装，利用继承使程序容易扩展，利用多态，用工厂类来实现对象实例的创建维护。</p>
-
-      
+    <div class="catalog-list-item" id="/categories/JavaScript/">
+      <a href="/categories/JavaScript/">
+        JavaScript
+      </a>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" data-id="cm8sja985005n8ktbfvx053eg" data-title="设计模式-简单工厂模式" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-设计模式-简介" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E4%BB%8B/" class="article-date">
-  <time class="dt-published" datetime="2024-12-23T09:37:22.000Z" itemprop="datePublished">2024-12-23</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E4%BB%8B/">设计模式-简介</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式简介"><a href="#设计模式简介" class="headerlink" title="设计模式简介"></a>设计模式简介</h1><p>设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。</p>
-<p>设计模式是一套被反复使用的、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的，设计模式使代码编制真正工程化，设计模式是软件工程的基石，如同大厦的一块块砖石一样。项目中合理地运用设计模式可以完美地解决很多问题，每种模式在现实中都有相应的原理来与之对应，每种模式都描述了一个在我们周围不断重复发生的问题，以及该问题的核心解决方案，这也是设计模式能被广泛应用的原因。</p>
-<h1 id="面向对象的好处"><a href="#面向对象的好处" class="headerlink" title="面向对象的好处"></a>面向对象的好处</h1><p>举个例子：曹操吟诗“喝酒唱歌，人生真爽”，命工匠刻版印刷，当时并无活字印刷技术，工匠做好“喝酒唱歌，人生真爽”模板交给曹操看，曹操感觉不妥，于是改成“对酒当歌，人生真爽”，工匠只得重新来过，后面又交给曹操看，曹操又改成“对酒当歌，人生几何”，工匠叫苦不迭。这个例子要改字的时候需要所有字都重新做一次。后面活字印刷出现后，“喝酒唱歌，人生真爽”改成“对酒当歌，人生几何”只需要修改需要修改的字就行。这就是<em><strong>可维护</strong></em>，这些字不是只能用一次，这是<em><strong>可复用</strong></em>，若这个诗需要加字，只需要另外刻字加入，这是<em><strong>可扩展</strong></em>，如果此诗需要横排也可能需要竖排，只需要把活字移动即可，这是<em><strong>灵活性好</strong></em></p>
-<p>以上就是面向对象编程的好处：<em><strong>可维护</strong></em>，<em><strong>可复用</strong></em>，<em><strong>可扩展</strong></em>，<em><strong>灵活性好</strong></em>，通过<em><strong>封装</strong></em>、<em><strong>继承</strong></em>、<em><em><strong>多态</strong></em>把程序</em><strong>耦合度降低</strong><em>，用设计模式是的程序更加</em><strong>灵活</strong><em>、</em><strong>容易修改</strong><em>、并且</em><strong>容易复用</strong>*。</p>
-<h1 id="设计模式六大原则"><a href="#设计模式六大原则" class="headerlink" title="设计模式六大原则"></a>设计模式六大原则</h1><h2 id="1、开闭原则（Open-Close-Principle）"><a href="#1、开闭原则（Open-Close-Principle）" class="headerlink" title="1、开闭原则（Open Close Principle）"></a>1、开闭原则（Open Close Principle）</h2><p>开闭原则的意思是：对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。</p>
-<h2 id="2、里氏代换原则（Liskov-Substitution-Principle）"><a href="#2、里氏代换原则（Liskov-Substitution-Principle）" class="headerlink" title="2、里氏代换原则（Liskov Substitution Principle）"></a>2、里氏代换原则（Liskov Substitution Principle）</h2><p> 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。LSP 是继承复用的基石，只有当派生类可以替换掉基类，且软件单位的功能不受到影响时，基类才能真正被复用，而派生类也能够在基类的基础上增加新的行为。</p>
-<h2 id="3、依赖倒转原则（Dependence-Inversion-Principle）"><a href="#3、依赖倒转原则（Dependence-Inversion-Principle）" class="headerlink" title="3、依赖倒转原则（Dependence Inversion Principle）"></a>3、依赖倒转原则（Dependence Inversion Principle）</h2><p>这个原则是开闭原则的基础，具体内容：针对接口编程，依赖于抽象而不依赖于具体。</p>
-<h2 id="4、接口隔离原则（Interface-Segregation-Principle）"><a href="#4、接口隔离原则（Interface-Segregation-Principle）" class="headerlink" title="4、接口隔离原则（Interface Segregation Principle）"></a>4、接口隔离原则（Interface Segregation Principle）</h2><p>这个原则的意思是：使用多个隔离的接口，比使用单个接口要好。它还有另外一个意思是：降低类之间的耦合度。</p>
-<h2 id="5、迪米特法则，又称最少知道原则（Demeter-Principle）"><a href="#5、迪米特法则，又称最少知道原则（Demeter-Principle）" class="headerlink" title="5、迪米特法则，又称最少知道原则（Demeter Principle）"></a>5、迪米特法则，又称最少知道原则（Demeter Principle）</h2><p>最少知道原则是指：一个实体应当尽量少地与其他实体之间发生相互作用，使得系统功能模块相对独立。</p>
-<h2 id="6、合成复用原则（Composite-Reuse-Principle）"><a href="#6、合成复用原则（Composite-Reuse-Principle）" class="headerlink" title="6、合成复用原则（Composite Reuse Principle）"></a>6、合成复用原则（Composite Reuse Principle）</h2><p>合成复用原则是指：尽量使用合成&#x2F;聚合的方式，而不是使用继承。</p>
-<h1 id="UML类图图示样例"><a href="#UML类图图示样例" class="headerlink" title="UML类图图示样例"></a>UML类图图示样例</h1><p><img src="https://www.helloimg.com/i/2024/12/23/6769333d9110e.png" alt="UML类图图示.png"></p>
-
-      
+    <div class="catalog-list-item" id="/categories/算法/">
+      <a href="/categories/算法/">
+        算法
+      </a>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E4%BB%8B/" data-id="cm8sja985005k8ktb09b49z5w" data-title="设计模式-简介" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-归并排序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" class="article-date">
-  <time class="dt-published" datetime="2024-12-22T03:01:13.000Z" itemprop="datePublished">2024-12-22</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用<strong>分治法</strong>（Divide and Conquer）的一个非常典型的应用。归并排序是将序列分成两部分，然后用两个指针指向两个序列的开始，比较两个指针所指的值，将较小值放入一个新数组，同时该指针后移。最后将新数组的值赋值给原数组，达到从小到大排列的目的</p>
-<h1 id="动画展示"><a href="#动画展示" class="headerlink" title="动画展示"></a>动画展示</h1><p><img src="https://www.helloimg.com/i/2024/12/22/6768190e5ea7f.gif" alt="mergeSort.gif"></p>
-<h1 id="思路解析"><a href="#思路解析" class="headerlink" title="思路解析"></a>思路解析</h1><ol>
-<li><p>初始序列3 44 38 5 47 15 36 26 27 2 46 4 19 50 48</p>
-</li>
-<li><p>这里第一步将序列二分到不能再分，此时左边两个部分为3和44，排序结果作为一个整体为3 44</p>
-</li>
-<li><p>然后再处理右边两个部分38和5，排序结果作为一个整体为5 38</p>
-</li>
-<li><p>此时在将两个排序好两个整体在进行相同的步骤，每次取较小值，排序结果作为一个整体为3 5 38 44</p>
-</li>
-<li><p>同理右半边结果为15 26 36 47</p>
-</li>
-<li><p>再处理这两个部分，结果为3 5 15 26 36 38 44 47，此时原序列左半边排序完成</p>
-</li>
-<li><p>以相同步骤处理原序列右半边，结果为2 4 19 27 46 48 50</p>
-</li>
-<li><p>两个指针相比取最小值放入新数组，结果为2 3 4 5 15 19 26 27 36 38 44 46 47 48 50</p>
-</li>
-</ol>
-<h1 id="算法性能"><a href="#算法性能" class="headerlink" title="算法性能"></a>算法性能</h1><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>归并排序的时间复杂度在平均情况、最好情况以及最坏情况下均为O(n log n)，其中n是数组中的元素数量。这是因为归并排序总是将数组分成两半处理，每一层递归深度为log n层，每层需要线性时间n来合并，故总时间为n * log n。这种时间复杂度保证了归并排序对于大规模数据集来说是非常高效的，且性能稳定，不依赖于原始数据的排列状态。</p>
-<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><p>归并排序的空间复杂度为O(n)，主要原因是需要一个与原数组相同大小的临时数组来合并两个子数组。这是归并排序的一个缺点，尤其是在处理极大规模数据时，额外的空间需求可能成为一个限制因素。</p>
-<h2 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h2><p>归并排序是一种<strong>稳定</strong>的排序算法，即相等的元素在排序前后相对位置不变。这是因为合并过程中，当遇到两个相等的元素时，总是先取左边子数组的元素，保持了稳定性。</p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//参数：数组，左边界，右边界(左闭右闭区间)</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; v, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//结束条件</span></span><br><span class="line">	<span class="keyword">if</span> (l &gt;= r)<span class="keyword">return</span>;</span><br><span class="line">	<span class="comment">//得到中间下标</span></span><br><span class="line">	<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//递归执行直到满足结束条件</span></span><br><span class="line">	<span class="built_in">merge_sort</span>(v, l, mid);</span><br><span class="line">	<span class="built_in">merge_sort</span>(v, mid + <span class="number">1</span>, r);</span><br><span class="line">	<span class="comment">//临时数组</span></span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;temp;</span><br><span class="line">	<span class="comment">//声明双指针</span></span><br><span class="line">	<span class="type">int</span> i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//将较小值push到临时数组</span></span><br><span class="line">	<span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">		temp.<span class="built_in">push_back</span>(v[i] &lt; v[j] ? v[i++] : v[j++]);</span><br><span class="line">	<span class="keyword">while</span> (i &lt;= mid) temp.<span class="built_in">push_back</span>(v[i++]);</span><br><span class="line">	<span class="keyword">while</span> (j &lt;= r) temp.<span class="built_in">push_back</span>(v[j++]);</span><br><span class="line">	<span class="comment">//将临时数组的值赋值到原数组</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++)</span><br><span class="line">		v[i] = temp[j++];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; v = &#123; <span class="number">3</span>, <span class="number">44</span>, <span class="number">38</span>, <span class="number">5</span>, <span class="number">47</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span> &#125;;</span><br><span class="line">	<span class="built_in">merge_sort</span>(v, <span class="number">0</span>, v.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> value : v)</span><br><span class="line">		cout &lt;&lt; value &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
+    <div class="catalog-list-item" id="/categories/Linux/">
+      <a href="/categories/Linux/">
+        Linux
+      </a>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" data-id="cm8sja97z004k8ktb4s1g45rw" data-title="归并排序" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Shell脚本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/19/Shell%E8%84%9A%E6%9C%AC/" class="article-date">
-  <time class="dt-published" datetime="2024-12-19T13:34:55.000Z" itemprop="datePublished">2024-12-19</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/12/19/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="3-shell语法"><a href="#3-shell语法" class="headerlink" title="3 shell语法"></a>3 shell语法</h1><h3 id="3-1-概论"><a href="#3-1-概论" class="headerlink" title="3.1 概论"></a>3.1 概论</h3><p>终端可以看做逐条执行的shell脚本，Linux默认使用bash，脚本文件第一行必须为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">! /bin/bash</span></span><br></pre></td></tr></table></figure>
-
-<p>可通过两种方式执行shell脚本</p>
-<ul>
-<li>解释器执行：<code>bash xxx.sh</code></li>
-<li>作为可执行文件执行<ul>
-<li>添加执行权限<code>chmod +x xxx.sh</code></li>
-<li>执行<code>./xxx.sh</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="3-2-注释"><a href="#3-2-注释" class="headerlink" title="3.2 注释"></a>3.2 注释</h3><p><strong>单行注释：</strong>类似python，用<code>#</code>注释</p>
-<p><strong>多行注释：</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:&lt;&lt;EOF</span><br><span class="line">...</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>EOF</code>可替换成任意字符串，例如<code>abc</code></p>
-<h3 id="3-3-变量"><a href="#3-3-变量" class="headerlink" title="3.3 变量"></a>3.3 变量</h3><p><strong>定义变量</strong></p>
-<p>定义不需要<code>$</code>，而且<code>=</code>两边不能有空格。字符串可用单引号、双引号或不用引号描述，例如下边三种变量声明都是正确的。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name1=&#x27;abc&#x27;</span><br><span class="line">name2=&quot;abc&quot;</span><br><span class="line">name3=abc</span><br></pre></td></tr></table></figure>
-
-<p><strong>引用变量</strong></p>
-<p>需要用<code>$</code>，可用<code>&#123;&#125;</code>限定变量名边界，实现字符串与变量混合表示</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $&#123;name1&#125;defg  # 输出abcdefg</span><br></pre></td></tr></table></figure>
-
-<p><strong>只读变量</strong></p>
-<p>声明前加上<code>readonly</code>或<code>declare -r</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">readonly name1</span><br><span class="line">declare -r name2</span><br></pre></td></tr></table></figure>
-
-<p><strong>删除变量</strong></p>
-<p>用<code>unset</code>删除，此时变量为空串</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unset name</span><br><span class="line">echo name  # 输出空串和一个换行符</span><br></pre></td></tr></table></figure>
-
-<p><strong>变量类型</strong></p>
-<p>根据使用范围，可分为全局变量和局部变量。</p>
-<p>全局变量又称环境变量，其它子进程（其它bash终端）可访问，可用以下两种方式声明：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export name</span><br><span class="line">declare -x name</span><br></pre></td></tr></table></figure>
-
-<p>局部变量又称自定义变量，只有当前进程能访问，可通过<code>declare +x</code>把全局变量转成局部变量</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare +x name</span><br></pre></td></tr></table></figure>
-
-<p><strong>单引号字符串与双引号字符串的区别</strong></p>
-<p>单引号的内容原样输出，不支持变量引用嵌套<code>$name</code>；而双引号的内容中可以嵌套变量引用，不加引号与双引号效果一致。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name=abc</span><br><span class="line">echo &#x27;$name defg&#x27;  # 输出$name defg</span><br><span class="line">echo &quot;$name defg&quot;  # 输出abc defg</span><br></pre></td></tr></table></figure>
-
-<p><strong>获取字符串的长度</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name=&quot;abc&quot;</span><br><span class="line">echo $&#123;#name&#125;  # 输出3</span><br></pre></td></tr></table></figure>
-
-<p><strong>提取子串</strong>F’x</p>
-<p>第1个数为起始地址（从0开始），第2个数为长度</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name=&quot;abcdefg&quot;</span><br><span class="line">echo $&#123;name:0:5&#125;  # 输出abcde</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-4-默认变量"><a href="#3-4-默认变量" class="headerlink" title="3.4 默认变量"></a>3.4 默认变量</h3><p><code>$0</code>表示文件路径，例如<code>./xxx.sh</code>，<code>$1</code>、<code>$2</code>等依次表示脚本的第1个参数、第2个参数。</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>$#</code></td>
-<td>参数个数</td>
-</tr>
-<tr>
-<td><code>$*</code></td>
-<td>等价于<code>&quot;$1 $2 $3 ...&quot;</code></td>
-</tr>
-<tr>
-<td><code>$@</code></td>
-<td>等价于<code>&quot;$1&quot; &quot;$2&quot; &quot;$3&quot; ...&quot;</code></td>
-</tr>
-<tr>
-<td><code>$$</code></td>
-<td>当前进程ID</td>
-</tr>
-<tr>
-<td><code>$?</code></td>
-<td>上一条命令的退出状态，例如0表示正常退出，其它为异常退出</td>
-</tr>
-<tr>
-<td><code>$(command)</code></td>
-<td>返回<code>command</code>的标准输出stdout，可嵌套</td>
-</tr>
-<tr>
-<td>`command`</td>
-<td>返回<code>command</code>的标准输出stdout，不可嵌套</td>
-</tr>
-</tbody></table>
-<h3 id="3-4-数组"><a href="#3-4-数组" class="headerlink" title="3.4 数组"></a>3.4 数组</h3><p>只支持一维数组，但数组元素类型可以不同，而且不需要指名数组大小，下标从0开始。数组用小括号<code>()</code>表示，元素用空格隔开</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array=(1 abc &#x27;defg&#x27;)  # 整个定义</span><br><span class="line">array[3] = &quot;hijk&quot;  # 逐个定义</span><br></pre></td></tr></table></figure>
-
-<p>用<code>$</code>读取数组元素，可用<code>@</code>或<code>*</code>表示整个数组</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo $(array[0])  # 输出索引为0的元素</span><br><span class="line">echo $(array[@])  # 输出所有元素</span><br><span class="line">echo $(array[*])  # 输出所有元素</span><br></pre></td></tr></table></figure>
-
-<p>读取数组长度，有如下两种方式，返回的都是数组实际长度</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo $(#array[@])</span><br><span class="line">echo $(#array[*])</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-5-expr命令"><a href="#3-5-expr命令" class="headerlink" title="3.5 expr命令"></a>3.5 expr命令</h3><p>可用于表达式求值，格式为<code>echo 表达式</code>。表达式用空格隔开每一项，个别符号需要用<code>\</code>转义，例如乘号<code>*</code>。如果表达式包含空格以及其它特殊字符，需要用引号括起。</p>
-<p>表达式同时在<code>stdout</code>和<code>exit code</code>输出结果。如果表达式是逻辑表达式，且为真时，则<code>stdout</code>返回<code>1</code>，<code>exit code</code>返回<code>0</code>。如果表达式是非逻辑表达式，则一律返回<code>0</code>。</p>
-<h4 id="3-5-1-字符串表达式"><a href="#3-5-1-字符串表达式" class="headerlink" title="3.5.1 字符串表达式"></a>3.5.1 字符串表达式</h4><p>可用<code>length str</code>求<code>str</code>的长度</p>
-<p>可用<code>index string charset</code>求<code>charset</code>中任意单个字符首次在<code>string</code>中出现的位置，下标从<strong>1</strong>开始</p>
-<p>可用<code>substr string position length</code>求<code>string</code>从<code>position</code>起，长度为<code>length</code>的子串</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str=&quot;HelloWorld&quot;</span><br><span class="line">echo `expr length &quot;$str&quot;`</span><br><span class="line">echo `expr index &quot;$str&quot; abc`</span><br><span class="line">echo `expr substr &quot;$str&quot; 2 3`</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-5-2-整数表达式"><a href="#3-5-2-整数表达式" class="headerlink" title="3.5.2 整数表达式"></a>3.5.2 整数表达式</h4><p>加<code>+</code>减<code>-</code>乘<code>\*</code>除<code>/</code>取余<code>%</code>括号<code>\(</code> <code>\)</code>，注意乘号和括号需要用反斜杠<code>\</code>转义。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo `expr \( $a + $b \) \* $c`  # 输出(a+b)*c</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-5-3-逻辑表达式"><a href="#3-5-3-逻辑表达式" class="headerlink" title="3.5.3 逻辑表达式"></a>3.5.3 逻辑表达式</h4><p><code>|</code>：如果左边参数非空且非0，则返回左边参数；否则如果右边参数非空且非0，返回右边参数；都不满足返回0。</p>
-<p><code>&amp;</code>：如果左边参数和右边参数非空且非0，则返回左边参数；否则返回0。</p>
-<p><code>|</code>和<code>&amp;</code>都具有短路特性，如果计算左边参数足以确定返回值，则不会计算右边参数。</p>
-<p><code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>、<code>==</code>、<code>!=</code>都与python一致，除了<code>=</code>也表示相等关系，即与<code>==</code>同义</p>
-<h3 id="3-6-read命令"><a href="#3-6-read命令" class="headerlink" title="3.6 read命令"></a>3.6 read命令</h3><p><code>read</code>类似<code>cin</code>，后边接变量名，例如<code>read name</code></p>
-<p><code>read</code>有两个参数<code>-p</code>，接提示信息；<code>-t</code>，接超时时间，单位为秒，超过时间则忽略该命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read -p &quot;What&#x27;s your name?&quot; -t 30 name</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-7-echo命令"><a href="#3-7-echo命令" class="headerlink" title="3.7 echo命令"></a>3.7 echo命令</h3><p><code>echo</code>主要用于输出字符串，字符串可不加引号表示，也可加单引号表示原生字符串，或加双引号实现嵌套变量的字符串</p>
-<p>双引号需要用<code>\</code>转义，单引号不需要</p>
-<p>参数<code>-e</code>可开启转义，从而能在字符串使用转义字符<code>\n</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -e &quot;Hi\n&quot;  # 额外多输出一个换行符</span><br></pre></td></tr></table></figure>
-
-<p>若想取消<code>echo</code>默认输出的换行符，可用<code>\c</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -e &quot;Hi\c&quot;  </span><br></pre></td></tr></table></figure>
-
-<p><strong>重定向</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;Hello world&quot; &gt; output.txt</span><br></pre></td></tr></table></figure>
-
-<p>显示执行结果</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo `ls`</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-8-printf命令"><a href="#3-8-printf命令" class="headerlink" title="3.8 printf命令"></a>3.8 printf命令</h3><p>类似<code>C++</code>的<code>printf</code>，其格式为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">printf format-string [arguments...]</span><br><span class="line">printf &quot;%10d.\n&quot; 100</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-9-test命令与判断符号"><a href="#3-9-test命令与判断符号" class="headerlink" title="3.9 test命令与判断符号[]"></a>3.9 test命令与判断符号[]</h3><h4 id="3-9-1-test用法"><a href="#3-9-1-test用法" class="headerlink" title="3.9.1 test用法"></a>3.9.1 test用法</h4><p><code>test</code>命令常用于判断文件类型，以及比较变量，它的返回结果是<code>exit code</code>，需要用<code>$?</code>读取。输入<code>man test</code>可查看<code>test</code>的用法。</p>
-<p><code>exit code</code>中，<code>0</code>表示真，其它为假。</p>
-<p>逻辑运算符<code>&amp;&amp;</code>和<code>||</code>都具有短路原则，只是这是真的逻辑表达式，返回逻辑值<code>1</code>和<code>0</code>，而不像<code>&amp;</code>和<code>|</code>只执行，不返回<code>exit code</code>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test 2 -lt 3</span><br><span class="line">echo $?  # 逻辑表达式为真，因此exit code为0</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-9-2-文件类型判断"><a href="#3-9-2-文件类型判断" class="headerlink" title="3.9.2 文件类型判断"></a>3.9.2 文件类型判断</h4><p>常用参数有</p>
-<ul>
-<li><code>-e</code>：文件是否存在</li>
-<li><code>-f</code>：是否为文件</li>
-<li><code>-d</code>：是否为目录</li>
-</ul>
-<p>为了提高代码可读性，常常这样编写代码判断文件是否存在：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test -e filename &amp;&amp; echo &quot;Exist&quot; || echo &quot;Not exist&quot;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-9-3-文件权限判断"><a href="#3-9-3-文件权限判断" class="headerlink" title="3.9.3 文件权限判断"></a>3.9.3 文件权限判断</h4><p>常用参数有</p>
-<ul>
-<li><code>-r</code>：文件是否可读</li>
-<li><code>-w</code>：文件是否可写</li>
-<li><code>-x</code>：文件是否可执行</li>
-<li><code>-s</code>：文件是否为空文件</li>
-</ul>
-<h4 id="3-9-4-整数间比较"><a href="#3-9-4-整数间比较" class="headerlink" title="3.9.4 整数间比较"></a>3.9.4 整数间比较</h4><p>类似Latex，<code>test</code>命令的比较符号有<code>-eq</code>、<code>-ne</code>、<code>-gt</code>、<code>-lt</code>、<code>-ge</code>、<code>-le</code></p>
-<h4 id="3-9-5-字符串比较"><a href="#3-9-5-字符串比较" class="headerlink" title="3.9.5 字符串比较"></a>3.9.5 字符串比较</h4><p>常用参数有</p>
-<ul>
-<li><code>-z</code>：字符串是否为空，如果为空返回<code>True</code></li>
-<li><code>-n</code>：字符串是否非空，如果非空返回<code>True</code></li>
-<li><code>==</code>：判断字符串是否相同</li>
-<li><code>!=</code>：判断字符串是否不同</li>
-</ul>
-<h4 id="3-9-6-多重条件判定"><a href="#3-9-6-多重条件判定" class="headerlink" title="3.9.6 多重条件判定"></a>3.9.6 多重条件判定</h4><p>常用参数有：与<code>-a</code>、或<code>-o</code>、非<code>!</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test ! -x file  # 文件不可执行时返回True</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-9-7-判断符号"><a href="#3-9-7-判断符号" class="headerlink" title="3.9.7 判断符号[]"></a>3.9.7 判断符号[]</h4><p><code>[]</code>用法几乎与<code>test</code>一样，可看做简化版的<code>test</code>，常用于<code>if</code>语句中。注意中括号前后的空格，变量和常量尽量用双引号括起。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test 2 -lt 3</span><br><span class="line">[ 2 -lt 3 ]  # 与上一条语句等价</span><br><span class="line"></span><br><span class="line">[ &quot;$name&quot; == &quot;abc&quot; ]  # 用双引号括起</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-10-判断语句"><a href="#3-10-判断语句" class="headerlink" title="3.10 判断语句"></a>3.10 判断语句</h3><h4 id="3-10-1-if语句"><a href="#3-10-1-if语句" class="headerlink" title="3.10.1 if语句"></a>3.10.1 if语句</h4><p><code>bash</code>中的<code>if</code>语句类似C++中的<code>if</code>语句块，其语法格式如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    statement</span><br><span class="line">elif condition</span><br><span class="line">then</span><br><span class="line">    statement</span><br><span class="line">else</span><br><span class="line">    statement</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>condition</code>可用<code>expr</code>逻辑表达式或<code>test</code>表达式，例如<code>[ &quot;$a&quot; -eq 1 ]</code>表示变量a是否等于1，满足则执行<code>then</code>后边的语句。</p>
-<h4 id="3-10-1-case语句"><a href="#3-10-1-case语句" class="headerlink" title="3.10.1 case语句"></a>3.10.1 case语句</h4><p><code>bash</code>中的<code>case</code>语句类似C++中<code>switch</code>语句块，其语法格式如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">case $Name in</span><br><span class="line">    value1)</span><br><span class="line">        statement</span><br><span class="line">        ;;</span><br><span class="line">    value2)</span><br><span class="line">        statement</span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        statement</span><br><span class="line">        ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-<p><strong>例子</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">case $a in</span><br><span class="line">    1)</span><br><span class="line">        echo &quot;a = 1&quot;</span><br><span class="line">        ;;</span><br><span class="line">    2)</span><br><span class="line">        echo &quot;a = 2&quot;</span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        echo &quot;a = other&quot;</span><br><span class="line">        ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>;;</code>类似<code>break</code></p>
-<h3 id="3-11-循环语句"><a href="#3-11-循环语句" class="headerlink" title="3.11 循环语句"></a>3.11 循环语句</h3><h4 id="3-11-1-for语句"><a href="#3-11-1-for语句" class="headerlink" title="3.11.1 for语句"></a>3.11.1 for语句</h4><p><strong>（1）</strong><code>for...in</code></p>
-<p><strong>遍历指定值</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for var in val1 val2 val3</span><br><span class="line">do</span><br><span class="line">    statement</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<p><strong>遍历数组</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for var in `ls`</span><br><span class="line">do</span><br><span class="line">    statement</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<p>把<code>ls</code>的<code>stdout</code>作为数组进行遍历</p>
-<p>可用<code>$(seq 1 10)</code>或<code>&#123;1..10&#125;</code>表示数组<code>1 2 ... 10</code>，也可用<code>&#123;a..z&#125;</code>表示数组<code>a b ... z</code></p>
-<p><strong>（2）</strong><code>for((expression; condition; expression))</code></p>
-<p>类似<code>C++</code>中的<code>for</code>语句块，只是需要用双括号括起，此时允许括号内的<code>=</code>号两侧用空格隔开（通常不允许）</p>
-<p>例如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for ((i = 1; i &lt;= 10; i++))</span><br><span class="line">do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-11-2-while语句"><a href="#3-11-2-while语句" class="headerlink" title="3.11.2 while语句"></a>3.11.2 while语句</h4><p><code>bash</code>中的<code>while</code>与<code>C++</code>类似，语法结构如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while condition</span><br><span class="line">do</span><br><span class="line">    statement</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<p>例子：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while read name</span><br><span class="line">do</span><br><span class="line">    echo $name</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<p>若要终止读取，可按<code>ctrl</code>+<code>d</code>，或直接结束程序<code>ctrl</code>+<code>c</code>。</p>
-<h4 id="3-11-3-until语句"><a href="#3-11-3-until语句" class="headerlink" title="3.11.3 until语句"></a>3.11.3 until语句</h4><p><code>until</code>语句与<code>while</code>相反，当<code>condition</code>为假时才进入循环，为真是结束循环，其语法结构如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">until condition</span><br><span class="line">do</span><br><span class="line">    statement</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<p>例子</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">until [ &quot;$(word)&quot; == &quot;yes&quot; ] || [ &quot;$(word)&quot; == &quot;YES&quot; ]</span><br><span class="line">do</span><br><span class="line">    read -p &quot;Please input yes/YES to stop this program: &quot; word</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-11-4-循环控制"><a href="#3-11-4-循环控制" class="headerlink" title="3.11.4 循环控制"></a>3.11.4 循环控制</h4><p>类似<code>C++</code>，<code>bash</code>也有<code>continue</code>和<code>break</code>语句，功能一样，只是<code>bash</code>中的<code>break</code>语句不能用于<code>case</code>语句块中。</p>
-<p>如果遇到死循环，可用<code>top</code>找到进程PID，然后用命令<code>kill -9 PID</code>结束进程。</p>
-<h3 id="3-12-函数"><a href="#3-12-函数" class="headerlink" title="3.12 函数"></a>3.12 函数</h3><p><code>bash</code>中的函数类似<code>C++</code>中的函数，但<code>return</code>不同。在<code>bash</code>中，<code>return</code>只能返回<code>0</code>~&#96;255<code>之间的</code>exit code<code>，若想获取返回值，可用</code>echo<code>输出到</code>stdout<code>中，然后再通过</code>$(function_name)<code>获取其</code>stdout<code>结果。</code>exit code<code>可通过</code>$?&#96;获取。</p>
-<p><strong>函数语法结构</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[function] func_name() &#123;</span><br><span class="line">    statement</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中function关键字可省略。</p>
-<p>当不写<code>return</code>时，函数默认返回<code>0</code></p>
-<p><strong>函数参数</strong></p>
-<p><code>$1</code>表示函数的第一个输入参数，以此类推。但<code>$0</code>不表示函数名，而是文件名。</p>
-<p><strong>局部变量</strong></p>
-<p>用<code>local</code>关键字声明，范围为函数体内。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func() &#123;</span><br><span class="line">    local name=abc</span><br><span class="line">    echo $name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-13-exit命令"><a href="#3-13-exit命令" class="headerlink" title="3.13 exit命令"></a>3.13 exit命令</h3><p><code>exit</code>用于结束<strong>当前进程</strong>，并返回一个退出状态，状态值为0~255之间的整数，其中0表示成功，其余表示失败。</p>
-<h3 id="3-14-文件重定向"><a href="#3-14-文件重定向" class="headerlink" title="3.14 文件重定向"></a>3.14 文件重定向</h3><p>每个进程默认打开3个文件描述符</p>
-<ul>
-<li>标准输入<code>stdin</code>：从命令行读取数据，文件描述符为<code>0</code></li>
-<li>标准输出<code>stdout</code>：向命令行输出数据，文件描述符为<code>1</code></li>
-<li>标准错误输出<code>stderr</code>：向命令行输出错误，文件描述符为<code>2</code></li>
-</ul>
-<p><strong>重定向语法</strong></p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>command &gt; file</code></td>
-<td>将<code>stdout</code>重定向到<code>file</code>中，即把<code>command</code>的结果输出到<code>file</code>中，会覆盖<code>file</code>中的内容</td>
-</tr>
-<tr>
-<td><code>command &lt; file</code></td>
-<td>将<code>stdin</code>重定向到<code>file</code>中，即<code>command</code>从<code>file</code>中读入数据</td>
-</tr>
-<tr>
-<td><code>command &gt;&gt; file</code></td>
-<td>与<code>&gt;</code>类似，只是是以追加的方式输出到<code>file</code>中，不会覆盖<code>file</code>的原始内容</td>
-</tr>
-<tr>
-<td><code>command n&gt; file</code></td>
-<td>将文件描述符<code>n</code>重定向到<code>file</code>中</td>
-</tr>
-<tr>
-<td><code>command n&gt;&gt; file</code></td>
-<td>将文件描述符<code>n</code>以追加的方式重定向到<code>file</code>中</td>
-</tr>
-</tbody></table>
-<p>例子</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./test.sh &lt; input.txt &gt; output.txt  # test.sh从input.txt读取数据，结果输出到output.txt中</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-15-引入外部脚本"><a href="#3-15-引入外部脚本" class="headerlink" title="3.15 引入外部脚本"></a>3.15 引入外部脚本</h3><p>类似<code>C++</code>引入头文件，有如下两种方式引用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">. filename  # 注意空格</span><br><span class="line">source filename</span><br></pre></td></tr></table></figure>
-      
+    <div class="catalog-list-item" id="/categories/Shell脚本/">
+      <a href="/categories/Shell脚本/">
+        Shell脚本
+      </a>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/19/Shell%E8%84%9A%E6%9C%AC/" data-id="cm8sja97c001b8ktb80u364jw" data-title="Shell脚本" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-KMP算法详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/19/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" class="article-date">
-  <time class="dt-published" datetime="2024-12-19T13:32:15.000Z" itemprop="datePublished">2024-12-19</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/12/19/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">KMP算法详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>对于字符串这一数据结构，寻找字符串中子串的位置是最重要的操作之一，查找子串位置的操作通常称为<strong>串的模式匹配</strong>。而KMP算法就是一种字符串模式匹配算法</p>
-<h1 id="朴素模式匹配"><a href="#朴素模式匹配" class="headerlink" title="朴素模式匹配"></a>朴素模式匹配</h1><p>在介绍KMP算法之前，首先了解<strong>朴素模式匹配</strong>如何进行</p>
-<h2 id="思路解析"><a href="#思路解析" class="headerlink" title="思路解析"></a>思路解析</h2><p>朴素的想法是用两个指针i,j分别指向主串和子串，如果两个指针指向的元素相同则指针后移，不相同则需要回退指针(主串指针回退到上次匹配首位的下一个位置，子串指针回退到开头位置)，重复进行上述操作直到主串指针指向主串末尾</p>
-<p>举个例子：主串S&#x3D;“goodgoogle”，子串T&#x3D;“google”</p>
-<ol>
-<li>从主串S的第一位开始匹配，S和T的前三位都能匹配成功，第四位匹配失败，此时将主串的指针i退回到第二位，子串的指针j退回到起始位置(s[1])</li>
-</ol>
-<p><img src="https://www.helloimg.com/i/2024/12/22/67680469ccb43.png" alt="kmp_1.png"></p>
-<ol start="2">
-<li>主串S从第二位开始于子串T匹配，第一步就匹配失败，将主串指针指向第三位S[2]，子串指针指向开头，继续匹配</li>
-</ol>
-<p><img src="https://www.helloimg.com/i/2024/12/22/6768046a378c6.png" alt="kmp_2.png"></p>
-<ol start="3">
-<li>同步骤2，第一步就匹配失败，将主串指针移动到第四位S[3]，子串指针指向开头，继续匹配</li>
-</ol>
-<p><img src="https://www.helloimg.com/i/2024/12/22/6768046a39ceb.png" alt="kmp_3.png"></p>
-<ol start="4">
-<li>还是第一步就匹配失败，将主串指针移动到第五位S[4]，子串指针指向开头，继续匹配</li>
-</ol>
-<p><img src="https://www.helloimg.com/i/2024/12/22/67680468013a7.png" alt="kmp_4.png"></p>
-<ol start="5">
-<li>匹配成功！</li>
-</ol>
-<p><img src="https://www.helloimg.com/i/2024/12/22/676804680abfa.png" alt="kmp_5.png"></p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 朴素模式匹配算法函数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">naivePatternMatching</span><span class="params">(<span class="type">const</span> std::string&amp; text, <span class="type">const</span> std::string&amp; pattern)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> textLength = text.<span class="built_in">length</span>();</span><br><span class="line">    <span class="type">int</span> patternLength = pattern.<span class="built_in">length</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 遍历文本的每一个可能的位置</span></span><br><span class="line">    <span class="comment">//之所以要减去子串的长度是因为如果主串剩下的长度小于子串总长度说明子串在接下来就不可能出现</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= textLength - patternLength; ++i) &#123;</span><br><span class="line">        <span class="type">int</span> j;</span><br><span class="line">        <span class="comment">// 尝试在当前位置匹配整个模式</span></span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; patternLength; ++j) &#123;</span><br><span class="line">            <span class="comment">// 如果字符不匹配，则跳出内层循环，尝试下一个位置</span></span><br><span class="line">            <span class="keyword">if</span> (text[i + j] != pattern[j]) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果内层循环成功完成，说明找到了一个匹配的位置</span></span><br><span class="line">        <span class="keyword">if</span> (j == patternLength) &#123;</span><br><span class="line">            <span class="keyword">return</span> i; <span class="comment">// 返回匹配的位置（从0开始计数）</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果没有找到匹配的位置，则返回-1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="算法性能"><a href="#算法性能" class="headerlink" title="算法性能"></a>算法性能</h2><p>既然是暴力做法，算法的开支相对较大。朴素模式匹配算法的时间复杂度为 O((n-m+1)*m)，其中 n 是文本的长度，m 是模式的长度。在最坏的情况下（即每次匹配都失败），算法需要执行 n-m+1 次尝试，每次尝试都要比较 m 个字符</p>
-<h1 id="优化算法KMP"><a href="#优化算法KMP" class="headerlink" title="优化算法KMP"></a>优化算法KMP</h1><p>为了避免朴素算法的低效，几位计算机科学家前辈D.E.Knuth、J.H.MorTis和V.R.Pratt发表了一个模式匹配算法，可以一定程度上避免重复遍历的问题，该算法就是大名鼎鼎的<strong>KMP算法</strong>。</p>
-<h2 id="怎么优化？"><a href="#怎么优化？" class="headerlink" title="怎么优化？"></a>怎么优化？</h2><p>KMP算法是朴素模式匹配的优化算法，既然这样就要知道优化在哪里。</p>
-<p>之前的朴素算法过程如下：</p>
-<p><img src="https://www.helloimg.com/i/2024/12/22/6768046842d9e.png" alt="kmp_6.png"></p>
-<p>从上可知，在2、3、4步骤中，主串指针i指向的字符和子串的首字符都不匹配。也就是说这几步根本不需要执行，有没有一种办法可以让子串直接移到合适的地方呢?</p>
-<p>再举一个例子：主串S&#x3D;“abcababca”，子串T&#x3D;“abcabx”。按照朴素算法如下：</p>
-<p><img src="https://www.helloimg.com/i/2024/12/22/6768046852290.png" alt="kmp_7.png"></p>
-<p>由之前一个例子的分析可知由于T串的首字母”a”与之后的字母”b”、”c”不等，故步骤2、3均是可以省略的。</p>
-<p>又因为T的首位”a”与T第四位的”a”相等，第二位的”b”与第五位的”b”相等。而在步骤1中，第四位的”a”与第五位的”b”已经与主串s中的相应位置比较过了是相等的。因此可以断定, T的首字符“a”、第二位的字符“b”与S的第四位字符和第五位字符也不需要比较了，肯定也是相等的。所以步骤4、5这两个比较得出字符相等的步骤也可以省略</p>
-<p>在这个例子中我们发现，<strong>在得知了子串中有相等的前后缀之后，匹配失败时子串指针不需要回退到开头处，而是回退到相等前缀的后一个位置</strong></p>
-<blockquote>
-<p>字符串的前缀就是不包含最后一个字符的所有子串，后缀就是不包含第一个字符的所有子串</p>
-</blockquote>
-<h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><p>KMP引入一个额外的数组来记录如果匹配失败指针j该<strong>回溯</strong>到哪里，即next数组,记录的是字符串中的每个子串的最大相等前后缀的长度</p>
-<p>举个例子：设字符串T&#x3D;“abababab”，从下标0开始存储</p>
-<ol>
-<li>当j&#x3D;0，没有前缀和后缀可以比较，所以next[0]&#x3D;0</li>
-<li>当j&#x3D;1，前缀“a”，后缀“b”，没有相等的前后缀，所以next[1]&#x3D;0</li>
-<li>当j&#x3D;2，前缀“a”、“ab”，后缀“a”、“ba”，最长相等前后缀长度为1，所以next[2]&#x3D;1</li>
-<li>当j&#x3D;3，前缀“a”、“ab”、“aba”，后缀“b”、“ab”、“bab”，最长相等前后缀长度为2，所以next[3]&#x3D;2</li>
-<li>以此类推：next[4]&#x3D;3,next[5]&#x3D;4,next[6]&#x3D;5,next[7]&#x3D;6</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">next</th>
-<th align="center">0</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-<th align="center">4</th>
-<th align="center">5</th>
-<th align="center">6</th>
-<th align="center">7</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="center">5</td>
-<td align="center">6</td>
-</tr>
-</tbody></table>
-<p>设字符串S&#x3D;“abababcabababab”</p>
-<p>很明显：S[i] !&#x3D; T[j + 1]</p>
-<p>​                    <strong>i</strong></p>
-<p><strong>a b a b a b c a b a b a b a b</strong></p>
-<p><strong>a b a b a b a b</strong></p>
-<p>​                     <strong>j</strong></p>
-<p>当i&#x3D;6，j&#x3D;6时发生了不匹配，根据next数组next[5],将j回溯到T[4]的位置。</p>
-<p>​                    <strong>i</strong></p>
-<p><strong>a b a b a b c a b a b a b a b</strong></p>
-<p>​       <strong>a b a b a b a b</strong></p>
-<p>​                 <strong>j</strong></p>
-<p>这样就可以不动指针i而只用回溯指针j</p>
-<h2 id="代码实现-都从0开始存储"><a href="#代码实现-都从0开始存储" class="headerlink" title="代码实现(都从0开始存储)"></a>代码实现(都从0开始存储)</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">KMP</span><span class="params">(<span class="type">const</span> string&amp; s, <span class="type">const</span> string&amp; t)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> slength = s.<span class="built_in">size</span>(), tlength = t.<span class="built_in">size</span>();</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">next</span><span class="params">(tlength, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="comment">//处理next数组</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; tlength; i++) &#123;</span><br><span class="line">		<span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; t[i] != t[j]) j = next[j - <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span> (t[i] == t[j]) j++;</span><br><span class="line">		next[i] = j;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//匹配</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; slength; i++) &#123;</span><br><span class="line">		<span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; s[i] != t[j]) j = next[j - <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span> (s[i] == t[j])j++;</span><br><span class="line">		<span class="keyword">if</span> (j == tlength)</span><br><span class="line">			<span class="keyword">return</span> i - j + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="算法性能-1"><a href="#算法性能-1" class="headerlink" title="算法性能"></a>算法性能</h2><h1 id="实战例题"><a href="#实战例题" class="headerlink" title="实战例题"></a>实战例题</h1><p><img src="https://www.helloimg.com/i/2024/12/22/67680469be216.png" alt="kmp_8.png"></p>
-<p>相关链接:<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/">28. 找出字符串中第一个匹配项的下标 - 力扣（LeetCode）</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">strStr</span><span class="params">(string haystack, string needle)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> hlength = haystack.<span class="built_in">size</span>(), nlength = needle.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">next</span><span class="params">(nlength, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="comment">//处理next数组</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; nlength; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; needle[i] != needle[j])</span><br><span class="line">                j = next[j - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (needle[i] == needle[j])</span><br><span class="line">                j++;</span><br><span class="line">            next[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//匹配</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; hlength; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; haystack[i] != needle[j])</span><br><span class="line">                j = next[j - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (haystack[i] == needle[j])</span><br><span class="line">                j++;</span><br><span class="line">            <span class="keyword">if</span> (j == nlength)</span><br><span class="line">                <span class="keyword">return</span> i - j + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
+    <div class="catalog-list-item" id="/categories/数据结构/">
+      <a href="/categories/数据结构/">
+        数据结构
+      </a>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/19/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" data-id="cm8sja979000u8ktb2tr09mwt" data-title="KMP算法详解" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-快速排序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/19/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="article-date">
-  <time class="dt-published" datetime="2024-12-19T12:21:44.000Z" itemprop="datePublished">2024-12-19</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/12/19/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">快速排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>快速排序（Quick Sort）是从冒泡排序算法演变而来的，实际上是在<strong>冒泡排序</strong>基础上的<strong>递归分治法</strong>。快速排序在每一轮挑选一个基准元素，并让其他比它大的元素移动到数列一边，比它小的元素移动到数列的另一边，从而把数列拆解成了两个部分。</p>
-<h1 id="动画展示"><a href="#动画展示" class="headerlink" title="动画展示"></a>动画展示</h1><p>我们借用五分钟学算法的gif动图来展示快速排序的过程<br><img src="https://www.helloimg.com/i/2024/12/22/67680468a984b.gif" alt="quick_sort.gif"></p>
-<h1 id="思路解析"><a href="#思路解析" class="headerlink" title="思路解析"></a>思路解析</h1><ol>
-<li><p>初始序列3 5 8 1 2 9 4 7 6</p>
-</li>
-<li><p>这里第一步选择最后一个元素6为基准值</p>
-</li>
-<li><p>初始左指针位置为第一个元素3，右指针位置为除基准外的最后一个值7</p>
-</li>
-<li><p>左指针先走，左指针的职责就是往右走直到遇到大于基准值的元素</p>
-</li>
-<li><p>右指针的职责就是往左走直到遇到小于基准值的元素</p>
-</li>
-<li><p>当左右指针都停止并且还没相遇的时候就交换左指针所指元素和右指针所指元素</p>
-</li>
-<li><p>如果左右指针相遇，说明相遇的位置就是基准值的位置，左边全是比基准值小的元素，右边全是比基准值大的元素，这里就体现了分支递归的思想。</p>
-</li>
-<li><p>左右部分各重复上述过程</p>
-</li>
-</ol>
-<h1 id="算法性能"><a href="#算法性能" class="headerlink" title="算法性能"></a>算法性能</h1><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ol>
-<li>最坏情况（Worst Case）<ul>
-<li>当选择的枢轴（pivot）是数组中的最小或最大元素时，会导致数组极不平衡，一个子数组为空，另一个子数组包含所有剩余的元素。这种情况下，快速排序会退化为类似冒泡排序的性能。</li>
-<li>时间复杂度：O(n^2)，其中n是数组的大小。</li>
-</ul>
-</li>
-<li>最好情况（Best Case）<ul>
-<li>当选择的枢轴将数组完全均分为两个大小相等的子数组时，快速排序的性能最优。</li>
-<li>时间复杂度：O(n log n)，其中n是数组的大小。</li>
-</ul>
-</li>
-<li>平均情况（Average Case）<ul>
-<li>在随机选择枢轴或采用适当的枢轴选择策略（如三数取中法）时，快速排序的性能通常接近其最优情况。</li>
-<li>时间复杂度：O(n log n)，其中n是数组的大小。</li>
-</ul>
-</li>
-</ol>
-<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ol>
-<li>原地排序（In-place Sorting）<ul>
-<li>快速排序是一种原地排序算法，意味着它只需要一个常数级别的额外存储空间（用于递归调用栈和一些临时变量）。</li>
-<li>空间复杂度：O(log n)（由递归调用栈产生），其中n是数组的大小。在最坏情况下（例如，当数组已经接近有序，并且枢轴选择导致极不平衡的划分时），递归深度可能会达到n，但这种情况在平均和最好情况下很少发生。</li>
-</ul>
-</li>
-<li>非原地实现<ul>
-<li>如果实现中使用了额外的数组来存储子数组，则空间复杂度会增加。</li>
-<li>例如，如果每次划分后都将子数组复制到新的数组中，那么空间复杂度可能会增加到O(n)</li>
-</ul>
-</li>
-</ol>
-<h2 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h2><p><strong>不稳定</strong></p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>个人习惯基准值喜欢取中间值</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//参数：数组，左边界，右边界(左闭右闭区间)</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; v, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//结束条件</span></span><br><span class="line">	<span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">	<span class="comment">//中间值为基准</span></span><br><span class="line">	<span class="type">int</span> x = v[(l + r) &gt;&gt; <span class="number">1</span>];</span><br><span class="line">	<span class="comment">//初始化左右指针的位置</span></span><br><span class="line">	<span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//左右指针未相遇就一直执行</span></span><br><span class="line">	<span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">		<span class="keyword">do</span> i++; <span class="keyword">while</span> (v[i] &lt; x);</span><br><span class="line">		<span class="keyword">do</span> j--; <span class="keyword">while</span> (v[j] &gt; x);</span><br><span class="line">		<span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(v[i], v[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//递归调用左区间</span></span><br><span class="line">	<span class="built_in">quick_sort</span>(v, l, j);</span><br><span class="line">	<span class="comment">//递归调用右区间</span></span><br><span class="line">	<span class="built_in">quick_sort</span>(v, j<span class="number">+1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; v = &#123; <span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span> &#125;;</span><br><span class="line">	<span class="built_in">quick_sort</span>(v, <span class="number">0</span>, v.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> value : v)</span><br><span class="line">		cout &lt;&lt; value &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
+    <div class="catalog-list-item" id="/categories/Unreal-Engine/">
+      <a href="/categories/Unreal-Engine/">
+        Unreal Engine
+      </a>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/19/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" data-id="cm8sja980004o8ktb7mekhz6a" data-title="快速排序" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
+    <div class="catalog-list-item" id="/categories/Unity3D/">
+      <a href="/categories/Unity3D/">
+        Unity3D
+      </a>
+    </div>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unreal-Engine/">Unreal Engine</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    <div class="catalog-list-item" id="/categories/git/">
+      <a href="/categories/git/">
+        git
+      </a>
     </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    <div class="catalog-list-item" id="/categories/设计模式/">
+      <a href="/categories/设计模式/">
+        设计模式
+      </a>
     </div>
-  </div>
+    </div><div class="category-bar-next" id="category-bar-next" onclick="anzhiyu.scrollCategoryBarToRight()"><i class="anzhiyufont anzhiyu-icon-angle-double-right"></i></div><a class="catalog-more" href="/categories/">更多</a></div></div></div><div class="recent-post-item lastestpost-item" onclick="pjax.loadUrl('/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/')"><div class="post_cover left"><a href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="设计模式-抽象工厂模式" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.helloimg.com/i/2024/12/23/67693032dcb3f.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式-抽象工厂模式" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">设计模式</div><a class="unvisited-post" href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="设计模式-抽象工厂模式">未读</a></div><a class="article-title" href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="设计模式-抽象工厂模式">设计模式-抽象工厂模式</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-23T12:00:55.000Z" title="发表于 2024-12-23 20:00:55" time="2024-12-23 20:00:55">2024-12-23</time><time class="time_hidden" datetime="2025-02-06T11:24:14.537Z" title="更新于 2025-02-06 19:24:14" time="2025-02-06 19:24:14">2025-02-06</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>设计模式</span></a></span></div><div class="content">抽象工厂模式抽象工厂模式是工厂方法模式的泛化版，工厂方法模式是一种特殊的抽象工厂模式。在抽象工厂模式中，每一个具体工厂可以生产多个具体产品。
+类图示例
+举个例子数据库工厂，由用户表和部门表，可以用SQLServer和Access数据库
+代码实现123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148//用户表class User &#123;    private String n ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/')"><div class="post_cover left"><a href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" title="设计模式-工厂方法模式" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.helloimg.com/i/2024/12/23/67693032dcb3f.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式-工厂方法模式" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">设计模式</div><a class="unvisited-post" href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" title="设计模式-工厂方法模式">未读</a></div><a class="article-title" href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" title="设计模式-工厂方法模式">设计模式-工厂方法模式</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-23T11:58:55.000Z" title="发表于 2024-12-23 19:58:55" time="2024-12-23 19:58:55">2024-12-23</time><time class="time_hidden" datetime="2025-02-06T11:24:14.861Z" title="更新于 2025-02-06 19:24:14" time="2025-02-06 19:24:14">2025-02-06</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>设计模式</span></a></span></div><div class="content">简单工厂模式的不足在简单工厂模式中只提供了一个工厂类，该工厂类处于对产品类进行实例化的中心位置，它知道每一个产品对象的创建细节，并决定何时实例化哪一个产品类。但是最大的缺点就是每当有新产品要加入到系统中，必须修改工厂类。也就是违背了开闭原则，而工厂方法模式可以很好的解决这一问题
+工厂方法模式在简单工厂模式基础上修改，不在设计一个工厂类来统一负责所有产品的创建。而是由具体的工厂来创建具体的产品，也就是说需要定义抽象产品类和抽象工厂类
+类图示例
+举个例子假设需要生产电视机，有不同的品牌的电视机
+代码实现123456789101112131415161718192021222324252627282930313233343536373839404142434445464748//抽象产品TVinterface TV&#123;    public void display();&#125;//具体产品HaierTV类class HaierTV implements TV&#123;    public void display()&#123;        System.out.printl ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/')"><div class="post_cover left"><a href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="设计模式-简单工厂模式" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.helloimg.com/i/2024/12/23/67693032dcb3f.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式-简单工厂模式" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">设计模式</div><a class="unvisited-post" href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="设计模式-简单工厂模式">未读</a></div><a class="article-title" href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="设计模式-简单工厂模式">设计模式-简单工厂模式</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-23T10:02:09.000Z" title="发表于 2024-12-23 18:02:09" time="2024-12-23 18:02:09">2024-12-23</time><time class="time_hidden" datetime="2025-02-06T11:24:15.489Z" title="更新于 2025-02-06 19:24:15" time="2025-02-06 19:24:15">2025-02-06</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>设计模式</span></a></span></div><div class="content">简单工厂模式动机与定义在实际的软件开发过程中，有时需要创建一些来自于相同父类的类的实例，为此可以专门定义一个类来负责创建这些类的实例，可以通过传入不同的参数来获得不同的对象，这个就是最简单的设计模式之一简单工厂模式
+举个例子现在要写一个计算器程序，实现加减乘除四则运算。
+先来设计一下类图由于四则运算都是运算符，都可以继承自同一个父类，所以用运算类来作为他们的父类，再用一个简单工厂类来根据运算类的种类来产生不同的运算符
+代码实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768//定义抽象运算类abstract class Operation &#123;    protected double NumberA;    protected double NumberB;    public void setNumberA(double NumberA) &#123;        thi ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E4%BB%8B/')"><div class="post_cover left"><a href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E4%BB%8B/" title="设计模式-简介" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.helloimg.com/i/2024/12/23/67693032dcb3f.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式-简介" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">设计模式</div><a class="unvisited-post" href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E4%BB%8B/" title="设计模式-简介">未读</a></div><a class="article-title" href="/2024/12/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E4%BB%8B/" title="设计模式-简介">设计模式-简介</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-23T09:37:22.000Z" title="发表于 2024-12-23 17:37:22" time="2024-12-23 17:37:22">2024-12-23</time><time class="time_hidden" datetime="2025-02-06T11:24:15.898Z" title="更新于 2025-02-06 19:24:15" time="2025-02-06 19:24:15">2025-02-06</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>设计模式</span></a></span></div><div class="content">设计模式简介设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。
+设计模式是一套被反复使用的、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的，设计模式使代码编制真正工程化，设计模式是软件工程的基石，如同大厦的一块块砖石一样。项目中合理地运用设计模式可以完美地解决很多问题，每种模式在现实中都有相应的原理来与之对应，每种模式都描述了一个在我们周围不断重复发生的问题，以及该问题的核心解决方案，这也是设计模式能被广泛应用的原因。
+面向对象的好处举个例子：曹操吟诗“喝酒唱歌，人生真爽”，命工匠刻版印刷，当时并无活字印刷技术，工匠做好“喝酒唱歌，人生真爽”模板交给曹操看，曹操感觉不妥，于是改成“对酒当歌，人生真爽”，工匠只得重新来过，后面又交给曹操看，曹操又改成“对酒当歌，人生几何”，工匠叫苦不迭 ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/')"><div class="post_cover left"><a href="/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" title="归并排序" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.helloimg.com/i/2024/12/22/676804c7819c1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="归并排序" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">算法</div><a class="unvisited-post" href="/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" title="归并排序">未读</a></div><a class="article-title" href="/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" title="归并排序">归并排序</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-22T03:01:13.000Z" title="发表于 2024-12-22 11:01:13" time="2024-12-22 11:01:13">2024-12-22</time><time class="time_hidden" datetime="2025-02-06T11:24:13.610Z" title="更新于 2025-02-06 19:24:13" time="2025-02-06 19:24:13">2025-02-06</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>算法</span></a></span></div><div class="content">概述归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。归并排序是将序列分成两部分，然后用两个指针指向两个序列的开始，比较两个指针所指的值，将较小值放入一个新数组，同时该指针后移。最后将新数组的值赋值给原数组，达到从小到大排列的目的
+动画展示
+思路解析
+初始序列3 44 38 5 47 15 36 26 27 2 46 4 19 50 48
+
+这里第一步将序列二分到不能再分，此时左边两个部分为3和44，排序结果作为一个整体为3 44
+
+然后再处理右边两个部分38和5，排序结果作为一个整体为5 38
+
+此时在将两个排序好两个整体在进行相同的步骤，每次取较小值，排序结果作为一个整体为3 5 38 44
+
+同理右半边结果为15 26 36 47
+
+再处理这两个部分，结果为3 5 15 26 36 38 44 47，此时原序列左半边排序完成
+
+以相同步骤处理原序列右半边，结果为2 4 19 27 46 48 50
+
+两个指针相比取最小值放入新数组，结果为2 3 4 5 15 19 26 27 3 ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2024/12/19/Shell%E8%84%9A%E6%9C%AC/')"><div class="post_cover left"><a href="/2024/12/19/Shell%E8%84%9A%E6%9C%AC/" title="Shell脚本" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.linuxprobe.com/wp-content/uploads/2019/10/1-23.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shell脚本" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">Shell脚本</div><a class="unvisited-post" href="/2024/12/19/Shell%E8%84%9A%E6%9C%AC/" title="Shell脚本">未读</a></div><a class="article-title" href="/2024/12/19/Shell%E8%84%9A%E6%9C%AC/" title="Shell脚本">Shell脚本</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-19T13:34:55.000Z" title="发表于 2024-12-19 21:34:55" time="2024-12-19 21:34:55">2024-12-19</time><time class="time_hidden" datetime="2025-02-06T11:24:07.314Z" title="更新于 2025-02-06 19:24:07" time="2025-02-06 19:24:07">2025-02-06</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Shell/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Shell</span></a></span></div><div class="content">3 shell语法3.1 概论终端可以看做逐条执行的shell脚本，Linux默认使用bash，脚本文件第一行必须为
+1#! /bin/bash
+
+可通过两种方式执行shell脚本
+
+解释器执行：bash xxx.sh
+作为可执行文件执行
+添加执行权限chmod +x xxx.sh
+执行./xxx.sh
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 18px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Springboot/" style="font-size: 18px;">Springboot</a> <a href="/tags/Unity3D/" style="font-size: 14px;">Unity3D</a> <a href="/tags/Unreal-Engine/" style="font-size: 12px;">Unreal Engine</a> <a href="/tags/Vue/" style="font-size: 12px;">Vue</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
-    </div>
-  </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
-    </div>
-  </div>
+3.2 注释单行注释：类似python，用#注释
+多行注释：
+123:&lt;&lt;EOF...EOF
+
+其中EOF可替换成任意字符串，例如abc
+3.3 变量定义变量
+定义不需要$，而且=两边不能有空格。字符串可用单引号、双引号或不用引号描述，例如下边三种变量声明都是正确的。
+123name1=&#x27;abc&#x27;name2=&quot;abc&quot;name3=abc
+
+引用变量
+需要用$，可用&#123;&#125;限定变量名边界，实现字符串与变量混合表示
+1echo $&#123;name1&#125;defg  # 输出abcdefg
+
+只读变量
+声明前加上readonly或declare -r
+12readonly name1declare -r na ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2024/12/19/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/')"><div class="post_cover left"><a href="/2024/12/19/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" title="KMP算法详解" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.helloimg.com/i/2024/12/22/676804c7819c1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="KMP算法详解" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">算法</div><a class="unvisited-post" href="/2024/12/19/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" title="KMP算法详解">未读</a></div><a class="article-title" href="/2024/12/19/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" title="KMP算法详解">KMP算法详解</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-19T13:32:15.000Z" title="发表于 2024-12-19 21:32:15" time="2024-12-19 21:32:15">2024-12-19</time><time class="time_hidden" datetime="2025-02-06T11:24:05.673Z" title="更新于 2025-02-06 19:24:05" time="2025-02-06 19:24:05">2025-02-06</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>算法</span></a></span></div><div class="content">概述对于字符串这一数据结构，寻找字符串中子串的位置是最重要的操作之一，查找子串位置的操作通常称为串的模式匹配。而KMP算法就是一种字符串模式匹配算法
+朴素模式匹配在介绍KMP算法之前，首先了解朴素模式匹配如何进行
+思路解析朴素的想法是用两个指针i,j分别指向主串和子串，如果两个指针指向的元素相同则指针后移，不相同则需要回退指针(主串指针回退到上次匹配首位的下一个位置，子串指针回退到开头位置)，重复进行上述操作直到主串指针指向主串末尾
+举个例子：主串S&#x3D;“goodgoogle”，子串T&#x3D;“google”
+
+从主串S的第一位开始匹配，S和T的前三位都能匹配成功，第四位匹配失败，此时将主串的指针i退回到第二位，子串的指针j退回到起始位置(s[1])
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
+
+主串S从第二位开始于子串T匹配，第一步就匹配失败，将主串指针指向第三位S[2]，子串指针指向开头，继续匹配
+
+
+
+同步骤2，第一步就匹配失败，将主串指针移动到第四位S[3]，子串指针指向开头，继续匹配
+
+
+
+还是第一步就匹配失败，将主串指针移动到第五位S[4]，子串指针指向开头，继续匹配
+
+
+
+匹配成功！
+
+
+代码实现1 ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2024/12/19/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/')"><div class="post_cover left"><a href="/2024/12/19/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" title="快速排序" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.helloimg.com/i/2024/12/22/676804c7819c1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="快速排序" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">算法</div><a class="unvisited-post" href="/2024/12/19/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" title="快速排序">未读</a></div><a class="article-title" href="/2024/12/19/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" title="快速排序">快速排序</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-19T12:21:44.000Z" title="发表于 2024-12-19 20:21:44" time="2024-12-19 20:21:44">2024-12-19</time><time class="time_hidden" datetime="2025-02-06T11:24:13.913Z" title="更新于 2025-02-06 19:24:13" time="2025-02-06 19:24:13">2025-02-06</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>算法</span></a></span></div><div class="content">概述快速排序（Quick Sort）是从冒泡排序算法演变而来的，实际上是在冒泡排序基础上的递归分治法。快速排序在每一轮挑选一个基准元素，并让其他比它大的元素移动到数列一边，比它小的元素移动到数列的另一边，从而把数列拆解成了两个部分。
+动画展示我们借用五分钟学算法的gif动图来展示快速排序的过程
+思路解析
+初始序列3 5 8 1 2 9 4 7 6
+
+这里第一步选择最后一个元素6为基准值
+
+初始左指针位置为第一个元素3，右指针位置为除基准外的最后一个值7
+
+左指针先走，左指针的职责就是往右走直到遇到大于基准值的元素
+
+右指针的职责就是往左走直到遇到小于基准值的元素
+
+当左右指针都停止并且还没相遇的时候就交换左指针所指元素和右指针所指元素
+
+如果左右指针相遇，说明相遇的位置就是基准值的位置，左边全是比基准值小的元素，右边全是比基准值大的元素，这里就体现了分支递归的思想。
+
+左右部分各重复上述过程
+
+
+算法性能时间复杂度
+最坏情况（Worst Case）
+当选择的枢轴（pivot）是数组中的最小或最大元素时，会导致数组极不平衡，一个子数组为空，另一个子数组包含所有剩余的元素。这种情况下，快速 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/#content-inner"><i class="anzhiyufont anzhiyu-icon-chevron-left fa-fw" style="font-weight: inherit; font-size: 1rem;"></i><div class="pagination_tips_prev">上页</div></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="page-number current">6</span><div class="toPageGroup"><input id="toPageText" oninput="value=value.replace(/[^0-9]/g,'')" maxlength="3" onkeyup="this.value=this.value.replace(/[^u4e00-u9fa5w]/g,'')" aria-label="toPage"><a id="toPageButton" onclick="anzhiyu.toPage()"><i class="anzhiyufont anzhiyu-icon-angles-right" style="font-weight: inherit; font-size: 1rem;"></i></a></div></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://www.helloimg.com/i/2025/03/09/67cd36e6e958c.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">千里之行始于足下</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">Lzh</h1><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/lzhiscoding" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget"><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Docker/" style="font-size: 1.05rem;">Docker<sup>4</sup></a><a href="/tags/JavaScript/" style="font-size: 1.05rem;">JavaScript<sup>7</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>4</sup></a><a href="/tags/Shell/" style="font-size: 1.05rem;">Shell<sup>1</sup></a><a href="/tags/Springboot/" style="font-size: 1.05rem;">Springboot<sup>8</sup></a><a href="/tags/Unity3D/" style="font-size: 1.05rem;">Unity3D<sup>3</sup></a><a href="/tags/Unreal-Engine/" style="font-size: 1.05rem;">Unreal Engine<sup>2</sup></a><a href="/tags/Vue/" style="font-size: 1.05rem;">Vue<sup>2</sup></a><a href="/tags/Web/" style="font-size: 1.05rem;">Web<sup>4</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>7</sup></a><a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 1.05rem;">设计模式<sup>15</sup></a></div></div><hr/><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">29</span><span>篇</span></div></a></li></ul></div><hr/><div class="card-webinfo"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-item-title"><i class="anzhiyufont anzhiyu-icon-file-lines"></i><div class="item-name">文章总数 :</div></div><div class="item-count">58</div></div><div class="webinfo-item"><div class="webinfo-item-title"><i class="anzhiyufont anzhiyu-icon-stopwatch"></i><div class="item-name">建站天数 :</div></div><div class="item-count" id="runtimeshow" data-publishDate="2021-03-31T16:00:00.000Z"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></div></div><div class="webinfo-item"><div class="webinfo-item-title"><i class="anzhiyufont anzhiyu-icon-font"></i><div class="item-name">全站字数 :</div></div><div class="item-count">138.8k</div></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="Lzh" target="_blank">Lzh</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">11</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Docker/" style="font-size: 0.88rem;">Docker<sup>4</sup></a><a href="/tags/JavaScript/" style="font-size: 0.88rem;">JavaScript<sup>7</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>4</sup></a><a href="/tags/Shell/" style="font-size: 0.88rem;">Shell<sup>1</sup></a><a href="/tags/Springboot/" style="font-size: 0.88rem;">Springboot<sup>8</sup></a><a href="/tags/Unity3D/" style="font-size: 0.88rem;">Unity3D<sup>3</sup></a><a href="/tags/Unreal-Engine/" style="font-size: 0.88rem;">Unreal Engine<sup>2</sup></a><a href="/tags/Vue/" style="font-size: 0.88rem;">Vue<sup>2</sup></a><a href="/tags/Web/" style="font-size: 0.88rem;">Web<sup>4</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>7</sup></a><a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 0.88rem;">设计模式<sup>15</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
         
-          <li>
-            <a href="/2025/03/28/WebSocket/">WebSocket</a>
-          </li>
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
         
-          <li>
-            <a href="/2025/03/15/Docker%E5%AE%89%E8%A3%85/">Docker安装</a>
-          </li>
-        
-          <li>
-            <a href="/2025/03/15/Docker%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">Docker项目部署</a>
-          </li>
-        
-          <li>
-            <a href="/2025/03/15/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a>
-          </li>
-        
-          <li>
-            <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Docker快速入门</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
 
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Lzh 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script>if (typeof gsap === "object") {
+  getScript("/js/anzhiyu/people.js", {defer:true})
+} else {
+  getScript("https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/gsap/gsap.min.js").then(()=>{
+    getScript("/js/anzhiyu/people.js", {defer:true})
+  });
+}</script><input type="hidden" name="page-type" id="page-type" value="anzhiyu"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
   
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 Lzh<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+  typeof typed === 'object' && typed.destroy()
 
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
 
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
 
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
 
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+  typeof panguInit === 'function' && panguInit()
 
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
 
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
 
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
 
-<script src="/js/script.js"></script>
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
 
-
-
-
-
-  </div>
-</body>
-</html>
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
