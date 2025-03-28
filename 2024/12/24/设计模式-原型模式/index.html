@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>设计模式-原型模式 | Lzh正在写代码</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="深克隆和浅克隆在了解原型模式前先了解一下深克隆和浅克隆 浅克隆浅拷贝是一种对象复制方式，其中只复制对象的成员变量值，而不复制它们所指向的资源。这意味着多个对象可能会共享相同的资源，包括动态分配的内存、文件句柄等。 深克隆深拷贝是一种对象复制方式，其中对象的成员变量值被复制，同时资源也被复制，每个对象都有自己独立的资源副本。这确保了对象之间的数据独立性，不会相互干扰。深拷贝通常需要手动实现拷贝构造函">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式-原型模式">
+<meta property="og:url" content="http://example.com/2024/12/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Lzh正在写代码">
+<meta property="og:description" content="深克隆和浅克隆在了解原型模式前先了解一下深克隆和浅克隆 浅克隆浅拷贝是一种对象复制方式，其中只复制对象的成员变量值，而不复制它们所指向的资源。这意味着多个对象可能会共享相同的资源，包括动态分配的内存、文件句柄等。 深克隆深拷贝是一种对象复制方式，其中对象的成员变量值被复制，同时资源也被复制，每个对象都有自己独立的资源副本。这确保了对象之间的数据独立性，不会相互干扰。深拷贝通常需要手动实现拷贝构造函">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.helloimg.com/i/2024/12/24/676a82e0e5331.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2024/12/24/676a83a58d7aa.png">
+<meta property="article:published_time" content="2024-12-24T04:53:31.000Z">
+<meta property="article:modified_time" content="2025-02-06T11:24:17.836Z">
+<meta property="article:author" content="Lzh">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.helloimg.com/i/2024/12/24/676a82e0e5331.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lzh正在写代码" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lzh正在写代码</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-设计模式-原型模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-12-24T04:53:31.000Z" itemprop="datePublished">2024-12-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      设计模式-原型模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="深克隆和浅克隆"><a href="#深克隆和浅克隆" class="headerlink" title="深克隆和浅克隆"></a>深克隆和浅克隆</h1><p>在了解原型模式前先了解一下深克隆和浅克隆</p>
+<h2 id="浅克隆"><a href="#浅克隆" class="headerlink" title="浅克隆"></a>浅克隆</h2><p>浅拷贝是一种对象复制方式，其中只复制对象的成员变量值，而不复制它们所指向的资源。这意味着多<br>个对象可能会共享相同的资源，包括动态分配的内存、文件句柄等。</p>
+<h2 id="深克隆"><a href="#深克隆" class="headerlink" title="深克隆"></a>深克隆</h2><p>深拷贝是一种对象复制方式，其中对象的成员变量值被复制，同时资源也被复制，每个对象都有自己独<br>立的资源副本。这确保了对象之间的数据独立性，不会相互干扰。深拷贝通常需要手动实现拷贝构造函<br>数和拷贝赋值运算符。</p>
+<h2 id="代码验证"><a href="#代码验证" class="headerlink" title="代码验证"></a>代码验证</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">char</span>* data;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 默认构造函数，动态分配内存并初始化</span></span><br><span class="line">    <span class="built_in">MyClass</span>() &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="type">char</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            data[i] = <span class="string">&#x27;A&#x27;</span> + i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拷贝构造函数</span></span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">const</span> MyClass&amp; other, <span class="type">bool</span> deepCopy) : <span class="built_in">data</span>(<span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="comment">//如果是深拷贝</span></span><br><span class="line">        <span class="keyword">if</span> (deepCopy) &#123;</span><br><span class="line">            data = <span class="keyword">new</span> <span class="type">char</span>[<span class="number">10</span>];</span><br><span class="line">            std::<span class="built_in">memcpy</span>(data, other.data, <span class="number">10</span>);</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;Deep copy constructor called. Each object will have its own memory.\n&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果是浅拷贝</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            data = other.data;</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;Shallow copy logic used within deep copy constructor (for demonstration purposes only).\n&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    // 析构函数，释放内存</span></span><br><span class="line"><span class="comment">    ~MyClass() &#123;</span></span><br><span class="line"><span class="comment">        delete[] data;</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印数据内容（用于验证数据是否正确）</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            std::cout &lt;&lt; data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        std::cout &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印指针的地址和数据所指向的内存地址</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">printAddresses</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Address of data member (pointer variable): &quot;</span> &lt;&lt; &amp;data &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Address pointed to by data: &quot;</span> &lt;&lt; <span class="built_in">static_cast</span>&lt;<span class="type">void</span>*&gt;(data) &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass obj1;</span><br><span class="line">    obj<span class="number">1.</span><span class="built_in">printAddresses</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 浅拷贝</span></span><br><span class="line">    <span class="function">MyClass <span class="title">obj2</span><span class="params">(obj1,<span class="literal">false</span>)</span></span>;</span><br><span class="line">    obj<span class="number">2.</span><span class="built_in">printAddresses</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 验证浅拷贝：两者应该打印相同的数据所指向的内存地址</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Comparing addresses pointed to by obj1.data and obj2.data (shallow copy):\n&quot;</span>;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;obj1.data points to: &quot;</span> &lt;&lt; <span class="built_in">static_cast</span>&lt;<span class="type">void</span>*&gt;(obj<span class="number">1.</span>data) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;obj2.data points to: &quot;</span> &lt;&lt; <span class="built_in">static_cast</span>&lt;<span class="type">void</span>*&gt;(obj<span class="number">2.</span>data) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 深拷贝</span></span><br><span class="line">    <span class="function">MyClass <span class="title">obj3</span><span class="params">(obj1, <span class="literal">true</span>)</span></span>;</span><br><span class="line">    obj<span class="number">3.</span><span class="built_in">printAddresses</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 验证深拷贝：两者应该打印不同的数据所指向的内存地址</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Comparing addresses pointed to by obj1.data and obj3.data (deep copy):\n&quot;</span>;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;obj1.data points to: &quot;</span> &lt;&lt; <span class="built_in">static_cast</span>&lt;<span class="type">void</span>*&gt;(obj<span class="number">1.</span>data) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;obj3.data points to: &quot;</span> &lt;&lt; <span class="built_in">static_cast</span>&lt;<span class="type">void</span>*&gt;(obj<span class="number">3.</span>data) &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://www.helloimg.com/i/2024/12/24/676a82e0e5331.png" alt="深拷贝浅拷贝.png"></p>
+<p>如果解除析构函数的注释则会报错，原因是因为浅拷贝obj2所指向的地址在obj1的析构函数里释放掉了</p>
+<h1 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h1><p>原型模式（Prototype Pattern）是用于创建重复的对象，同时又能保证性能。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式之一。</p>
+<p>这种模式是实现了一个原型接口，该接口用于创建当前对象的克隆。当直接创建对象的代价比较大时，则采用这种模式。例如，一个对象需要在一个高代价的数据库操作之后被创建。我们可以缓存该对象，在下一个请求时返回它的克隆，在需要的时候更新数据库，以此来减少数据库调用。</p>
+<h1 id="何时使用"><a href="#何时使用" class="headerlink" title="何时使用"></a>何时使用</h1><p>系统应独立于产品的创建、构成和表示。<br>需要在运行时指定实例化的类，例如通过动态加载。<br>避免创建与产品类层次平行的工厂类层次。<br>类的实例只能有几种不同状态组合，克隆原型比手工实例化更方便。</p>
+<h1 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h1><p>通过已有的一个原型对象，快速生成与原型对象相同的实例。</p>
+<h1 id="类图示例"><a href="#类图示例" class="headerlink" title="类图示例"></a>类图示例</h1><p><img src="https://www.helloimg.com/i/2024/12/24/676a83a58d7aa.png" alt="原型模式.png"></p>
+<p>在原型模式结构中定义了一个抽象原型类，所有的Java类都继承自java.lang.Object，而Object类提供一个clone()方法，可以将一个Java对象复制一份。因此在Java中可以,直接使用Object提供的clone()方法来实现对象的克隆，Java语言中的原型模式实现很简单</p>
+<h1 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h1><p>简历复制</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Resume</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String sex;</span><br><span class="line">    <span class="keyword">private</span> String age;</span><br><span class="line">    <span class="keyword">private</span> String timeArea;</span><br><span class="line">    <span class="keyword">private</span> String company;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Resume</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPersonalInfo</span><span class="params">(String sex, String age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.sex = sex;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPersonalExperience</span><span class="params">(String timeArea, String company)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.timeArea = timeArea;</span><br><span class="line">        <span class="built_in">this</span>.company = company;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Display</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Name: &quot;</span> + name);</span><br><span class="line">        System.out.println(<span class="string">&quot;Age: &quot;</span> + age);</span><br><span class="line">        System.out.println(<span class="string">&quot;sex: &quot;</span> + sex);</span><br><span class="line">        System.out.println(<span class="string">&quot;timeArea: &quot;</span> + timeArea);</span><br><span class="line">        System.out.println(<span class="string">&quot;company: &quot;</span> + company);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> Object <span class="title function_">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException &#123;</span><br><span class="line">        <span class="comment">// 调用Object类的clone()方法创建当前对象的浅拷贝</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Prototype</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CloneNotSupportedException &#123;</span><br><span class="line">        <span class="type">Resume</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Resume</span>(<span class="string">&quot;zhang3&quot;</span>);</span><br><span class="line">        a.setPersonalInfo(<span class="string">&quot;male&quot;</span>, <span class="string">&quot;20&quot;</span>);</span><br><span class="line">        a.setPersonalExperience(<span class="string">&quot;2004-2008&quot;</span>, <span class="string">&quot;XX公司&quot;</span>);</span><br><span class="line">        <span class="type">Resume</span> <span class="variable">b</span> <span class="operator">=</span> (Resume) a.clone();</span><br><span class="line">        b.setPersonalExperience(<span class="string">&quot;2004-2006&quot;</span>, <span class="string">&quot;YY&quot;</span>);</span><br><span class="line">        <span class="type">Resume</span> <span class="variable">c</span> <span class="operator">=</span> (Resume) a.clone();</span><br><span class="line">        c.setPersonalInfo(<span class="string">&quot;female&quot;</span>, <span class="string">&quot;28&quot;</span>);</span><br><span class="line">        a.Display();</span><br><span class="line">        b.Display();</span><br><span class="line">        c.Display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="原型模式包含如下角色"><a href="#原型模式包含如下角色" class="headerlink" title="原型模式包含如下角色"></a>原型模式包含如下角色</h1><ol>
+<li>原型接口（Prototype Interface）：定义一个用于克隆自身的接口，通常包括一个 clone() 方法。</li>
+<li>具体原型类（Concrete Prototype）：实现原型接口的具体类，负责实际的克隆操作。这个类需要实现 clone() 方法，通常使用浅拷贝或深拷贝来复制自身。</li>
+<li>客户端（Client）：使用原型实例来创建新的对象。客户端调用原型对象的 clone() 方法来创建新的对象，而不是直接使用构造函数。</li>
+</ol>
+<h1 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>性能提高</li>
+<li>避免构造函数的约束</li>
+</ul>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>配备克隆方法需要全面考虑类的功能，对已有类可能较难实现，特别是处理不支持串行化的间接对象或含有循环结构的引用时。</li>
+<li>必须实现 Cloneable 接口。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" data-id="cm8sja98200538ktb6w5ohaut" data-title="设计模式-原型模式" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/12/24/git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          git使用教程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/12/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">设计模式-建造者模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unreal-Engine/">Unreal Engine</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 18px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Springboot/" style="font-size: 18px;">Springboot</a> <a href="/tags/Unity3D/" style="font-size: 14px;">Unity3D</a> <a href="/tags/Unreal-Engine/" style="font-size: 12px;">Unreal Engine</a> <a href="/tags/Vue/" style="font-size: 12px;">Vue</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/03/28/WebSocket/">WebSocket</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%AE%89%E8%A3%85/">Docker安装</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">Docker项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Docker快速入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Lzh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

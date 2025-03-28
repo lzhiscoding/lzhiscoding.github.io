@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>设计模式-桥接模式 | Lzh正在写代码</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="桥接模式桥接（Bridge）是用于把抽象化与实现化解耦，使得二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。 这种模式涉及到一个作为桥接的接口，使得实体类的功能独立于接口实现类，这两种类型的类可被结构化改变而互不影响。 桥接模式的目的是将抽象与实现分离，使它们可以独立地变化，该模式通过将一个对象的抽象部分与它的实现部分分离，使它们可以独">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式-桥接模式">
+<meta property="og:url" content="http://example.com/2024/12/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Lzh正在写代码">
+<meta property="og:description" content="桥接模式桥接（Bridge）是用于把抽象化与实现化解耦，使得二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。 这种模式涉及到一个作为桥接的接口，使得实体类的功能独立于接口实现类，这两种类型的类可被结构化改变而互不影响。 桥接模式的目的是将抽象与实现分离，使它们可以独立地变化，该模式通过将一个对象的抽象部分与它的实现部分分离，使它们可以独">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.helloimg.com/i/2024/12/26/676d4088733b8.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2024/12/26/676d40857ff91.png">
+<meta property="article:published_time" content="2024-12-26T11:26:49.000Z">
+<meta property="article:modified_time" content="2025-02-06T11:24:17.893Z">
+<meta property="article:author" content="Lzh">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.helloimg.com/i/2024/12/26/676d4088733b8.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lzh正在写代码" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lzh正在写代码</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-设计模式-桥接模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-12-26T11:26:49.000Z" itemprop="datePublished">2024-12-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      设计模式-桥接模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h1><p>桥接（Bridge）是用于把抽象化与实现化解耦，使得二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。</p>
+<p>这种模式涉及到一个作为桥接的接口，使得实体类的功能独立于接口实现类，这两种类型的类可被结构化改变而互不影响。</p>
+<p>桥接模式的目的是将抽象与实现分离，使它们可以独立地变化，该模式通过将一个对象的抽象部分与它的实现部分分离，使它们可以独立地改变。它通过组合的方式，而不是继承的方式，将抽象和实现的部分连接起来。</p>
+<h1 id="类图示例"><a href="#类图示例" class="headerlink" title="类图示例"></a>类图示例</h1><p><img src="https://www.helloimg.com/i/2024/12/26/676d4088733b8.png" alt="桥接模式.png"></p>
+<h1 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h1><p>手机品牌和手机软件之间的兼容</p>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="https://www.helloimg.com/i/2024/12/26/676d40857ff91.png" alt="手机软件桥接模式.png"></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//手机软件抽象类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">HandsetSoft</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//手机游戏</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HandsetGame</span> <span class="keyword">extends</span> <span class="title class_">HandsetSoft</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;运行手机游戏&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//手机通讯录</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HandsetAddressList</span> <span class="keyword">extends</span> <span class="title class_">HandsetSoft</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;运行手机通讯录&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//手机品牌抽象类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">HandsetBrand</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> HandsetSoft soft;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置手机软件</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setHandsetSoft</span><span class="params">(HandsetSoft soft)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.soft = soft;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//手机品牌N</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HandsetBrandN</span> <span class="keyword">extends</span> <span class="title class_">HandsetBrand</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span> &#123;</span><br><span class="line">        soft.Run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//手机品牌M</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HandsetBrandM</span> <span class="keyword">extends</span> <span class="title class_">HandsetBrand</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span> &#123;</span><br><span class="line">        soft.Run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Bridge</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        HandsetBrand ab;</span><br><span class="line">        ab = <span class="keyword">new</span> <span class="title class_">HandsetBrandN</span>();</span><br><span class="line">        ab.setHandsetSoft(<span class="keyword">new</span> <span class="title class_">HandsetGame</span>());</span><br><span class="line">        ab.Run();</span><br><span class="line">        ab.setHandsetSoft(<span class="keyword">new</span> <span class="title class_">HandsetAddressList</span>());</span><br><span class="line">        ab.Run();</span><br><span class="line">        ab = <span class="keyword">new</span> <span class="title class_">HandsetBrandM</span>();</span><br><span class="line">        ab.setHandsetSoft(<span class="keyword">new</span> <span class="title class_">HandsetGame</span>());</span><br><span class="line">        ab.Run();</span><br><span class="line">        ab.setHandsetSoft(<span class="keyword">new</span> <span class="title class_">HandsetAddressList</span>());</span><br><span class="line">        ab.Run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="桥接模式包含以下几个主要角色："><a href="#桥接模式包含以下几个主要角色：" class="headerlink" title="桥接模式包含以下几个主要角色："></a>桥接模式包含以下几个主要角色：</h1><ol>
+<li>抽象（Abstraction）：定义抽象接口，通常包含对实现接口的引用。</li>
+<li>扩展抽象（Refined Abstraction）：对抽象的扩展，可以是抽象类的子类或具体实现类。</li>
+<li>实现（Implementor）：定义实现接口，提供基本操作的接口。</li>
+<li>具体实现（Concrete Implementor）：实现实现接口的具体类。</li>
+</ol>
+<h1 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h1><ul>
+<li>优点<ol>
+<li>抽象与实现分离：提高了系统的灵活性和可维护性。</li>
+<li>扩展能力强：可以独立地扩展抽象和实现。</li>
+<li>实现细节透明：用户不需要了解实现细节。</li>
+</ol>
+</li>
+<li>缺点<ol>
+<li>理解与设计难度：桥接模式增加了系统的理解与设计难度。</li>
+<li>聚合关联：要求开发者在抽象层进行设计与编程。</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" data-id="cm8sja984005c8ktb22tj7w0j" data-title="设计模式-桥接模式" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/12/26/%E5%A0%86%E6%8E%92%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          堆排序
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/12/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">设计模式-适配器模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unreal-Engine/">Unreal Engine</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 18px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Springboot/" style="font-size: 18px;">Springboot</a> <a href="/tags/Unity3D/" style="font-size: 14px;">Unity3D</a> <a href="/tags/Unreal-Engine/" style="font-size: 12px;">Unreal Engine</a> <a href="/tags/Vue/" style="font-size: 12px;">Vue</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/03/28/WebSocket/">WebSocket</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%AE%89%E8%A3%85/">Docker安装</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">Docker项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Docker快速入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Lzh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

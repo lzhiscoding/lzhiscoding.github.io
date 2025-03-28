@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Vue实现个人空间-下 | Lzh正在写代码</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="10. 用户列表页面实现从云端将用户列表读进来  安装 npm i jquery 使用ajax 页面中import $ from &#39;jquery&#39;;  从云端动态获取用户（使用AJAX） 1234567891011121314151617181920212223242526272829303132333435&lt;template&gt;    &lt;contentElem&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue实现个人空间-下">
+<meta property="og:url" content="http://example.com/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8B/index.html">
+<meta property="og:site_name" content="Lzh正在写代码">
+<meta property="og:description" content="10. 用户列表页面实现从云端将用户列表读进来  安装 npm i jquery 使用ajax 页面中import $ from &#39;jquery&#39;;  从云端动态获取用户（使用AJAX） 1234567891011121314151617181920212223242526272829303132333435&lt;template&gt;    &lt;contentElem&amp;g">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f53af2ffc.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f53b808d7.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f53c0c416.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f53d106c8.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f53ab24d6.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f53c04f8c.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f53dd1ad4.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f54c48004.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f540d0405.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f53f29cbb.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f5403b45c.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f54236759.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f5440db49.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f5440db49.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f54236759.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f5420cc12.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f543a0251.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f545d2d68.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f547ab940.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f548ecb70.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f5468f48c.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f54a3ee63.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f55100138.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f549a2567.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f54d203b8.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f54b9a955.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f54d26b84.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f54d47be4.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f54f59908.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f5500a7e5.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f5512a46b.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f55093ccc.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f55732aac.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f55670a10.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f5544e095.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f55550460.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f5553158b.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f557ea893.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f556c8acf.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f557c5bed.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f558ef810.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f55a290b1.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f55a413ac.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/26/6795f55d268b3.png">
+<meta property="article:published_time" content="2025-01-23T06:30:15.000Z">
+<meta property="article:modified_time" content="2025-02-06T11:24:11.837Z">
+<meta property="article:author" content="Lzh">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.helloimg.com/i/2025/01/26/6795f53af2ffc.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lzh正在写代码" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lzh正在写代码</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Vue实现个人空间-下" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8B/" class="article-date">
+  <time class="dt-published" datetime="2025-01-23T06:30:15.000Z" itemprop="datePublished">2025-01-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Vue实现个人空间-下
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="10-用户列表页面实现"><a href="#10-用户列表页面实现" class="headerlink" title="10. 用户列表页面实现"></a>10. 用户列表页面实现</h3><p>从云端将用户列表读进来</p>
+<ol>
+<li>安装 <code>npm i jquery</code> 使用ajax</li>
+<li>页面中<code>import $ from &#39;jquery&#39;;</code></li>
+</ol>
+<p>从云端动态获取用户（使用AJAX）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;contentElem&gt;用户列表&lt;/contentElem&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import contentElem from &quot;../components/contentElem.vue&quot;;</span><br><span class="line">import $ from &#x27;jquery&#x27;;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;UserList&#x27;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    contentElem,</span><br><span class="line">  &#125;,</span><br><span class="line">  setup()&#123;</span><br><span class="line">    let users= ref([]);</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:&quot;https://app165.acapp.acwing.com.cn/myspace/userlist/&quot;,</span><br><span class="line">        type:&quot;get&quot;,</span><br><span class="line">        success(resp)&#123;</span><br><span class="line">          console.log(resp);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      users</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用bootstrap的 Grid system进行布局：<br><img src="https://www.helloimg.com/i/2025/01/26/6795f53af2ffc.png" alt="vue17.png"><br>微调样式，<br><img src="https://www.helloimg.com/i/2025/01/26/6795f53b808d7.png" alt="vue18.png"><br>访问不存在的页面，则跳转到404：<br><img src="https://www.helloimg.com/i/2025/01/26/6795f53c0c416.png" alt="vue19.png"></p>
+<p>给链接加上id<br><img src="https://www.helloimg.com/i/2025/01/26/6795f53d106c8.png" alt="vue20.png"><br>路由中需要添加参数，用<code>:</code><br><img src="https://www.helloimg.com/i/2025/01/26/6795f53ab24d6.png" alt="vue21.png"><br>对应的UserProfileView中，使用提供的useRoute接口，即可获取这个参数<br><img src="https://www.helloimg.com/i/2025/01/26/6795f53c04f8c.png" alt="vue22.png"><br><img src="https://www.helloimg.com/i/2025/01/26/6795f53dd1ad4.png" alt="vue23.png"></p>
+<h3 id="11-实现登录页面"><a href="#11-实现登录页面" class="headerlink" title="11. 实现登录页面"></a>11. 实现登录页面</h3><p>需要双向绑定两个变量username，password<br><img src="https://www.helloimg.com/i/2025/01/26/6795f54c48004.png" alt="vue24.png"><br><img src="https://www.helloimg.com/i/2025/01/26/6795f540d0405.png" alt="vue25.png"><br><img src="https://www.helloimg.com/i/2025/01/26/6795f53f29cbb.png" alt="vue26.png"><br><img src="https://www.helloimg.com/i/2025/01/26/6795f5403b45c.png" alt="vue27.png"><br><img src="https://www.helloimg.com/i/2025/01/26/6795f54236759.png" alt="vue28.png"><br><img src="https://www.helloimg.com/i/2025/01/26/6795f5440db49.png" alt="vue29.png"><br>ref中的值需要.value访问<br><img src="https://www.helloimg.com/i/2025/01/26/6795f5440db49.png" alt="vue29.png"><br>阻止默认行为<br><img src="https://www.helloimg.com/i/2025/01/26/6795f54236759.png" alt="vue28.png"></p>
+<h4 id="11-1-vuex"><a href="#11-1-vuex" class="headerlink" title="11.1 vuex"></a>11.1 vuex</h4><p>因为很多前端行为需要获得用户信息，所以要将登录的用户信息存到全局变量中——此时需要vuex<br>交互：<br><img src="https://www.helloimg.com/i/2025/01/26/6795f5420cc12.png" alt="vue30.png"><br>vuex创建的全局唯一对象：<br>&#x2F;store&#x2F;index.js<br><img src="https://www.helloimg.com/i/2025/01/26/6795f543a0251.png" alt="vue31.png"><br><img src="https://www.helloimg.com/i/2025/01/26/6795f545d2d68.png" alt="vue32.png"><br><img src="https://www.helloimg.com/i/2025/01/26/6795f547ab940.png" alt="vue33.png"><br>访问：</p>
+<p><img src="https://www.helloimg.com/i/2025/01/26/6795f548ecb70.png" alt="vue34.png"></p>
+<h5 id="11-1-1-传统登录方式"><a href="#11-1-1-传统登录方式" class="headerlink" title="11.1.1 传统登录方式"></a>11.1.1 传统登录方式</h5><p><img src="https://www.helloimg.com/i/2025/01/26/6795f5468f48c.png" alt="vue35.png"><br>存到cookie中，跨域时难处理。</p>
+<h5 id="11-1-2-JWT方式"><a href="#11-1-2-JWT方式" class="headerlink" title="11.1.2 JWT方式"></a>11.1.2 JWT方式</h5><p>json web token<br><img src="https://www.helloimg.com/i/2025/01/26/6795f54a3ee63.png" alt="vue36.png"></p>
+<h4 id="11-2-实现登录"><a href="#11-2-实现登录" class="headerlink" title="11.2 实现登录"></a>11.2 实现登录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vuex：存储全局状态，全局唯一。</span><br><span class="line">	state: 存储所有数据，可以用modules属性划分成若干模块</span><br><span class="line">	getters：根据state中的值计算新的值</span><br><span class="line">	mutations：所有对state的修改操作都需要定义在这里，不支持异步，可以通过$store.commit()触发</span><br><span class="line">	actions：定义对state的复杂修改操作，支持异步，可以通过$store.dispatch()触发。注意不能直接修改state，只能通过mutations修改state。</span><br><span class="line">	modules：定义state的子模块</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>dispatch调用store中的事件<br><img src="https://www.helloimg.com/i/2025/01/26/6795f55100138.png" alt="vue37.png"><br>附注：使用ajax需要<code>import $ from &#39;jquery&#39;;</code>\</p>
+<p><img src="https://www.helloimg.com/i/2025/01/26/6795f549a2567.png" alt="vue38.png"><br>从获得的access字符串中解码出用户信息，需要安装一个解码包<br><img src="https://www.helloimg.com/i/2025/01/26/6795f54d203b8.png" alt="vue39.png"><br>然后在user.js中引入<br><code>import jwt_decode from &#39;jwt-decode&#39;;</code></p>
+<p>使用：<br><code>const access_obj=jwt_decode(access);</code></p>
+<p>纯背过：用于授权<br><img src="https://www.helloimg.com/i/2025/01/26/6795f54b9a955.png" alt="vue40.png"><br><img src="https://www.helloimg.com/i/2025/01/26/6795f54d26b84.png" alt="vue41.png"><br>可以成功获得现在登录的用户信息：<br><img src="https://www.helloimg.com/i/2025/01/26/6795f54d47be4.png" alt="vue42.png"><br>有了这些信息后，要将这些信息存到state里面：<br>但是action里面是不能直接更新的，要通过mutations</p>
+<p><img src="https://www.helloimg.com/i/2025/01/26/6795f54f59908.png" alt="vue43.png"><br>完整版user.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">import $ from &#x27;jquery&#x27;;</span><br><span class="line">import jwt_decode from &#x27;jwt-decode&#x27;;</span><br><span class="line">const ModuleUser=&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        id:&quot;&quot;,</span><br><span class="line">        username:&quot;&quot;,</span><br><span class="line">        photo:&quot;&quot;,</span><br><span class="line">        followerCount:&quot;&quot;,</span><br><span class="line">        access:&quot;&quot;,</span><br><span class="line">        refresh:&quot;&quot;,</span><br><span class="line">        is_login:false,</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        updateUser(state,user)&#123;//第一个参数是state，第二个参数是自己定义的</span><br><span class="line">            state.id=user.id;</span><br><span class="line">            state.username=user.username;</span><br><span class="line">            state.photo=user.photo;</span><br><span class="line">            state.followerCount=user.followerCount;</span><br><span class="line">            state.access=user.access;</span><br><span class="line">            state.refresh=user.refresh;</span><br><span class="line">            state.is_login=user.is_login;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    actions: &#123;</span><br><span class="line">        login(context,data)&#123; //context 传api，data传一些信息(dispatch的参数)</span><br><span class="line">            $.ajax(&#123;</span><br><span class="line">                url:&quot;https://app165.acapp.acwing.com.cn/api/token/&quot;,</span><br><span class="line">                type: &quot;POST&quot;,</span><br><span class="line">                data:&#123;</span><br><span class="line">                    username: data.username,</span><br><span class="line">                    password: data.password,</span><br><span class="line">                &#125;,</span><br><span class="line">                success(resp)&#123;</span><br><span class="line">                   // console.log(resp);</span><br><span class="line">                //    const access=resp.access;</span><br><span class="line">                //    const refresh=resp.refresh;</span><br><span class="line">                   const &#123;access,refresh&#125;=resp; //ES6语法</span><br><span class="line">                   const access_obj=jwt_decode(access);</span><br><span class="line">                 //  console.log(access_obj,refresh);</span><br><span class="line">                 //然后可以根据其中的user_id和我们的api去获取信息</span><br><span class="line">                 $.ajax(&#123;</span><br><span class="line">                    url:&quot;https://app165.acapp.acwing.com.cn/myspace/getinfo/&quot;,</span><br><span class="line">                    type:&quot;GET&quot;,</span><br><span class="line">                    data:&#123;</span><br><span class="line">                        user_id:access_obj.user_id,</span><br><span class="line">                    &#125;,</span><br><span class="line">                    headers:&#123;</span><br><span class="line">                        &#x27;Authorization&#x27;:&quot;Bearer &quot;+access,</span><br><span class="line">                    &#125;,</span><br><span class="line">                    success(resp)&#123;</span><br><span class="line">                        context.commit(&quot;updateUser&quot;,&#123;</span><br><span class="line">                            ...resp,</span><br><span class="line">                            access:access,</span><br><span class="line">                            refresh:refresh,</span><br><span class="line">                            is_login:true,</span><br><span class="line">                        &#125;);</span><br><span class="line">                        data.success();</span><br><span class="line">                    &#125;,</span><br><span class="line">                    error()&#123;</span><br><span class="line">                        data.error();</span><br><span class="line">                    &#125;</span><br><span class="line">                 &#125;)</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    modules: &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default ModuleUser;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>LoginView.vue</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;contentElem&gt;</span><br><span class="line">      &lt;div class=&quot;row justify-content-md-center&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;col-3&quot;&gt;</span><br><span class="line">              &lt;form @click.prevent=&quot;login&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;mb-3&quot;&gt;</span><br><span class="line">                  &lt;label for=&quot;username&quot; class=&quot;form-label&quot;&gt;用户名&lt;/label&gt;</span><br><span class="line">                  &lt;input v-model=&quot;username&quot; type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;username&quot;&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;mb-3&quot;&gt;</span><br><span class="line">                  &lt;label for=&quot;password&quot; class=&quot;form-label&quot;&gt;密码&lt;/label&gt;</span><br><span class="line">                  &lt;input v-model=&quot;password&quot; type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;password&quot;&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;error-message&quot;&gt;&#123;&#123;error_message&#125;&#125;&lt;/div&gt;</span><br><span class="line">                &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;登录&lt;/button&gt;</span><br><span class="line">              &lt;/form&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/contentElem&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import contentElem from &quot;../components/contentElem.vue&quot;;</span><br><span class="line">import &#123; ref &#125; from &quot;vue&quot;;</span><br><span class="line">import &#123; useStore &#125; from &quot;vuex&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;UserList&#x27;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    contentElem,</span><br><span class="line">&#125;,</span><br><span class="line">setup()&#123;</span><br><span class="line">  let username=ref(&#x27;&#x27;);</span><br><span class="line">  let password=ref(&#x27;&#x27;);</span><br><span class="line">  let error_message=ref(&#x27;&#x27;);</span><br><span class="line">  const store=useStore();</span><br><span class="line">  const login=()=&gt;&#123;</span><br><span class="line">    // console.log(username.value);</span><br><span class="line">    // console.log(password.value);</span><br><span class="line">    //如果想调用外面action中的一个api，用dispatch</span><br><span class="line">    store.dispatch(&quot;login&quot;,&#123;</span><br><span class="line">      username:username.value,</span><br><span class="line">      password:password.value,</span><br><span class="line">      success()&#123;</span><br><span class="line">        console.log(&quot;success&quot;);</span><br><span class="line">      &#125;,</span><br><span class="line">      error()&#123;</span><br><span class="line">        console.log(&quot;fail&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return &#123;</span><br><span class="line">    username,</span><br><span class="line">    password,</span><br><span class="line">    error_message,</span><br><span class="line">    login</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.error-message&#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br><span class="line">button&#123;</span><br><span class="line">  float: right;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="11-3-使用refresh刷新access"><a href="#11-3-使用refresh刷新access" class="headerlink" title="11.3 使用refresh刷新access"></a>11.3 使用refresh刷新access</h4><p>因为5分钟access会过期，所以需要用到refresh进行刷新。</p>
+<p>方法1. 访问的时候发现access过期了，此时去获取一个新的access<br>方法2. 每隔五分钟获取一次access，调用刷线access的接口，每五分钟一次</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">setInterval(()=&gt;&#123;</span><br><span class="line">   $.ajax(&#123;</span><br><span class="line">       url:&quot;https://app165.acapp.acwing.com.cn/api/token/refresh/&quot;,</span><br><span class="line">       type:&quot;POST&quot;,</span><br><span class="line">       data:&#123;</span><br><span class="line">           refresh:access_obj.refresh,</span><br><span class="line">       &#125;,</span><br><span class="line">       success(resp)&#123;</span><br><span class="line">           context.commit(&quot;updateAccess&quot;,resp.access);</span><br><span class="line"></span><br><span class="line">       &#125;,</span><br><span class="line">       error()&#123;</span><br><span class="line">           data.error();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">&#125;,4.5*60*1000);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="12-登录后跳转到用户列表页面"><a href="#12-登录后跳转到用户列表页面" class="headerlink" title="12. 登录后跳转到用户列表页面"></a>12. 登录后跳转到用户列表页面</h3><ol>
+<li><p>引入router<br><img src="https://www.helloimg.com/i/2025/01/26/6795f5500a7e5.png" alt="vue44.png"></p>
+</li>
+<li><p>使用api<br><img src="https://www.helloimg.com/i/2025/01/26/6795f5512a46b.png" alt="vue45.png"></p>
+</li>
+</ol>
+<h3 id="13-登录后修改展示页面"><a href="#13-登录后修改展示页面" class="headerlink" title="13. 登录后修改展示页面"></a>13. 登录后修改展示页面</h3><p>NavBar修改一下。让这些页面都符合逻辑<br>想要获取store中的全局变量，可以使用<code>$ xxx</code><br><img src="https://www.helloimg.com/i/2025/01/26/6795f55093ccc.png" alt="vue46.png"><br><img src="https://www.helloimg.com/i/2025/01/26/6795f55732aac.png" alt="vue47.png"></p>
+<h3 id="14-实现退出"><a href="#14-实现退出" class="headerlink" title="14. 实现退出"></a>14. 实现退出</h3><p>只需要写一个事件即可。<br><img src="https://www.helloimg.com/i/2025/01/26/6795f55670a10.png" alt="vue48.png"><br>凡是要修改全局state，要把事件写到action&#x2F;mutations里面 （需要store）<br><img src="https://www.helloimg.com/i/2025/01/26/6795f5544e095.png" alt="vue49.png"></p>
+<h3 id="15-未登录时的跳转"><a href="#15-未登录时的跳转" class="headerlink" title="15. 未登录时的跳转"></a>15. 未登录时的跳转</h3><p>userList.vue<br><img src="https://www.helloimg.com/i/2025/01/26/6795f55550460.png" alt="vue50.png"><br>点击时触发函数：<br><img src="https://www.helloimg.com/i/2025/01/26/6795f5553158b.png" alt="vue51.png"></p>
+<h3 id="16-用户动态从云端获取"><a href="#16-用户动态从云端获取" class="headerlink" title="16. 用户动态从云端获取"></a>16. 用户动态从云端获取</h3><p>用户动态页面根据userId的改变而改变。<br>还是ajax！<br><img src="https://www.helloimg.com/i/2025/01/26/6795f557ea893.png" alt="vue52.png"></p>
+<h3 id="17-判断发帖子模块是否需要"><a href="#17-判断发帖子模块是否需要" class="headerlink" title="17. 判断发帖子模块是否需要"></a>17. 判断发帖子模块是否需要</h3><p>只有在自己的页面才能发帖子。<br><img src="https://www.helloimg.com/i/2025/01/26/6795f556c8acf.png" alt="vue53.png"></p>
+<h3 id="18-用完整链接判断页面是否相同"><a href="#18-用完整链接判断页面是否相同" class="headerlink" title="18. 用完整链接判断页面是否相同"></a>18. 用完整链接判断页面是否相同</h3><p>App.vue<br><img src="https://www.helloimg.com/i/2025/01/26/6795f557c5bed.png" alt="vue54.png"><br>默认是用页面的name判断的，都叫userprofile，所以到别人页面，再点击自己的，就会出现不刷新不跳转的情况。</p>
+<h3 id="19-从前端删除到真的删除"><a href="#19-从前端删除到真的删除" class="headerlink" title="19. 从前端删除到真的删除"></a>19. 从前端删除到真的删除</h3><p><img src="https://www.helloimg.com/i/2025/01/26/6795f558ef810.png" alt="vue55.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/26/6795f55a290b1.png" alt="vue56.png"></p>
+<h3 id="20-部署"><a href="#20-部署" class="headerlink" title="20. 部署"></a>20. 部署</h3><ol>
+<li>build 打包成可以发布的版本</li>
+</ol>
+<p><img src="https://www.helloimg.com/i/2025/01/26/6795f55a413ac.png" alt="vue57.png"><br>2. 打包<br><img src="https://www.helloimg.com/i/2025/01/26/6795f55d268b3.png" alt="vue58.png"><br>3. 传到服务器上</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8B/" data-id="cm8sja97u003x8ktb5sg3bve5" data-title="Vue实现个人空间-下" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/23/Springboot-%E5%88%9B%E5%BB%BA%E8%8F%9C%E5%8D%95%E5%92%8C%E6%B8%B8%E6%88%8F%E7%95%8C%E9%9D%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Springboot-创建菜单和游戏界面
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8A/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Vue实现个人空间-上</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unreal-Engine/">Unreal Engine</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 18px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Springboot/" style="font-size: 18px;">Springboot</a> <a href="/tags/Unity3D/" style="font-size: 14px;">Unity3D</a> <a href="/tags/Unreal-Engine/" style="font-size: 12px;">Unreal Engine</a> <a href="/tags/Vue/" style="font-size: 12px;">Vue</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/03/28/WebSocket/">WebSocket</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%AE%89%E8%A3%85/">Docker安装</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">Docker项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Docker快速入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Lzh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

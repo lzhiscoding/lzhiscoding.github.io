@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Lzh正在写代码</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="千里之行始于足下">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lzh正在写代码">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="Lzh正在写代码">
+<meta property="og:description" content="千里之行始于足下">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Lzh">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Lzh正在写代码" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lzh正在写代码</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-设计模式-外观模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-12-28T07:57:59.000Z" itemprop="datePublished">2024-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/">设计模式-外观模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h1><p>外观模式（Facade Pattern）隐藏系统的复杂性，并向客户端提供了一个客户端可以访问系统的接口。这种类型的设计模式属于结构型模式，它向现有的系统添加一个接口，来隐藏系统的复杂性。</p>
+<p>这种模式涉及到一个单一的类，该类提供了客户端请求的简化方法和对现有系统类方法的委托调用。</p>
+<h1 id="类图示例"><a href="#类图示例" class="headerlink" title="类图示例"></a>类图示例</h1><p><img src="https://www.helloimg.com/i/2024/12/28/676fb76413b20.png" alt="外观模式.png"></p>
+<h1 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h1><p>买卖基金</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//股票一</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Stock1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Sell</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Stock 1 sell&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Buy</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Stock 1 buy&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//股票二</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Stock2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Sell</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Stock 2 sell&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Buy</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Stock 2 buy&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//股票三</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Stock3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Sell</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Stock 3 sell&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Buy</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Stock 3 buy&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//国债</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">NationalDebt</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Sell</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;National Debt sell&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Buy</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;National Debt buy&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//房地产</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Realty</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Sell</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Realty sell&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Buy</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Realty buy&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//基金类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Fund</span> &#123;</span><br><span class="line">    Stock1 stock1;</span><br><span class="line">    Stock2 stock2;</span><br><span class="line">    Stock3 stock3;</span><br><span class="line">    NationalDebt nationalDebt;</span><br><span class="line">    Realty realty;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Fund</span><span class="params">()</span> &#123;</span><br><span class="line">        stock1 = <span class="keyword">new</span> <span class="title class_">Stock1</span>();</span><br><span class="line">        stock2 = <span class="keyword">new</span> <span class="title class_">Stock2</span>();</span><br><span class="line">        stock3 = <span class="keyword">new</span> <span class="title class_">Stock3</span>();</span><br><span class="line">        nationalDebt = <span class="keyword">new</span> <span class="title class_">NationalDebt</span>();</span><br><span class="line">        realty = <span class="keyword">new</span> <span class="title class_">Realty</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">BuyFund</span><span class="params">()</span> &#123;</span><br><span class="line">        stock1.Buy();</span><br><span class="line">        stock2.Buy();</span><br><span class="line">        stock3.Buy();</span><br><span class="line">        nationalDebt.Buy();</span><br><span class="line">        realty.Buy();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">SellFund</span><span class="params">()</span> &#123;</span><br><span class="line">        stock1.Sell();</span><br><span class="line">        stock2.Sell();</span><br><span class="line">        stock3.Sell();</span><br><span class="line">        nationalDebt.Sell();</span><br><span class="line">        realty.Sell();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Facade</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Fund</span> <span class="variable">fund</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Fund</span>();</span><br><span class="line">        fund.BuyFund();</span><br><span class="line">        fund.SellFund();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="https://www.helloimg.com/i/2024/12/28/676fb75ed91cd.png" alt="基金外观模式.png"></p>
+<h1 id="外观模式包含如下角色"><a href="#外观模式包含如下角色" class="headerlink" title="外观模式包含如下角色"></a>外观模式包含如下角色</h1><ol>
+<li>Facade类：提供高层接口，简化客户端与子系统的交互。</li>
+<li>子系统类：实现具体的业务逻辑，被Facade类调用。</li>
+</ol>
+<h1 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h1><ul>
+<li>优点<ol>
+<li>减少依赖：客户端与子系统之间的依赖减少。</li>
+<li>提高灵活性：子系统的内部变化不会影响客户端。</li>
+<li>增强安全性：隐藏了子系统的内部实现，只暴露必要的操作。</li>
+</ol>
+</li>
+<li>缺点<ol>
+<li>违反开闭原则：对子系统的修改可能需要对外观类进行相应的修改。</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/" data-id="cm8sja982004z8ktb3jwog15b" data-title="设计模式-外观模式" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Linux如何使用ssh" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/27/Linux%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8ssh/" class="article-date">
+  <time class="dt-published" datetime="2024-12-27T09:40:23.000Z" itemprop="datePublished">2024-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/27/Linux%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8ssh/">Linux如何使用ssh</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="4-SSH"><a href="#4-SSH" class="headerlink" title="4 SSH"></a>4 SSH</h1><p>通过SSH登录远程服务器</p>
+<h3 id="4-1-SSH登录"><a href="#4-1-SSH登录" class="headerlink" title="4.1 SSH登录"></a>4.1 SSH登录</h3><p>假设<code>user</code>是用户名，<code>hostname</code>是IP地址或域名，则按如下方式登录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@hostname</span><br></pre></td></tr></table></figure>
+
+<p>首次登录会提示之前未登录过这台服务器，输入<code>yes</code>或直接回车会把该服务器的信息记录到<code>~/.ssh/known_hosts</code>中，然后再输入密码就能登录到该服务器。若要退出，可用命令<code>exit</code></p>
+<p>SSH默认端口为<code>22</code>，可显示声明服务器端口号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@hostname -p 22</span><br></pre></td></tr></table></figure>
+
+<p><strong>配置登录</strong></p>
+<p>可为<code>ssh user@hostname</code>起别名，方便登录。在<code>~/.ssh/config</code>中添加服务器信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host myserver</span><br><span class="line">    HostName IP地址或域名</span><br><span class="line">    User 用户名</span><br></pre></td></tr></table></figure>
+
+<p>之后就能使用<code>ssh myserver</code>登录到远程服务器。</p>
+<p><strong>密钥登录</strong></p>
+<p>首先创建密钥，输入以下命令，一直回车即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>~/.ssh</code>下会生成两个文件</p>
+<ul>
+<li>私钥：<code>id_rsa</code></li>
+<li>公钥：<code>id_rsa.pub</code></li>
+</ul>
+<p>可把公钥内容复制到远程服务器的<code>~/.ssh/authorized_keys</code>中，或直接使用命令<code>ssh-copy-id myserver</code></p>
+<h3 id="4-2-SSH命令"><a href="#4-2-SSH命令" class="headerlink" title="4.2 SSH命令"></a>4.2 SSH命令</h3><p>SSH命令方便写脚本，基本格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@hostname command</span><br></pre></td></tr></table></figure>
+
+<p><code>command</code>就是<code>shell</code>命令，取决于服务器是什么系统</p>
+<p>在SSH中，单引号<code>&#39;&#39;</code>括起的表达式或命令可以直接在远程服务器执行，而双引号<code>&quot;&quot;</code>括起的表达式不能执行，只能视为字符串，这与在本地服务器不一样。</p>
+<h3 id="4-3-SSH传文件"><a href="#4-3-SSH传文件" class="headerlink" title="4.3 SSH传文件"></a>4.3 SSH传文件</h3><p>为了实现两个服务器传输文件，可用命令<code>scp</code>把源文件<code>source</code>复制到<code>destination</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp source destination</span><br></pre></td></tr></table></figure>
+
+<p>也可指定多个文件复制到<code>destination</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp source1 source2 ... destination</span><br></pre></td></tr></table></figure>
+
+<p>如果需要复制文件夹，需要用参数<code>-r</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r source destination</span><br></pre></td></tr></table></figure>
+
+<p>本地服务器可省略域名，而远程服务器需要用域名标记<code>myserver:</code>，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r ~/tmp myserver:homework/</span><br></pre></td></tr></table></figure>
+
+<p>也可指定端口号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -p 22 source destination</span><br></pre></td></tr></table></figure>
+
+<p>注意，参数<code>-p</code>和<code>-r</code>需要在<code>source</code>之前。</p>
+<p>为了在远程服务器部署相同的环境，可以用SSH复制配置文件，例如配置<code>vim</code>和<code>tmux</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/.vimrc ~/.tmux.conf myserver:</span><br></pre></td></tr></table></figure>
+
+<p>这里省略了<code>destination</code>的目录，表示家目录<code>home</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/27/Linux%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8ssh/" data-id="cm8sja97a000w8ktb0zgv0yeu" data-title="Linux如何使用ssh" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-JavaScript-输入输出和选择循环" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/27/JavaScript-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E9%80%89%E6%8B%A9%E5%BE%AA%E7%8E%AF/" class="article-date">
+  <time class="dt-published" datetime="2024-12-27T09:20:55.000Z" itemprop="datePublished">2024-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/27/JavaScript-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E9%80%89%E6%8B%A9%E5%BE%AA%E7%8E%AF/">JavaScript-输入输出和选择循环</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h1><ul>
+<li>从HTML与用户的交互中输入信息，例如通过input、textarea等标签获取用户的键盘输入，通过click、hover等事件获取用户的鼠标输入。</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span> <span class="comment">&lt;!-- 声明文档类型，这里是HTML5 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span> <span class="comment">&lt;!-- 根元素，设置文档的语言为英语 --&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> <span class="comment">&lt;!-- 头部区域，包含文档的元数据 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span> <span class="comment">&lt;!-- 设置文档的字符编码为UTF-8 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span> <span class="comment">&lt;!-- 设置视口，以确保页面在不同设备上正确显示 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span> <span class="comment">&lt;!-- 设置文档的标题，将显示在浏览器的标签页上 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/static/css/index.css&quot;</span>&gt;</span> <span class="comment">&lt;!-- 链接到外部的CSS样式表，用于美化页面 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span> <span class="comment">&lt;!-- 主体区域，包含文档的主要内容 --&gt;</span></span><br><span class="line">    输入： <span class="comment">&lt;!-- 文本提示用户输入 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="comment">&lt;!-- 换行符 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">class</span>=<span class="string">&quot;input&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span> <span class="comment">&lt;!-- 多行文本输入区域，用户可以在这里输入文本 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="comment">&lt;!-- 换行符 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>Run<span class="tag">&lt;/<span class="name">button</span>&gt;</span> <span class="comment">&lt;!-- 按钮，用户点击后触发某个操作 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="comment">&lt;!-- 换行符 --&gt;</span></span><br><span class="line">    输出： <span class="comment">&lt;!-- 文本提示输出区域 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pre</span> <span class="attr">class</span>=<span class="string">&quot;output&quot;</span>&gt;</span> <span class="comment">&lt;!-- 预格式化文本区域，用于显示输出内容，保留空白和换行 --&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"> <span class="comment">&lt;!-- 引入一个模块化的JavaScript脚本 --&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">        import &#123;</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">            main, // 从外部JavaScript文件中导入main函数</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">        &#125; from &#x27;/static/js/index.js&#x27;; // 指定外部JavaScript文件的路径</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"> </span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">        main(); // 调用main函数，初始化页面或设置事件监听器等</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;static&#x2F;css&#x2F;index.css:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">textarea</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">24px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pre &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: lightgray;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">24px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;static&#x2F;js&#x2F;index.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用querySelector方法选择页面上class为&quot;input&quot;的元素，并将其存储在变量input中</span></span><br><span class="line"><span class="keyword">let</span> input = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.input&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用querySelector方法选择页面上的第一个button元素，并将其存储在变量run中</span></span><br><span class="line"><span class="keyword">let</span> run = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;button&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用querySelector方法选择页面上class为&quot;output&quot;的元素，并将其存储在变量output中</span></span><br><span class="line"><span class="keyword">let</span> output = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.output&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个名为main的函数，该函数将在页面加载时被调用</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 为run变量（即button元素）添加一个点击事件监听器</span></span><br><span class="line">    run.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">// 当按钮被点击时，从input变量（即textarea元素）中获取用户输入的值，并将其存储在变量s中</span></span><br><span class="line">        <span class="keyword">let</span> s = input.<span class="property">value</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将变量s的值设置为output变量（即pre元素）的innerHTML，从而在页面上显示用户输入的内容</span></span><br><span class="line">        output.<span class="property">innerHTML</span> = s;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出main函数，使其可以在其他JavaScript模块中被导入和使用</span></span><br><span class="line"><span class="keyword">export</span> &#123; main &#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="https://www.helloimg.com/i/2024/12/27/676e708bb7caf.png" alt="js6.png"></p>
+<ul>
+<li>通过Ajax与WebSocket从服务器端获取输入</li>
+<li>标准输入</li>
+</ul>
+<h1 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h1><ul>
+<li>调试用console.log，会将信息输出到浏览器控制台</li>
+<li>改变当前页面的HTML与CSS</li>
+<li>通过Ajax与WebSocket将结果返回到服务器</li>
+</ul>
+<h1 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h1><ul>
+<li>字符串中填入变量的值</li>
+<li>定义多行字符串</li>
+<li>小数的格式<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 声明两个变量：name 是一个字符串，age 是一个数字</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> name = <span class="string">&quot;lzh&quot;</span>, age = <span class="number">18</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 使用模板字面量创建一个字符串 s，其中包含了变量 name 和经过计算的 age / 2</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> s = <span class="string">`My name is <span class="subst">$&#123;name&#125;</span>, I am <span class="subst">$&#123;age / <span class="number">2</span>&#125;</span> years old.`</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 在控制台打印字符串 s</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(s); <span class="comment">// 输出：My name is lzh, I am 9 years old.</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 声明一个浮点数变量 x</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> x = <span class="number">1.234567</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 使用 toFixed 方法将 x 格式化为保留两位小数的字符串，并在控制台打印</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x.<span class="title function_">toFixed</span>(<span class="number">2</span>)); <span class="comment">// 输出：1.23</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 使用 Math.ceil 方法对 x 向上取整，并在控制台打印</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">ceil</span>(x)); <span class="comment">// 输出：2</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 使用 Math.floor 方法对 x 向下取整，并在控制台打印</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(x)); <span class="comment">// 输出：1</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 使用 Math.round 方法对 x 进行四舍五入，并在控制台打印</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">round</span>(x)); <span class="comment">// 输出：1，因为 1.234567 四舍五入后等于 1</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img src="https://www.helloimg.com/i/2024/12/27/676e708bc6149.png" alt="js7.png"></li>
+</ul>
+<h1 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h1><p><strong>JavaScript</strong>中的if-else语句与<strong>C++<strong>、</strong>Python</strong>、<strong>Java</strong>中类似。</p>
+<p>例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> score = <span class="number">90</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (score &gt;= <span class="number">85</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;A&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (score &gt;= <span class="number">70</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;B&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (score &gt;= <span class="number">60</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;C&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;D&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>JavaScript</strong>中的逻辑运算符也与<strong>C++<strong>、</strong>Java</strong>中类似：</p>
+<ul>
+<li>&amp;&amp;表示与</li>
+<li>||表示或</li>
+<li>!表示非</li>
+</ul>
+<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><p>JavaScript中的循环语句与C++中类似，也包含for、while、do while循环。</p>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>枚举对象或数组时可以使用：</p>
+<p>for-in循环，可以枚举数组中的下标，以及对象中的key<br>for-of循环，可以枚举数组中的值，以及对象中的value</p>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="do-while循环"><a href="#do-while循环" class="headerlink" title="do while循环"></a>do while循环</h2><p>do while语句与while语句非常相似。唯一的区别是，do while语句限制性循环体后检查条件。不管条件的值如何，我们都要至少执行一次循环。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">    i++;</span><br><span class="line">&#125; <span class="keyword">while</span> (i &lt; <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/27/JavaScript-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%92%8C%E9%80%89%E6%8B%A9%E5%BE%AA%E7%8E%AF/" data-id="cm8sja979000p8ktb1v693umw" data-title="JavaScript-输入输出和选择循环" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-JavaScript-变量与运算符" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/27/JavaScript-%E5%8F%98%E9%87%8F%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6/" class="article-date">
+  <time class="dt-published" datetime="2024-12-27T09:20:12.000Z" itemprop="datePublished">2024-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/27/JavaScript-%E5%8F%98%E9%87%8F%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6/">JavaScript-变量与运算符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h1><ul>
+<li>let用来定义变量</li>
+<li>const用来定义常量<br>例如：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> a;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> x = <span class="number">3</span>, name = <span class="string">&quot;lzh&quot;</span>;<span class="comment">//声明多个变量</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> y = <span class="number">4</span>;<span class="comment">//声明一个常量</span></span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h1><ul>
+<li>number: 数值变量，如1，2.5</li>
+<li>string: 字符串，如”Hello”,’World’,单引号与双引号均可。字符串中的每个字符为<strong>只读类型</strong>。如果想要改变某个字符，可以用substr取子串方法重新构造一个字符串</li>
+<li>boolean: 布尔值，例如true, false</li>
+<li>object: 对象，类似于C++中的指针，例如[1, 2, 3]，{name: “yxc”, age: 18}，null</li>
+<li>undefined: 未定义的变量</li>
+</ul>
+<p>可以通过console.log(typeof 变量名)来查看类型</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 声明两个变量x和y，并分别赋值为整数1和浮点数1.2</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> x = <span class="number">1</span>, y = <span class="number">1.2</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 打印x和y的类型，预期输出为&quot;number&quot; &quot;number&quot;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> x, <span class="keyword">typeof</span> y);</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 声明两个字符串变量s1和s2，并分别赋值为&quot;Hello&quot;和&quot;World&quot;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> s1 = <span class="string">&quot;Hello&quot;</span>, s2 = <span class="string">&quot;World&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 打印s1字符串中索引为1的字符，即&#x27;e&#x27;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(s1[<span class="number">1</span>]);</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 使用substr方法修改s1字符串，创建新字符串s3，内容为&#x27;Hexlo&#x27;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// s1.substr(0, 1)获取s1的第一个字符&#x27;H&#x27;，&#x27;x&#x27;是插入的字符，s1.substr(2)获取s1从第三个字符开始的剩余部分&#x27;ello&#x27;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> s3 = s1.<span class="title function_">substr</span>(<span class="number">0</span>, <span class="number">1</span>) + <span class="string">&#x27;x&#x27;</span> + s1.<span class="title function_">substr</span>(<span class="number">2</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 打印s3的内容，预期输出为&#x27;Hexlo&#x27;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(s3);</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 声明一个布尔变量flag并赋值为true</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> flag = <span class="literal">true</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 打印flag的类型，预期输出为&quot;boolean&quot;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> flag);</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 声明一个对象d，并初始化包含name和age两个属性</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> d = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;lzh&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">age</span>: <span class="number">18</span>,</span></span><br><span class="line"><span class="language-javascript">    &#125;;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 分别使用点语法和方括号语法打印d的name和age属性，预期输出为&#x27;lzh&#x27; 18</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d[<span class="string">&#x27;name&#x27;</span>], d[<span class="string">&quot;age&quot;</span>]);</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d.<span class="property">name</span>, d.<span class="property">age</span>);</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 修改d的name属性值为&quot;zhang3&quot;</span></span></span><br><span class="line"><span class="language-javascript">    d[<span class="string">&#x27;name&#x27;</span>] = <span class="string">&quot;zhang3&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 声明一个变量key，值为&quot;name&quot;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> key = <span class="string">&quot;name&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 使用变量key作为键来访问d对象的name属性，并打印，预期输出为&#x27;zhang3&#x27;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d[key]);</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 打印d的类型，预期输出为&quot;object&quot;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> d);</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 向d对象添加一个新的属性school，值为&quot;Tsinghua&quot;</span></span></span><br><span class="line"><span class="language-javascript">    d[<span class="string">&#x27;school&#x27;</span>] = <span class="string">&quot;Tsinghua&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 打印d对象的name、age和school属性，预期输出为&#x27;zhang3&#x27; 18 &#x27;Tsinghua&#x27;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d.<span class="property">name</span>, d.<span class="property">age</span>, d.<span class="property">school</span>);</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 删除d对象的school属性</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">delete</span> d.<span class="property">school</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 打印d对象，此时school属性已被删除，预期输出为&#123;name: &#x27;zhang3&#x27;, age: 18&#125;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d);</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 打印null的类型，尽管在JavaScript中这是一个历史遗留问题，但null的类型仍被报告为&quot;object&quot;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 这是一个已知的语言特性，而不是bug</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="literal">null</span>);</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 声明一个变量t，但未赋值</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> t;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 打印t的类型，由于t未被赋值，其类型为&quot;undefined&quot;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> t);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://www.helloimg.com/i/2024/12/27/676e708bc2a45.png" alt="js5.png"></p>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><p>与<strong>C++<strong>、</strong>Python</strong>、<strong>Java</strong>类似，不同点：</p>
+<ul>
+<li>**表示乘方</li>
+<li>等于与不等于用&#x3D;&#x3D;&#x3D;和!&#x3D;&#x3D;</li>
+<li>整除用parseInt，如parseInt(5 &#x2F; 3), 结果为1</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/27/JavaScript-%E5%8F%98%E9%87%8F%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6/" data-id="cm8sja976000a8ktb5bn35pgi" data-title="JavaScript-变量与运算符" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-JavaScript-执行方式和执行顺序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/27/JavaScript-%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F%E5%92%8C%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-12-27T07:50:59.000Z" itemprop="datePublished">2024-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/27/JavaScript-%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F%E5%92%8C%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/">JavaScript-执行方式和执行顺序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Javascript如何运行-在前端执行-？"><a href="#Javascript如何运行-在前端执行-？" class="headerlink" title="Javascript如何运行(在前端执行)？"></a>Javascript如何运行(在前端执行)？</h1><h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>HTML页面中的任意位置加上&lt;script type&#x3D;”module”&gt;&lt;&#x2F;script&gt;标签即可。</p>
+<h2 id="常见使用方式"><a href="#常见使用方式" class="headerlink" title="常见使用方式"></a>常见使用方式</h2><h3 id="1-直接在标签内写JS代码。"><a href="#1-直接在标签内写JS代码。" class="headerlink" title="1.直接在&lt;script type&#x3D;”module”&gt;&lt;&#x2F;script&gt;标签内写JS代码。"></a>1.直接在&lt;script type&#x3D;”module”&gt;&lt;&#x2F;script&gt;标签内写JS代码。</h3><p>例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Hello World&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://www.helloimg.com/i/2024/12/27/676e550d67f1c.png" alt="js1.png"></p>
+<h3 id="2-直接引入文件：。"><a href="#2-直接引入文件：。" class="headerlink" title="2.直接引入文件：&lt;script type&#x3D;”module” src&#x3D;”&#x2F;static&#x2F;js&#x2F;index.js”&gt;&lt;&#x2F;script&gt;。"></a>2.直接引入文件：&lt;script type&#x3D;”module” src&#x3D;”&#x2F;static&#x2F;js&#x2F;index.js”&gt;&lt;&#x2F;script&gt;。</h3><p>例如：<br><img src="https://www.helloimg.com/i/2024/12/27/676e577559ece.png" alt="js2.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/static/js/index.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Hello World&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://www.helloimg.com/i/2024/12/27/676e57b517f86.png" alt="js3.png"></p>
+<h3 id="3-将所需的代码通过import关键字引入到当前作用域。"><a href="#3-将所需的代码通过import关键字引入到当前作用域。" class="headerlink" title="3.将所需的代码通过import关键字引入到当前作用域。"></a>3.将所需的代码通过import关键字引入到当前作用域。</h3><p>&#x2F;static&#x2F;js&#x2F;index.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;lzh&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> age = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">print</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;My name is &quot;</span> + name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    name,</span><br><span class="line">    print</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">import</span> &#123; name, print &#125; <span class="keyword">from</span> <span class="string">&quot;/static/js/index.js&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(name);</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">print</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">//这句话会报错，因为age没有export</span></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">//console.log(age);</span></span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://www.helloimg.com/i/2024/12/27/676e5b5dc1e19.png" alt="js4.png"></p>
+<h2 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h2><ul>
+<li>类似于HTML与CSS，按从上到下的顺序执行；</li>
+<li>事件驱动执行(前端的事件，如点击，键盘输入等)；</li>
+</ul>
+<h1 id="HTML，CSS和JavaScript之间的关系"><a href="#HTML，CSS和JavaScript之间的关系" class="headerlink" title="HTML，CSS和JavaScript之间的关系"></a>HTML，CSS和JavaScript之间的关系</h1><ul>
+<li>CSS控制HTML</li>
+<li>JavaScript控制HTML与CSS</li>
+<li>为了方便开发与维护，尽量按照上述顺序写代码。例如：不要在HTML中调用JavaScript中的函数。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/27/JavaScript-%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F%E5%92%8C%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/" data-id="cm8sja978000j8ktb23yk3wke" data-title="JavaScript-执行方式和执行顺序" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-设计模式-装饰模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-12-27T03:05:41.000Z" itemprop="datePublished">2024-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/">设计模式-装饰模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h1><p>装饰器模式（Decorator Pattern）允许向一个现有的对象添加新的功能，同时又不改变其结构。这种类型的设计模式属于结构型模式，它是作为现有的类的一个包装。</p>
+<p>装饰器模式通过将对象包装在装饰器类中，以便动态地修改其行为。</p>
+<p>这种模式创建了一个装饰类，用来包装原有的类，并在保持类方法签名完整性的前提下，提供了额外的功能。</p>
+<h1 id="类图示例"><a href="#类图示例" class="headerlink" title="类图示例"></a>类图示例</h1><p><img src="https://www.helloimg.com/i/2024/12/27/676e23ec22a68.png" alt="装饰模式.png"></p>
+<h1 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h1><p>假设我们有一个简单的咖啡售卖系统。咖啡有不同的种类（如拿铁、美式咖啡），并且可以添加各种配料（如牛奶、糖、奶油）来改变咖啡的口味和价格。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象咖啡类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Coffee</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="type">double</span> <span class="title function_">cost</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title function_">name</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//拿铁</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Latte</span> <span class="keyword">extends</span> <span class="title class_">Coffee</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">cost</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2.5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">name</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Latte&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//咖啡装饰器抽象类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">CoffeeDecorator</span> <span class="keyword">extends</span> <span class="title class_">Coffee</span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Coffee coffee;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CoffeeDecorator</span><span class="params">(Coffee coffee)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.coffee = coffee;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//牛奶装饰器类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MilkDecorator</span> <span class="keyword">extends</span> <span class="title class_">CoffeeDecorator</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MilkDecorator</span><span class="params">(Coffee coffee)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(coffee);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">cost</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> coffee.cost()+<span class="number">0.5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">name</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> coffee.name()+<span class="string">&quot;, Milk&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//糖装饰器</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SugarDecorator</span> <span class="keyword">extends</span> <span class="title class_">CoffeeDecorator</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SugarDecorator</span><span class="params">(Coffee coffee)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(coffee);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">cost</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> coffee.cost()+<span class="number">0.5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">name</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> coffee.name()+<span class="string">&quot;, Sugar&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Decoration</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Coffee</span> <span class="variable">coffee</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Latte</span>();</span><br><span class="line">        System.out.println(coffee.name());</span><br><span class="line">        coffee=<span class="keyword">new</span> <span class="title class_">MilkDecorator</span>(coffee);</span><br><span class="line">        System.out.println(coffee.name());</span><br><span class="line">        coffee=<span class="keyword">new</span> <span class="title class_">SugarDecorator</span>(coffee);</span><br><span class="line">        System.out.println(coffee.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="装饰模式包含如下角色"><a href="#装饰模式包含如下角色" class="headerlink" title="装饰模式包含如下角色"></a>装饰模式包含如下角色</h1><ol>
+<li>抽象组件（Component）：定义了原始对象和装饰器对象的公共接口或抽象类，可以是具体组件类的父类或接口。</li>
+<li>具体组件（Concrete Component）：是被装饰的原始对象，它定义了需要添加新功能的对象。</li>
+<li>抽象装饰器（Decorator）：继承自抽象组件，它包含了一个抽象组件对象，并定义了与抽象组件相同的接口，同时可以通过组合方式持有其他装饰器对象。</li>
+<li>具体装饰器（Concrete Decorator）：实现了抽象装饰器的接口，负责向抽象组件添加新的功能。具体装饰器通常会在调用原始对象的方法之前或之后执行自己的操作。</li>
+</ol>
+<p>装饰器模式通过嵌套包装多个装饰器对象，可以实现多层次的功能增强。每个具体装饰器类都可以选择性地增加新的功能，同时保持对象接口的一致性。</p>
+<h1 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h1><ul>
+<li>优点<ol>
+<li>低耦合：装饰类和被装饰类可以独立变化，互不影响。</li>
+<li>灵活性：可以动态地添加或撤销功能。</li>
+<li>替代继承：提供了一种继承之外的扩展对象功能的方式。</li>
+</ol>
+</li>
+<li>缺点<ol start="4">
+<li>复杂性：多层装饰可能导致系统复杂性增加。</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/" data-id="cm8sja986005t8ktb6y0l5ckf" data-title="设计模式-装饰模式" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-设计模式-组合模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-12-27T03:04:31.000Z" itemprop="datePublished">2024-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">设计模式-组合模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><p>组合模式（Composite Pattern），又叫部分整体模式，是用于把一组相似的对象当作一个单一的对象。组合模式依据树形结构来组合对象，用来表示部分以及整体层次。这种类型的设计模式属于结构型模式，它创建了对象组的树形结构。</p>
+<p>这种模式创建了一个包含自己对象组的类。该类提供了修改相同对象组的方式。</p>
+<h1 id="类图示例"><a href="#类图示例" class="headerlink" title="类图示例"></a>类图示例</h1><p><img src="https://www.helloimg.com/i/2024/12/27/676e23ebcdcbf.png" alt="组合模式.png"></p>
+<h1 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h1><p>公司管理系统</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">//公司抽象类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Company</span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Company</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">Add</span><span class="params">(Company c)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">Remove</span><span class="params">(Company c)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">Display</span><span class="params">(<span class="type">int</span> depth)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">LineOfDuty</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体公司</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteCompany</span> <span class="keyword">extends</span> <span class="title class_">Company</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Company&gt; children = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ConcreteCompany</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Add</span><span class="params">(Company c)</span>&#123;</span><br><span class="line">        children.add(c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Remove</span><span class="params">(Company c)</span>&#123;</span><br><span class="line">        children.remove(c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Display</span><span class="params">(<span class="type">int</span> depth)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;-&quot;</span>.repeat(depth)+name);</span><br><span class="line">        <span class="keyword">for</span>(Company c : children)&#123;</span><br><span class="line">            c.Display(depth+<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">LineOfDuty</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(Company c : children)&#123;</span><br><span class="line">            c.LineOfDuty();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//人力资源部</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HRDepartment</span> <span class="keyword">extends</span> <span class="title class_">Company</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HRDepartment</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Add</span><span class="params">(Company c)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Remove</span><span class="params">(Company c)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Display</span><span class="params">(<span class="type">int</span> depth)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;-&quot;</span>.repeat(depth)+name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">LineOfDuty</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;员工招聘培训管理&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//财务部</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FinancialDepartment</span> <span class="keyword">extends</span> <span class="title class_">Company</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">FinancialDepartment</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Add</span><span class="params">(Company c)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Remove</span><span class="params">(Company c)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Display</span><span class="params">(<span class="type">int</span> depth)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;-&quot;</span>.repeat(depth)+name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">LineOfDuty</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;公司财务收支管理&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Composite</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        ConcreteCompany root=<span class="keyword">new</span> <span class="title class_">ConcreteCompany</span>(<span class="string">&quot;北京总公司&quot;</span>);</span><br><span class="line">        root.Add(<span class="keyword">new</span> <span class="title class_">HRDepartment</span>(<span class="string">&quot;北京总公司人力资源部&quot;</span>));</span><br><span class="line">        root.Add(<span class="keyword">new</span> <span class="title class_">FinancialDepartment</span>(<span class="string">&quot;北京总公司财务部&quot;</span>));</span><br><span class="line">        ConcreteCompany company1=<span class="keyword">new</span> <span class="title class_">ConcreteCompany</span>(<span class="string">&quot;上海分公司&quot;</span>);</span><br><span class="line">        company1.Add(<span class="keyword">new</span> <span class="title class_">HRDepartment</span>(<span class="string">&quot;上海分公司人力资源部&quot;</span>));</span><br><span class="line">        company1.Add(<span class="keyword">new</span> <span class="title class_">FinancialDepartment</span>(<span class="string">&quot;上海分公司人力资源部&quot;</span>));</span><br><span class="line">        root.Add(company1);</span><br><span class="line">        ConcreteCompany company2=<span class="keyword">new</span> <span class="title class_">ConcreteCompany</span>(<span class="string">&quot;深圳分公司&quot;</span>);</span><br><span class="line">        company2.Add(<span class="keyword">new</span> <span class="title class_">HRDepartment</span>(<span class="string">&quot;深圳分公司人力资源部&quot;</span>));</span><br><span class="line">        company2.Add(<span class="keyword">new</span> <span class="title class_">FinancialDepartment</span>(<span class="string">&quot;深圳分公司人力资源部&quot;</span>));</span><br><span class="line">        root.Add(company2);</span><br><span class="line">        root.Display(<span class="number">1</span>);</span><br><span class="line">        root.LineOfDuty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="https://www.helloimg.com/i/2024/12/27/676e23eab8750.png" alt="公司管理组合模式.png"></p>
+<h1 id="组合模式包含如下角色"><a href="#组合模式包含如下角色" class="headerlink" title="组合模式包含如下角色"></a>组合模式包含如下角色</h1><ol>
+<li>Component接口：定义了所有对象必须实现的操作。</li>
+<li>Leaf类：实现Component接口，代表树中的叶子节点。</li>
+<li>Composite类：也实现Component接口，并包含其他Component对象的集合。</li>
+</ol>
+<h1 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h1><ul>
+<li>优点<ol>
+<li>简化客户端代码：客户端可以统一处理所有类型的节点。</li>
+<li>易于扩展：可以轻松添加新的叶子类型或树枝类型。</li>
+</ol>
+</li>
+<li>缺点<ol>
+<li>违反依赖倒置原则：组件的声明是基于具体类而不是接口，这可能导致代码的灵活性降低。</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" data-id="cm8sja985005q8ktb0pc720l3" data-title="设计模式-组合模式" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-希尔排序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/27/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-12-27T02:38:03.000Z" itemprop="datePublished">2024-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/27/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/">希尔排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><h2 id="一、概念及其介绍"><a href="#一、概念及其介绍" class="headerlink" title="一、概念及其介绍"></a>一、概念及其介绍</h2><p>希尔排序(Shell Sort)是插入排序的一种，它是针对直接插入排序算法的改进。</p>
+<p>希尔排序又称缩小增量排序，因 DL.Shell 于 1959 年提出而得名。</p>
+<p>它通过比较相距一定间隔的元素来进行，各趟比较所用的距离随着算法的进行而减小，直到只比较相邻元素的最后一趟排序为止。</p>
+<h2 id="二、适用说明"><a href="#二、适用说明" class="headerlink" title="二、适用说明"></a>二、适用说明</h2><p>希尔排序时间复杂度是 O(n^(1.3-2))，空间复杂度为常数阶 O(1)。希尔排序没有时间复杂度为 O(n(logn)) 的快速排序算法快 ，因此对中等大小规模表现良好，但对规模非常大的数据排序不是最优选择，总之比一般 O(n^2 ) 复杂度的算法快得多。</p>
+<h2 id="三、过程图示"><a href="#三、过程图示" class="headerlink" title="三、过程图示"></a>三、过程图示</h2><p>希尔排序目的为了加快速度改进了插入排序，交换不相邻的元素对数组的局部进行排序，并最终用插入排序将局部有序的数组排序。</p>
+<p>在此我们选择增量 gap&#x3D;length&#x2F;2，缩小增量以 gap &#x3D; gap&#x2F;2 的方式，用序列 {n&#x2F;2,(n&#x2F;2)&#x2F;2…1} 来表示。</p>
+<p>如图示例：</p>
+<p>（1）初始增量第一趟 gap &#x3D; length&#x2F;2 &#x3D; 4<br><img src="https://www.runoob.com/wp-content/uploads/2020/09/ShellSort-01.png"><br>（2）第二趟，增量缩小为 2<br><img src="https://www.runoob.com/wp-content/uploads/2020/09/ShellSort-02.png"><br>（3）第三趟，增量缩小为 1,得到最终排序结果<br><img src="https://www.runoob.com/wp-content/uploads/2020/09/ShellSort-03.png"></p>
+<h1 id="算法性能"><a href="#算法性能" class="headerlink" title="算法性能"></a>算法性能</h1><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>希尔排序的时间复杂度在不同情况下有所不同，但通常认为其平均时间复杂度为O(n^1.3)到O(nlog²n)之间。具体来说：</p>
+<ul>
+<li>最坏情况：虽然希尔排序在某些情况下可能接近O(n²)的时间复杂度，但相较于传统的插入排序，其性能通常更优。</li>
+<li>平均情况：希尔排序的平均时间复杂度通常在O(n^1.3)到O(nlog²n)之间，这使得它在处理中等规模数据时表现良好。</li>
+<li>最好情况：在最佳情况下，希尔排序的时间复杂度可以达到较低的水平，但具体数值取决于实现方式和数据分布。</li>
+</ul>
+<p>需要注意的是，希尔排序的时间复杂度受增量序列的选择影响较大。不同的增量序列可能导致不同的时间复杂度表现。</p>
+<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><p>希尔排序的空间复杂度为O(1)，即它是一个原地排序算法。在排序过程中，希尔排序只需要常数级别的额外空间来存储临时变量，而不需要创建新的数组或数据结构来存储数据。这使得希尔排序在空间使用上非常高效。</p>
+<h2 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h2><p>希尔排序是不稳定的排序算法。例如，考虑序列[3(a), 3(b), 1]，假设初始 gap 为 2，那么第一次排序后可能得到[1, 3(b), 3(a)]。在这个过程中，相同元素 3 (a) 和 3 (b) 的相对顺序发生了改变，所以希尔排序不具有稳定性。在交换元素移动到较远位置时，可能会改变相同元素的相对顺序。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">shell_sort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; v)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line">	<span class="comment">//越来越小的增量</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> gap = n / <span class="number">2</span>; gap &gt; <span class="number">0</span>; gap /= <span class="number">2</span>) &#123;</span><br><span class="line">		<span class="comment">//从gap开始，每次插入排序</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = gap; i &lt; n; i++) &#123;</span><br><span class="line">			<span class="type">int</span> temp = v[i];</span><br><span class="line">			<span class="type">int</span> j;</span><br><span class="line">			<span class="comment">//插入排序</span></span><br><span class="line">			<span class="keyword">for</span> (j = i; j &gt;= gap &amp;&amp; v[j - gap] &gt; temp; j -= gap) &#123;</span><br><span class="line">				v[j] = v[j - gap];</span><br><span class="line">			&#125;</span><br><span class="line">			v[j] = temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/27/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" data-id="cm8sja97x004e8ktb867me6sm" data-title="希尔排序" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-堆排序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/26/%E5%A0%86%E6%8E%92%E5%BA%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-12-26T12:49:37.000Z" itemprop="datePublished">2024-12-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/26/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。堆排序可以说是一种利用堆的概念来排序的选择排序。分为两种方法：</p>
+<p>大顶堆：每个节点的值都大于或等于其子节点的值，在堆排序算法中用于升序排列；<br>小顶堆：每个节点的值都小于或等于其子节点的值，在堆排序算法中用于降序排列；</p>
+<h1 id="动画展示"><a href="#动画展示" class="headerlink" title="动画展示"></a>动画展示</h1><p><img src="https://www.helloimg.com/i/2024/12/22/6768190f57378.gif" alt="heapSort.gif"></p>
+<h1 id="思路解析"><a href="#思路解析" class="headerlink" title="思路解析"></a>思路解析</h1><ol>
+<li>初始序列：91, 60, 96, 13, 35, 65, 46, 65, 10, 30, 20, 31, 77, 81, 22</li>
+<li>根据完全二叉树用数组存储，那么在数组中的下标是有规律的，左孩子是父节点下标的两倍加一，右孩子是父节点下标的两倍加二。而且最后一个父节点是数组总长度 &#x2F; 2 - 1.</li>
+<li>所以可以调整成堆，这里以大顶堆来说，每次将第一个元素和最后一个元素交换，这样就可以将最大的元素放在最后，待排序规模减一</li>
+<li>递归实现</li>
+</ol>
+<h1 id="算法性能"><a href="#算法性能" class="headerlink" title="算法性能"></a>算法性能</h1><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>堆排序的时间复杂度为O(nlogn)，其中n是待排序序列的长度。这是因为构建初始堆的时间复杂度为O(n)，而每次移除堆顶元素并重新构建堆的时间复杂度为O(logn)。由于这个过程需要重复n次，所以总的时间复杂度为O(nlogn)。堆排序的时间复杂度在最坏情况下也为O(nlogn)，这意味着无论输入数据的初始状态如何，堆排序都能保持相对稳定的性能。</p>
+<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><p>堆排序的空间复杂度为O(1)。这是因为堆排序是一种原地排序算法，它只涉及到元素之间的交换和移动，不需要额外的存储空间来存放数据。这使得堆排序在处理大型数据集时非常高效，因为它避免了存储器占用的问题。</p>
+<h2 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h2><p>根据堆排序的基本原理和常见实现，它通常被认为是<strong>不稳定</strong>的排序算法。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//堆化(参数：数组，数组长度，从某个节点开始)</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">heapify</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; v, <span class="type">int</span> n, <span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//初始化最大值为i以及左右孩子</span></span><br><span class="line">	<span class="type">int</span> largest = i, left = i * <span class="number">2</span> + <span class="number">1</span>, right = i * <span class="number">2</span> + <span class="number">2</span>;</span><br><span class="line">	<span class="comment">//如果左孩子没有越界并且大于父节点，将largest指向左孩子</span></span><br><span class="line">	<span class="keyword">if</span> (left&lt;n &amp;&amp; v[left]&gt;v[largest])largest = left;</span><br><span class="line">	<span class="comment">//同理</span></span><br><span class="line">	<span class="keyword">if</span> (right&lt;n &amp;&amp; v[right]&gt;v[largest])largest = right;</span><br><span class="line">	<span class="keyword">if</span> (largest != i) &#123;</span><br><span class="line">		<span class="built_in">swap</span>(v[largest], v[i]);</span><br><span class="line">		<span class="comment">//继续下沉</span></span><br><span class="line">		<span class="built_in">heapify</span>(v, n, largest);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">heap_sort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; v)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line">	<span class="comment">//i指向最后一个父节点</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = n / <span class="number">2</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		<span class="built_in">heapify</span>(v, n, i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//将最后一个和第一个交换，每次交换待排序规模减一</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		<span class="built_in">swap</span>(v[<span class="number">0</span>], v[i]);</span><br><span class="line">		<span class="comment">//重新堆化</span></span><br><span class="line">		<span class="built_in">heapify</span>(v, i, <span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/26/%E5%A0%86%E6%8E%92%E5%BA%8F/" data-id="cm8sja97x004b8ktbb5691xy2" data-title="堆排序" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-设计模式-桥接模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-12-26T11:26:49.000Z" itemprop="datePublished">2024-12-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">设计模式-桥接模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h1><p>桥接（Bridge）是用于把抽象化与实现化解耦，使得二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。</p>
+<p>这种模式涉及到一个作为桥接的接口，使得实体类的功能独立于接口实现类，这两种类型的类可被结构化改变而互不影响。</p>
+<p>桥接模式的目的是将抽象与实现分离，使它们可以独立地变化，该模式通过将一个对象的抽象部分与它的实现部分分离，使它们可以独立地改变。它通过组合的方式，而不是继承的方式，将抽象和实现的部分连接起来。</p>
+<h1 id="类图示例"><a href="#类图示例" class="headerlink" title="类图示例"></a>类图示例</h1><p><img src="https://www.helloimg.com/i/2024/12/26/676d4088733b8.png" alt="桥接模式.png"></p>
+<h1 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h1><p>手机品牌和手机软件之间的兼容</p>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="https://www.helloimg.com/i/2024/12/26/676d40857ff91.png" alt="手机软件桥接模式.png"></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//手机软件抽象类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">HandsetSoft</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//手机游戏</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HandsetGame</span> <span class="keyword">extends</span> <span class="title class_">HandsetSoft</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;运行手机游戏&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//手机通讯录</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HandsetAddressList</span> <span class="keyword">extends</span> <span class="title class_">HandsetSoft</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;运行手机通讯录&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//手机品牌抽象类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">HandsetBrand</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> HandsetSoft soft;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置手机软件</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setHandsetSoft</span><span class="params">(HandsetSoft soft)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.soft = soft;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//手机品牌N</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HandsetBrandN</span> <span class="keyword">extends</span> <span class="title class_">HandsetBrand</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span> &#123;</span><br><span class="line">        soft.Run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//手机品牌M</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HandsetBrandM</span> <span class="keyword">extends</span> <span class="title class_">HandsetBrand</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Run</span><span class="params">()</span> &#123;</span><br><span class="line">        soft.Run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Bridge</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        HandsetBrand ab;</span><br><span class="line">        ab = <span class="keyword">new</span> <span class="title class_">HandsetBrandN</span>();</span><br><span class="line">        ab.setHandsetSoft(<span class="keyword">new</span> <span class="title class_">HandsetGame</span>());</span><br><span class="line">        ab.Run();</span><br><span class="line">        ab.setHandsetSoft(<span class="keyword">new</span> <span class="title class_">HandsetAddressList</span>());</span><br><span class="line">        ab.Run();</span><br><span class="line">        ab = <span class="keyword">new</span> <span class="title class_">HandsetBrandM</span>();</span><br><span class="line">        ab.setHandsetSoft(<span class="keyword">new</span> <span class="title class_">HandsetGame</span>());</span><br><span class="line">        ab.Run();</span><br><span class="line">        ab.setHandsetSoft(<span class="keyword">new</span> <span class="title class_">HandsetAddressList</span>());</span><br><span class="line">        ab.Run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="桥接模式包含以下几个主要角色："><a href="#桥接模式包含以下几个主要角色：" class="headerlink" title="桥接模式包含以下几个主要角色："></a>桥接模式包含以下几个主要角色：</h1><ol>
+<li>抽象（Abstraction）：定义抽象接口，通常包含对实现接口的引用。</li>
+<li>扩展抽象（Refined Abstraction）：对抽象的扩展，可以是抽象类的子类或具体实现类。</li>
+<li>实现（Implementor）：定义实现接口，提供基本操作的接口。</li>
+<li>具体实现（Concrete Implementor）：实现实现接口的具体类。</li>
+</ol>
+<h1 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h1><ul>
+<li>优点<ol>
+<li>抽象与实现分离：提高了系统的灵活性和可维护性。</li>
+<li>扩展能力强：可以独立地扩展抽象和实现。</li>
+<li>实现细节透明：用户不需要了解实现细节。</li>
+</ol>
+</li>
+<li>缺点<ol>
+<li>理解与设计难度：桥接模式增加了系统的理解与设计难度。</li>
+<li>聚合关联：要求开发者在抽象层进行设计与编程。</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" data-id="cm8sja984005c8ktb22tj7w0j" data-title="设计模式-桥接模式" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unreal-Engine/">Unreal Engine</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 18px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Springboot/" style="font-size: 18px;">Springboot</a> <a href="/tags/Unity3D/" style="font-size: 14px;">Unity3D</a> <a href="/tags/Unreal-Engine/" style="font-size: 12px;">Unreal Engine</a> <a href="/tags/Vue/" style="font-size: 12px;">Vue</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/03/28/WebSocket/">WebSocket</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%AE%89%E8%A3%85/">Docker安装</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">Docker项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Docker快速入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Lzh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

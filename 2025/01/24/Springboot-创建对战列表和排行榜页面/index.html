@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Springboot-创建对战列表和排行榜页面 | Lzh正在写代码</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="这部分的代码实现均在backend端。 天梯积分更新随着对战的结束，要相应的更新用户的天梯积分  更新代码如下：  对局列表后端API首先实现一个API，从后端返回一个对局列表的List。实现API，需要依次编写service, service.impl, controller。 由于对局列表可能很长，需要添加分页功能。 在config.MybatisConfig中添加分页配置： 12345678">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springboot-创建对战列表和排行榜页面">
+<meta property="og:url" content="http://example.com/2025/01/24/Springboot-%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E5%92%8C%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/index.html">
+<meta property="og:site_name" content="Lzh正在写代码">
+<meta property="og:description" content="这部分的代码实现均在backend端。 天梯积分更新随着对战的结束，要相应的更新用户的天梯积分  更新代码如下：  对局列表后端API首先实现一个API，从后端返回一个对局列表的List。实现API，需要依次编写service, service.impl, controller。 由于对局列表可能很长，需要添加分页功能。 在config.MybatisConfig中添加分页配置： 12345678">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905101408875.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905102514339.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905114924342.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905114551579.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905114714223.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905121909562.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905122017059.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905194555531.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905195857088.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905173240392.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905192726799.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905204953412.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905173658505.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905173816481.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905204922888.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905205824432.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905210240683.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905210248588.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905214731291.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905215642772.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905215702172.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905215730382.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905220558503.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905220611554.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905220620228.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905222243643.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905222259006.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905222309156.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905230520878.png">
+<meta property="article:published_time" content="2025-01-24T09:00:42.000Z">
+<meta property="article:modified_time" content="2025-02-06T11:24:08.325Z">
+<meta property="article:author" content="Lzh">
+<meta property="article:tag" content="Springboot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905101408875.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lzh正在写代码" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lzh正在写代码</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Springboot-创建对战列表和排行榜页面" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/24/Springboot-%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E5%92%8C%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/" class="article-date">
+  <time class="dt-published" datetime="2025-01-24T09:00:42.000Z" itemprop="datePublished">2025-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Springboot-创建对战列表和排行榜页面
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这部分的代码实现均在backend端。</p>
+<h2 id="天梯积分更新"><a href="#天梯积分更新" class="headerlink" title="天梯积分更新"></a>天梯积分更新</h2><p>随着对战的结束，要相应的更新用户的天梯积分</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905101408875.png" alt="image-20220905101408875"></p>
+<p>更新代码如下：</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905102514339.png" alt="image-20220905102514339"></p>
+<h2 id="对局列表"><a href="#对局列表" class="headerlink" title="对局列表"></a>对局列表</h2><h3 id="后端API"><a href="#后端API" class="headerlink" title="后端API"></a>后端API</h3><p>首先实现一个API，从后端返回一个对局列表的List。实现API，需要依次编写service, service.impl, controller。</p>
+<p>由于对局列表可能很长，需要添加分页功能。</p>
+<p>在<code>config.MybatisConfig</code>中添加分页配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MybatisConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> MybatisPlusInterceptor <span class="title function_">mybatisPlusInterceptor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">MybatisPlusInterceptor</span> <span class="variable">interceptor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MybatisPlusInterceptor</span>();</span><br><span class="line">        interceptor.addInnerInterceptor(<span class="keyword">new</span> <span class="title class_">PaginationInnerInterceptor</span>(DbType.MYSQL));</span><br><span class="line">        <span class="keyword">return</span> interceptor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>service.record</code>中创建<code>GetRecordListService</code></p>
+<p>不需要将所有页面的信息均返回出来，用户需要展示第几页，就对应的返回第几页。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">GetRecordListService</span> &#123;</span><br><span class="line">    JSONObject <span class="title function_">getList</span> <span class="params">(Integer page)</span>;<span class="comment">//page表示页号 只需要返回对应页号的list</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>service.impl.record</code>中创建<code>GetRecordListServiceImpl</code></p>
+<p>假定每页展示10条信息，所以如果page &#x3D; 1，返回0<del>9条；page &#x3D; 2，返回10</del>19条</p>
+<p>直接借助mabatisplus中的工具IPage实现即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetRecordListServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">GetRecordListService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RecordMapper recordMapper;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> JSONObject <span class="title function_">getList</span><span class="params">(Integer page)</span> &#123;</span><br><span class="line">        IPage&lt;Record&gt; recordIPage = <span class="keyword">new</span> <span class="title class_">Page</span>&lt;&gt;(page, <span class="number">10</span>);<span class="comment">//每页size为10</span></span><br><span class="line">        QueryWrapper&lt;Record&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">QueryWrapper</span>&lt;&gt;();</span><br><span class="line">        queryWrapper.orderByDesc(<span class="string">&quot;id&quot;</span>);<span class="comment">//按照id逆序排序</span></span><br><span class="line">        <span class="comment">//将record按照ID逆序排序，并返回第page页的内容</span></span><br><span class="line">        List&lt;Record&gt; records = recordMapper.selectPage(recordIPage, queryWrapper).getRecords();</span><br><span class="line">        <span class="type">JSONObject</span> <span class="variable">resp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JSONObject</span>();<span class="comment">//用于返回到前端</span></span><br><span class="line">        List&lt;JSONObject&gt; items = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(Record record : records)&#123;</span><br><span class="line">            <span class="comment">//存储对战双方的用户名 用户头像</span></span><br><span class="line">            <span class="type">User</span> <span class="variable">userA</span> <span class="operator">=</span> userMapper.selectById(record.getAId());</span><br><span class="line">            <span class="type">User</span> <span class="variable">userB</span> <span class="operator">=</span> userMapper.selectById(record.getBId());</span><br><span class="line">            <span class="type">JSONObject</span> <span class="variable">item</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">            item.put(<span class="string">&quot;a_photo&quot;</span>, userA.getPhoto());</span><br><span class="line">            item.put(<span class="string">&quot;a_username&quot;</span>, userA.getUsername());</span><br><span class="line">            item.put(<span class="string">&quot;b_photo&quot;</span>, userB.getPhoto());</span><br><span class="line">            item.put(<span class="string">&quot;b_username&quot;</span>, userB.getUsername());</span><br><span class="line">            <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> <span class="string">&quot;平局&quot;</span>;</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">&quot;A&quot;</span>.equals(record.getLoser())) result = <span class="string">&quot;B胜&quot;</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;B&quot;</span>.equals(record.getLoser())) result = <span class="string">&quot;A胜&quot;</span>;</span><br><span class="line">            item.put(<span class="string">&quot;result&quot;</span>, result);</span><br><span class="line">            item.put(<span class="string">&quot;record&quot;</span>, record);</span><br><span class="line">            items.add(item);</span><br><span class="line">        &#125;</span><br><span class="line">        resp.put(<span class="string">&quot;records&quot;</span>, items);</span><br><span class="line">        resp.put(<span class="string">&quot;records_count&quot;</span>, recordMapper.selectCount(<span class="literal">null</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> resp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>controller.record</code>中创建<code>GetRecordListController</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetRecordListController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> GetRecordListService getRecordListService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/record/getlist/&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> JSONObject <span class="title function_">getList</span> <span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, String&gt; data)</span>&#123;</span><br><span class="line">       <span class="type">Integer</span> <span class="variable">page</span> <span class="operator">=</span>  Integer.parseInt(data.get(<span class="string">&quot;page&quot;</span>));</span><br><span class="line">       <span class="keyword">return</span> getRecordListService.getList(page);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="前端展示"><a href="#前端展示" class="headerlink" title="前端展示"></a>前端展示</h3><h4 id="获取列表"><a href="#获取列表" class="headerlink" title="获取列表"></a>获取列表</h4><p>在<code>RecordIndexView.vue</code>中，请求获取对局记录。</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905114924342.png" alt="image-20220905114924342"></p>
+<p>测试如下：</p>
+<p>与后端返回的格式一致，结果分两大部分records和records_count</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905114551579.png" alt="image-20220905114551579"></p>
+<p>其中records.records又包括</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905114714223.png" alt="image-20220905114714223"></p>
+<p>接下来要将列表显示出来。</p>
+<p>需要建立一个tabel，遍历records将内容展示出来</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905121909562.png" alt="image-20220905121909562"></p>
+<p>效果如下：<img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905122017059.png" alt="image-20220905122017059"></p>
+<h4 id="查看录像"><a href="#查看录像" class="headerlink" title="查看录像"></a>查看录像</h4><p>为了方便展示录像，需要存储一些全局信息，包括是否展示录像，以及a和b的steps</p>
+<p><code>record.js</code></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905194555531.png" alt="image-20220905194555531"></p>
+<p>同时，点击查看录像，需要进入一个新的页面，建立一个新的vue页面<code>src\views\record\RecordContentView.vue</code></p>
+<p>由于录像页面，和PK页面实际上大部分内容相同，因此，直接将PK页面的内容复制过来加以修改。‘</p>
+<p>这里只需要用到<code>PlayGround</code>这一个组件，初始化为。</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905195857088.png" alt="image-20220905195857088"></p>
+<p>并将这样一个页面，加入路由</p>
+<p>注意，路由中，<code>path</code>可以加入参数，这里<code>recordId</code>就是传入的参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">RecordContentView</span> <span class="keyword">from</span> <span class="string">&#x27;../views/record/RecordContentView.vue&#x27;</span></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>:<span class="string">&quot;/record/:recordId&quot;</span>,</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;record_content&quot;</span>,</span><br><span class="line">    <span class="attr">component</span>:<span class="title class_">RecordContentView</span>,</span><br><span class="line">    <span class="attr">meta</span>:&#123;</span><br><span class="line">      <span class="attr">requestAuth</span>:<span class="literal">true</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+
+<p>回到<code>src\views\record\RecordIndexView.vue</code></p>
+<p>点击查看录像按钮时，触发<code>open_record_content</code>，并且传入记录的ID</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905173240392.png" alt="image-20220905173240392"></p>
+<p>在<code>open_record_content</code>函数中，需要通过<code>updateIsrecord</code>来标记为录像页面；</p>
+<p>同时注意，在对战页面的vue页面中，取消标记</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905192726799.png" alt="image-20220905192726799"></p>
+<p>在<code>open_record_content</code>函数中同时调用<code>updateGame</code>，对游戏进行更新，调用<code>updateSteps</code>，更新<code>a_step</code>和<code>b_step</code>，调用<code>updateRecordLoser</code>，更新<code>record_loser</code></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905204953412.png" alt="image-20220905204953412"></p>
+<p>同时需要在Gamemap.js中添加一些逻辑判断。</p>
+<p>因为不管是对战页面，还是录像页面，都共用了<code>PlayGround</code>组件</p>
+<p>对于<code>PlayGround</code>组件，由<code>GameMap</code>组件构成</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905173658505.png" alt="image-20220905173658505"></p>
+<p>在GameMap中要创建GameMap类的实例</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905173816481.png" alt="image-20220905173816481"></p>
+<p>因此，不管是对战页面还是录像页面，都需要<code>GameMap.js</code>中执行相应的逻辑</p>
+<p>这里需要在<code>GameMap.js</code>中判断是录像是否被标记，如果没有标记，就依然是之前对战的逻辑。</p>
+<h4 id="操作回放"><a href="#操作回放" class="headerlink" title="操作回放"></a>操作回放</h4><p>如果录像被标记，也就是<code>this.store.state.record.is_record</code>为true。</p>
+<p>录像本质上是操作的回放，只需要根据两名玩家的steps，重新将蛇移动一遍。</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905204922888.png" alt="image-20220905204922888"></p>
+<p>这样，就实现了对局录像的展示。</p>
+<h4 id="分页展示"><a href="#分页展示" class="headerlink" title="分页展示"></a>分页展示</h4><p>借助Bootstrap的Pagination组件</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905205824432.png" alt="image-20220905205824432"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">aria-label</span>=<span class="string">&quot;...&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;pagination&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;page-item disabled&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;page-link&quot;</span>&gt;</span>Previous<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;page-item&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;page-link&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;page-item active&quot;</span> <span class="attr">aria-current</span>=<span class="string">&quot;page&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;page-link&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;page-item&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;page-link&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;page-item&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;page-link&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>Next<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>加入到vue页面中去，效果如下：</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905210240683.png" alt="image-20220905210240683"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905210248588.png" alt="image-20220905210248588"></p>
+<p>被<code>active</code>标记的数字变蓝</p>
+<p>我们的需求是，展示当前页，并且在分页栏中留出前后两页。</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905214731291.png" alt="image-20220905214731291"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905215642772.png" alt="image-20220905215642772"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905215702172.png" alt="image-20220905215702172"></p>
+<p>此时结果符合预期</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905215730382.png" alt="image-20220905215730382"></p>
+<p>并且，还需要点击哪个按钮，就要跳转到对应的页面。</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905220558503.png" alt="image-20220905220558503"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905220611554.png" alt="image-20220905220611554"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905220620228.png" alt="image-20220905220620228"></p>
+<p>分页功能成功实现！</p>
+<h2 id="排行榜"><a href="#排行榜" class="headerlink" title="排行榜"></a>排行榜</h2><h3 id="后端API-1"><a href="#后端API-1" class="headerlink" title="后端API"></a>后端API</h3><p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905222243643.png" alt="image-20220905222243643"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905222259006.png" alt="image-20220905222259006"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905222309156.png" alt="image-20220905222309156"></p>
+<h3 id="前端展示-1"><a href="#前端展示-1" class="headerlink" title="前端展示"></a>前端展示</h3><p>在对局页面<code>src\views\record\RecordIndexView.vue</code>逻辑一致，因此，代码复用率很高</p>
+<p>主要就是将records和total_records改为users和total_users，修改非常少量的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;ContentFieldVue&gt;</span><br><span class="line">        &lt;table class=&quot;table table-striped table-hover&quot; style=&quot;text-align:center&quot;&gt;</span><br><span class="line">            &lt;thead&gt;</span><br><span class="line">                &lt;tr&gt;</span><br><span class="line">                    &lt;th&gt;玩家&lt;/th&gt;</span><br><span class="line">                    &lt;th&gt;天梯积分&lt;/th&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            &lt;/thead&gt;</span><br><span class="line">            &lt;tbody&gt;</span><br><span class="line">                &lt;tr v-for=&quot;user in users&quot; :key=&quot;user.id&quot;&gt;</span><br><span class="line">                    &lt;td&gt;</span><br><span class="line">                        &lt;img :src=&quot;user.photo&quot; alt=&quot;&quot; class=&quot;ranklist-user-photo&quot;&gt;</span><br><span class="line">                        &amp;nbsp;</span><br><span class="line">                        &lt;span class=&quot;ranklist-user-username&quot;&gt; &#123;&#123; user.username &#125;&#125;&lt;/span&gt;</span><br><span class="line">                    &lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;</span><br><span class="line">                        &#123;&#123; user.rating &#125;&#125;</span><br><span class="line">                    &lt;/td&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            &lt;/tbody&gt;</span><br><span class="line">        &lt;/table&gt;</span><br><span class="line">        &lt;nav aria-label=&quot;...&quot;&gt;</span><br><span class="line">            &lt;ul class=&quot;pagination&quot; style=&quot;float:right&quot;&gt;</span><br><span class="line">                &lt;li class=&quot;page-item&quot; @click=&quot;click_page(-2)&quot;&gt;</span><br><span class="line">                    &lt;a class=&quot;page-link&quot; href=&quot;#&quot; &gt;前一页&lt;/a&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;li :class=&quot;&#x27;page-item &#x27; + page.is_active&quot; </span><br><span class="line">                    v-for=&quot;page in pages&quot; :key=&quot;page.pageId&quot; @click=&quot;click_page(page.pageId)&quot;&gt;</span><br><span class="line">                    &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;&#123;&#123;page.pageId&#125;&#125;&lt;/a&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;li class=&quot;page-item&quot; @click=&quot;click_page(-1)&quot;&gt;</span><br><span class="line">                    &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;后一页&lt;/a&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/nav&gt;</span><br><span class="line">    &lt;/ContentFieldVue&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ContentFieldVue from &#x27;../../components/ContentField.vue&#x27;</span><br><span class="line">import &#123; useStore &#125; from &#x27;vuex&#x27;;</span><br><span class="line">import $ from &#x27;jquery&#x27;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;;</span><br><span class="line">export default &#123;</span><br><span class="line">    components: &#123;</span><br><span class="line">        ContentFieldVue</span><br><span class="line">    &#125;,</span><br><span class="line">    setup() &#123;</span><br><span class="line">        const store = useStore();</span><br><span class="line">        let current_page = 1;</span><br><span class="line">        let users = ref([]);</span><br><span class="line">        let total_users = 0;</span><br><span class="line">        let pages = ref([]);</span><br><span class="line">        const click_page = page =&gt; &#123;</span><br><span class="line">            if(page === -2)</span><br><span class="line">                page = current_page - 1;</span><br><span class="line">            if(page === -1)</span><br><span class="line">                page = current_page + 1;</span><br><span class="line">            let max_pages = parseInt(Math.ceil(total_users / 3));</span><br><span class="line">            if(page &gt;= 1 &amp;&amp; page &lt;= max_pages)&#123;</span><br><span class="line">                pull_page(page);//加载一个新的分页</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        const update_pages = () =&gt;&#123;</span><br><span class="line">            let max_pages = parseInt(Math.ceil(total_users / 3));//最大页数</span><br><span class="line">            let new_pages = [];</span><br><span class="line">            for(let i = current_page - 2; i &lt;= current_page + 2; i++)&#123;</span><br><span class="line">                if(i &gt;= 1 &amp;&amp; i &lt;= max_pages)&#123;</span><br><span class="line">                    new_pages.push(&#123;</span><br><span class="line">                        pageId:i,</span><br><span class="line">                        is_active:i === current_page ? &quot;active&quot; : &quot;&quot;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;   </span><br><span class="line">            pages.value = new_pages;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        const pull_page = page =&gt; &#123;</span><br><span class="line">            current_page = page;</span><br><span class="line">            $.ajax(&#123;</span><br><span class="line">                url: &quot;http://127.0.0.1:3000/ranklist/getlist/&quot;,</span><br><span class="line">                data: &#123;</span><br><span class="line">                    page,</span><br><span class="line">                &#125;,</span><br><span class="line">                type: &quot;get&quot;,</span><br><span class="line">                headers: &#123;</span><br><span class="line">                    Authorization: &quot;Bearer &quot; + store.state.user.token,</span><br><span class="line">                &#125;,</span><br><span class="line">                success(resp) &#123;</span><br><span class="line">                    console.log(resp);</span><br><span class="line">                    users.value = resp.users;</span><br><span class="line">                    total_users = resp.user_count;</span><br><span class="line">                    update_pages();</span><br><span class="line">                &#125;,</span><br><span class="line">                error(resp) &#123;</span><br><span class="line">                    console.log(resp);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        pull_page(current_page);</span><br><span class="line"></span><br><span class="line">        return &#123;</span><br><span class="line">            users,</span><br><span class="line">            total_users,</span><br><span class="line">            pages,</span><br><span class="line">            click_page</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>此时就可以实现</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E4%B8%8E%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/image-20220905230520878.png" alt="image-20220905230520878"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/24/Springboot-%E5%88%9B%E5%BB%BA%E5%AF%B9%E6%88%98%E5%88%97%E8%A1%A8%E5%92%8C%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%A1%B5%E9%9D%A2/" data-id="cm8sja97d001h8ktb6qmudg9y" data-title="Springboot-创建对战列表和排行榜页面" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Docker快速入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/24/Springboot-%E5%AE%9E%E7%8E%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1Bot%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Springboot-实现微服务Bot代码的执行</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unreal-Engine/">Unreal Engine</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 18px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Springboot/" style="font-size: 18px;">Springboot</a> <a href="/tags/Unity3D/" style="font-size: 14px;">Unity3D</a> <a href="/tags/Unreal-Engine/" style="font-size: 12px;">Unreal Engine</a> <a href="/tags/Vue/" style="font-size: 12px;">Vue</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/03/28/WebSocket/">WebSocket</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%AE%89%E8%A3%85/">Docker安装</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">Docker项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Docker快速入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Lzh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

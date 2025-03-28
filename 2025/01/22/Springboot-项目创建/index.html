@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Springboot-项目创建 | Lzh正在写代码</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="项目功能 配置git环境 安装Git Bash（使用Mac和Linux的可以跳过这一步）：https:&#x2F;&#x2F;gitforwindows.org&#x2F;  全部默认即可   输入cd回车进入家目录，执行命令ssh-keygen生成秘钥  我们使用Gitee(Github、Acgit)的时候，通信的方式通过ssh 由于Gitee不支持用户名密码，因此需要借助秘钥来操作上      然后进入.ssh文件夹，id">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springboot-项目创建">
+<meta property="og:url" content="http://example.com/2025/01/22/Springboot-%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Lzh正在写代码">
+<meta property="og:description" content="项目功能 配置git环境 安装Git Bash（使用Mac和Linux的可以跳过这一步）：https:&#x2F;&#x2F;gitforwindows.org&#x2F;  全部默认即可   输入cd回车进入家目录，执行命令ssh-keygen生成秘钥  我们使用Gitee(Github、Acgit)的时候，通信的方式通过ssh 由于Gitee不支持用户名密码，因此需要借助秘钥来操作上      然后进入.ssh文件夹，id">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708bb1d10.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708b49863.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708b82115.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708b90746.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708b62a64.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708b65650.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708e9a92b.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708e9b2e4.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708ed3071.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708ee06b9.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/679070905660c.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790708f452e7.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/679070913378c.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709192dd4.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/679070918ff06.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/67907091e5289.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709225f59.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/67907092dc629.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/67907093e7e2a.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709467c58.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/67907094e2662.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/679070954cc14.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/67907094d325f.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/679070952de58.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/679070971d8e9.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/67907097dfd65.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/67907097a6697.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/67907097ad9ae.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/67907098383d4.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/67907098325d0.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/679070995ab91.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709a4e832.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709a2c619.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709ad1378.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709ad4664.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709aee8a5.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709bda523.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709d4b6a6.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709cb8bb5.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709d6f764.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709d8ce22.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/22/6790709dc1ed9.png">
+<meta property="article:published_time" content="2025-01-22T04:25:14.000Z">
+<meta property="article:modified_time" content="2025-02-06T11:24:09.642Z">
+<meta property="article:author" content="Lzh">
+<meta property="article:tag" content="Springboot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.helloimg.com/i/2025/01/22/6790708bb1d10.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lzh正在写代码" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lzh正在写代码</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Springboot-项目创建" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/22/Springboot-%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" class="article-date">
+  <time class="dt-published" datetime="2025-01-22T04:25:14.000Z" itemprop="datePublished">2025-01-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Springboot-项目创建
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="项目功能"><a href="#项目功能" class="headerlink" title="项目功能"></a>项目功能</h3><p><img src="https://www.helloimg.com/i/2025/01/22/6790708bb1d10.png" alt="springboot1-1.png"></p>
+<h3 id="配置git环境"><a href="#配置git环境" class="headerlink" title="配置git环境"></a>配置git环境</h3><ol>
+<li><p>安装Git Bash（使用Mac和Linux的可以跳过这一步）：<a target="_blank" rel="noopener" href="https://gitforwindows.org/">https://gitforwindows.org/</a></p>
+<blockquote>
+<p>全部默认即可</p>
+</blockquote>
+</li>
+<li><p>输入<code>cd</code>回车进入家目录，执行命令<code>ssh-keygen</code>生成秘钥</p>
+<blockquote>
+<p>我们使用Gitee(Github、Acgit)的时候，通信的方式通过ssh</p>
+<p>由于Gitee不支持用户名密码，因此需要借助秘钥来操作上</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790708b49863.png" alt="springboot1-2.png"></p>
+<ol start="3">
+<li>然后进入<code>.ssh</code>文件夹，<code>id_rsa</code>和<code>id_rsa.pub</code>分别代表私钥和公钥文件，我们将公钥取出。</li>
+</ol>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790708b82115.png" alt="springboot1-3.png"></p>
+<ol start="4">
+<li>将id_rsa.pub的内容复制到Gitee上</li>
+</ol>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790708b90746.png" alt="springboot1-4.png"></p>
+<blockquote>
+<p>使用SSH公钥可以让你在你的电脑和 Gitee 通讯的时候使用安全连接（Git的Remote要使用SSH地址）</p>
+</blockquote>
+<h3 id="创建项目后端"><a href="#创建项目后端" class="headerlink" title="创建项目后端"></a>创建项目后端</h3><p><img src="https://www.helloimg.com/i/2025/01/22/6790708b62a64.png" alt="springboot1-5.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790708b65650.png" alt="springboot1-6.png"></p>
+<blockquote>
+<p>注意，Thymeleaf是通过前后端不分离的方式写页面，由于我们的最终的项目是前后端分离，因此只是借助这个依赖演示一下前后端不分离的场景。最终是不使用这个依赖的。</p>
+</blockquote>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790708e9a92b.png" alt="springboot1-7.png"></p>
+<p>Spring后端主要作用是负责实现一些函数，其中每一个url对应一个函数，负责给用户返回一些页面。</p>
+<p>一般而言，我们建立一个名为controller的package，用于存储所有的后端函数，在controller中新建pk包。</p>
+<h4 id="前后端不分离"><a href="#前后端不分离" class="headerlink" title="前后端不分离"></a>前后端不分离</h4><p>在pk包中新建java文件，如果将其作为url对应的函数，需要添加<code>@Controller</code>注解</p>
+<p>我们期待pk包中的所有文件所对应的url链接，都在pk目录下。</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790708e9b2e4.png" alt="springboot1-8.png"></p>
+<p>因此，添加注解<code>@RequestMapping(&quot;/pk/&quot;)</code>，也就是添加父目录的意思。</p>
+<p>每一个url请求，都要返回一个HTML页面，我们将需要返回的页面在<code>backend/src/main/resources/templates</code>中创建。</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790708ed3071.png" alt="springboot1-9.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790708ee06b9.png" alt="springboot1-10.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/679070905660c.png" alt="springboot1-11.png"></p>
+<p>注意每次修改之后，都需要重启项目。</p>
+<p>以上就是前后端不分离的写法，后端向前端返回一个html页面。</p>
+<h4 id="前后端分离"><a href="#前后端分离" class="headerlink" title="前后端分离"></a>前后端分离</h4><p>而对于前后端分离的写法，后端函数向前端返回的只是一些数据。</p>
+<p>需要用到<code>@RestController</code>而不是<code>@Controller</code></p>
+<blockquote>
+<p><code>@RestController</code>用于返回数据</p>
+<p><code>@Controller</code>是根据返回的<code>String</code>去寻找<code>template</code>中的<code>html</code>文件</p>
+</blockquote>
+<p>可以返回字符串，可以返回List，也可以返回Map等等。</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790708f452e7.png" alt="springboot1-12.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/679070913378c.png" alt="springboot1-13.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709192dd4.png" alt="springboot1-14.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/679070918ff06.png" alt="springboot1-15.png"></p>
+<p>同样，还可以将Map嵌套到List中</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/67907091e5289.png" alt="springboot1-16.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709225f59.png" alt="springboot1-17.png"></p>
+<h4 id="提交git"><a href="#提交git" class="headerlink" title="提交git"></a>提交git</h4><p><img src="https://www.helloimg.com/i/2025/01/22/67907092dc629.png" alt="springboot1-18.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/67907093e7e2a.png" alt="springboot1-19.png"></p>
+<p>此时</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709467c58.png" alt="springboot1-20.png"></p>
+<p>同时IDEA中代码不再爆红</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/67907094e2662.png" alt="springboot1-21.png"></p>
+<h3 id="创建项目Web端"><a href="#创建项目Web端" class="headerlink" title="创建项目Web端"></a>创建项目Web端</h3><h4 id="Vue安装"><a href="#Vue安装" class="headerlink" title="Vue安装"></a>Vue安装</h4><p>1、安装<code>Nodejs</code></p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a></p>
+<p>2、安装<code>@vue/cli</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i <span class="literal">-g</span> @vue/<span class="built_in">cli</span></span><br></pre></td></tr></table></figure>
+
+<p>这里推荐使用早期版本</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i <span class="literal">-g</span> @vue/<span class="built_in">cli</span>@<span class="number">4.5</span></span><br></pre></td></tr></table></figure>
+
+<p>3、启动<code>vue</code>自带的图形化项目管理界面</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue ui</span><br></pre></td></tr></table></figure>
+
+<h4 id="Vue项目管理"><a href="#Vue项目管理" class="headerlink" title="Vue项目管理"></a>Vue项目管理</h4><p>从而打开了vue的控制台</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/679070954cc14.png" alt="springboot1-22.png"></p>
+<h5 id="创建Web"><a href="#创建Web" class="headerlink" title="创建Web"></a>创建Web</h5><p>使用控制台创建项目，名为web。</p>
+<p>注意将初始化git仓库取消</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/67907094d325f.png" alt="springboot1-23.png"></p>
+<p>安装插件<code>vue-router</code>和<code>vuex</code></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/679070952de58.png" alt="springboot1-24.png"></p>
+<p>安装依赖<code>jquery</code>和<code>bootstrap</code></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/679070971d8e9.png" alt="springboot1-25.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/67907097dfd65.png" alt="springboot1-26.png"></p>
+<p>运行serve</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/67907097a6697.png" alt="springboot1-27.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/67907097ad9ae.png" alt="springboot1-28.png"></p>
+<p>此时，项目创建成功</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/67907098383d4.png" alt="springboot1-29.png"></p>
+<p>同理，再创建一个项目acapp</p>
+<h5 id="创建Acapp"><a href="#创建Acapp" class="headerlink" title="创建Acapp"></a>创建Acapp</h5><p>添加vuex插件，成功后会在列表显示</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/67907098325d0.png" alt="springboot1-30.png"></p>
+<p>此时就可以通过serve运行。</p>
+<p>之后再将项目更新到git上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git status</span><br><span class="line">git commit - m <span class="string">&quot;创建web端和acapp端&quot;</span></span><br><span class="line">git push</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h3 id="前后端交互"><a href="#前后端交互" class="headerlink" title="前后端交互"></a>前后端交互</h3><p><img src="https://www.helloimg.com/i/2025/01/22/679070995ab91.png" alt="springboot1-31.png"></p>
+<p>在<code>src\router\index.js</code>文件中，去掉<code>createWebHashHistory</code>中的<code>Hash</code></p>
+<p>尝试在通过前端发送get请求获取后端数据</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709a4e832.png" alt="springboot1-32.png"></p>
+<p>在前端中，通过F12观察请求的相应情况：</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709a2c619.png" alt="springboot1-33.png"></p>
+<p>此为跨域问题，我们的web当前域名是localhost:8081，但是我们请求的地址的域名是localhost:3000，产生跨域问题，属于浏览器安全机制。</p>
+<h4 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h4><p>在SpringBoot中解决跨域问题<br>添加配置类：CorsConfig</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kob.backend.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.CorsRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CorsConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> WebMvcConfigurer <span class="title function_">corsConfigurer</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">WebMvcConfigurer</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> &#123;</span><br><span class="line">                registry.addMapping(<span class="string">&quot;/**&quot;</span>)  <span class="comment">// 允许所有路径</span></span><br><span class="line">                        .allowedOrigins(<span class="string">&quot;http://localhost:8080&quot;</span>)  <span class="comment">// 允许所有来源</span></span><br><span class="line">                        .allowedMethods(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>, <span class="string">&quot;PUT&quot;</span>, <span class="string">&quot;DELETE&quot;</span>, <span class="string">&quot;OPTIONS&quot;</span>)  <span class="comment">// 允许的HTTP方法</span></span><br><span class="line">                        .allowedHeaders(<span class="string">&quot;*&quot;</span>)  <span class="comment">// 允许所有请求头</span></span><br><span class="line">                        .allowCredentials(<span class="literal">true</span>)  <span class="comment">// 允许携带凭证（如cookies）</span></span><br><span class="line">                        .maxAge(<span class="number">3600</span>);  <span class="comment">// 预检请求的缓存时间（单位：秒）</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><p><code>setup:()</code>可以认为是整个组件的入口</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709ad1378.png" alt="springboot1-34.png"></p>
+<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><p><img src="https://www.helloimg.com/i/2025/01/22/6790709ad4664.png" alt="springboot1-35.png"></p>
+<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p><img src="https://www.helloimg.com/i/2025/01/22/6790709aee8a5.png" alt="springboot1-36.png"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在vue中实现的所有代码，都是在用户浏览器中执行，而不是在后端执行。也就是用户在打开网页的时候，会将vue代码全部先下载到浏览器，然后浏览器逐个执行每段代码。</p>
+<p>可以查看网页源代码：</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709bda523.png" alt="springboot1-37.png"></p>
+<p>上述所实现的所有代码全部都集成在了app.js中</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709d4b6a6.png" alt="springboot1-38.png"></p>
+<p>其中，执行到这段代码的时候：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">setup</span>:<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> bot_name = <span class="title function_">ref</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">let</span> bot_rating = <span class="title function_">ref</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    $.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>:<span class="string">&quot;http://127.0.0.1:3000/pk/getbotinfo/&quot;</span>,</span><br><span class="line">    <span class="attr">type</span>:<span class="string">&quot;get&quot;</span>,</span><br><span class="line">    <span class="attr">success</span>:<span class="function"><span class="params">resp</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(resp);</span><br><span class="line">      bot_name.<span class="property">value</span> = resp.<span class="property">name</span>;</span><br><span class="line">      bot_rating.<span class="property">value</span> = resp.<span class="property">rating</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">      bot_name,</span><br><span class="line">      bot_rating</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>交互逻辑是这样的：</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709cb8bb5.png" alt="springboot1-39.png"></p>
+<p>用户浏览器拿到了结果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">success</span>:<span class="function"><span class="params">resp</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(resp);</span><br><span class="line">      bot_name.<span class="property">value</span> = resp.<span class="property">name</span>;</span><br><span class="line">      bot_rating.<span class="property">value</span> = resp.<span class="property">rating</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>数据动态绑定到前端页面中</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709d6f764.png" alt="springboot1-40.png"></p>
+<p>并且这种方式，更改后端所返回的JSON数据，前端页面也相应的发生改变。</p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709d8ce22.png" alt="springboot1-41.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/22/6790709dc1ed9.png" alt="springboot1-42.png"></p>
+<p>最后记得每次改动完，都要记得保存代码到Git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git status</span><br><span class="line">git commit - m <span class="string">&quot;创建web端和acapp端&quot;</span></span><br><span class="line">git push</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p>并且记得关闭Vue CLI的服务，否则8080端口将会被一直占用。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/22/Springboot-%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" data-id="cm8sja97f001t8ktb7fhy5fcl" data-title="Springboot-项目创建" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8A/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Vue实现个人空间-上
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/15/UE5-%E8%93%9D%E5%9B%BE%E5%9F%BA%E7%A1%80-%E4%B8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">UE5-蓝图基础(下)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unreal-Engine/">Unreal Engine</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 18px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Springboot/" style="font-size: 18px;">Springboot</a> <a href="/tags/Unity3D/" style="font-size: 14px;">Unity3D</a> <a href="/tags/Unreal-Engine/" style="font-size: 12px;">Unreal Engine</a> <a href="/tags/Vue/" style="font-size: 12px;">Vue</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/03/28/WebSocket/">WebSocket</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%AE%89%E8%A3%85/">Docker安装</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">Docker项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Docker快速入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Lzh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

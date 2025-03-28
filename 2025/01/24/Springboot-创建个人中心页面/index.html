@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Springboot-创建个人中心页面 | Lzh正在写代码</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="数据库在数据库中创建表bot表中包含的列：  id: int：非空、自动增加、唯一、主键 user_id: int：非空，用于表示bot的作者 注意：在pojo中需要定义成userId，也就是驼峰命名；在queryWrapper中的名称仍然为user_id   title: varchar(100) description: varchar(300) content：varchar(10000)，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springboot-创建个人中心页面">
+<meta property="og:url" content="http://example.com/2025/01/24/Springboot-%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/index.html">
+<meta property="og:site_name" content="Lzh正在写代码">
+<meta property="og:description" content="数据库在数据库中创建表bot表中包含的列：  id: int：非空、自动增加、唯一、主键 user_id: int：非空，用于表示bot的作者 注意：在pojo中需要定义成userId，也就是驼峰命名；在queryWrapper中的名称仍然为user_id   title: varchar(100) description: varchar(300) content：varchar(10000)，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220730175603032.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220730175652505.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220730175706824.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220730161935590.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803163606182.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803164320577.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803164531213.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803175914899.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803175658935.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803175725945.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803180128323.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803180638349.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803181249268.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803181301330.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803181623641.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803195744539.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803195722573.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803201514876.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803201645383.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803201904298.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803202429396.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803202518882.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803202531284.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803202734494.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803210955149.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803211231932.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803211408078.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803212149775.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803212300911.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803213335451.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803213640148.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803213657557.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803214828599.png">
+<meta property="article:published_time" content="2025-01-24T08:58:59.000Z">
+<meta property="article:modified_time" content="2025-02-06T11:24:08.605Z">
+<meta property="article:author" content="Lzh">
+<meta property="article:tag" content="Springboot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220730175603032.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lzh正在写代码" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lzh正在写代码</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Springboot-创建个人中心页面" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/24/Springboot-%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/" class="article-date">
+  <time class="dt-published" datetime="2025-01-24T08:58:59.000Z" itemprop="datePublished">2025-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Springboot-创建个人中心页面
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>在数据库中创建表<code>bot</code><br>表中包含的列：</p>
+<ul>
+<li><code>id: int</code>：非空、自动增加、唯一、主键</li>
+<li><code>user_id: int</code>：非空，用于表示<code>bot</code>的作者<ul>
+<li>注意：在pojo中需要定义成<code>userId</code>，也就是驼峰命名；在<code>queryWrapper</code>中的名称仍然为<code>user_id</code></li>
+</ul>
+</li>
+<li><code>title: varchar(100)</code></li>
+<li><code>description: varchar(300)</code></li>
+<li><code>content：varchar(10000)</code>，对应的<code>bot</code>的代码</li>
+<li><code>rating: int</code>：默认值为1500</li>
+<li><code>createtime: datetime</code><ul>
+<li><code>pojo</code>中定义日期格式的注解：<code>@JsonFormat(pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;)</code></li>
+</ul>
+</li>
+<li><code>modifytime</code>: <code>datetime</code><ul>
+<li><code>pojo</code>中定义日期格式的注解：<code>@JsonFormat(pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="Pojo"><a href="#Pojo" class="headerlink" title="Pojo"></a>Pojo</h2><p><code>backend/pojo</code>中.java创建对应的<code>Bot.java</code>，将表中的内容映射成<code>class</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Bot</span> &#123;</span><br><span class="line">    <span class="meta">@TableId(type = IdType.AUTO)</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> Integer userId;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line">    <span class="keyword">private</span> String content;</span><br><span class="line">    <span class="keyword">private</span> Integer rating;</span><br><span class="line">    <span class="meta">@JsonFormat(pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Date createtime;</span><br><span class="line">    <span class="meta">@JsonFormat(pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Date modifytime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="mapper"><a href="#mapper" class="headerlink" title="mapper"></a>mapper</h2><p>创建<code>backend/mapper/BotMapper.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">BotMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="后端API"><a href="#后端API" class="headerlink" title="后端API"></a>后端API</h2><p>接下来就需要实现有关增删改查的四个后端<code>api</code></p>
+<ul>
+<li><code>/user/bot/add/</code>：创建一个<code>Bot</code></li>
+<li><code>/user/bot/remove/</code>：删除一个<code>Bot</code></li>
+<li><code>/user/bot/update/</code>：修改一个<code>Bot</code></li>
+<li><code>/user/bot/getlist/</code>：查询<code>Bot</code>列表</li>
+</ul>
+<p>对于后端api，总共需要实现三个地方，service，service.impl和controller</p>
+<h3 id="service"><a href="#service" class="headerlink" title="service"></a>service</h3><p>1）<code>service.user.bot.AddService.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">AddService</span> &#123;</span><br><span class="line">    Map&lt;String, String&gt; <span class="title function_">add</span> <span class="params">(Map&lt;String, String&gt; data)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2）<code>service.user.bot.RemoveService.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">RemoveService</span> &#123;</span><br><span class="line">    Map&lt;String, String&gt; <span class="title function_">remove</span><span class="params">(Map&lt;String, String&gt; data)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3）<code>service.user.bot.UpdateService.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UpdateService</span> &#123;</span><br><span class="line">    Map&lt;String, String&gt; <span class="title function_">update</span> <span class="params">(Map &lt;String, String&gt; data)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4）<code>service.user.bot.GetListService.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">GetListService</span> &#123;</span><br><span class="line">    <span class="comment">//查询当前用户的bot</span></span><br><span class="line">    List&lt;Bot&gt; <span class="title function_">getlist</span><span class="params">()</span>;<span class="comment">//由于当前用户的user id保存在token中 因此不用传参数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="service-impl"><a href="#service-impl" class="headerlink" title="service.impl"></a>service.impl</h3><p>1）<code>service.impl.user.bot.AddServiceImpl.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AddServiceImpl</span>  <span class="keyword">implements</span> <span class="title class_">AddService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BotMapper botMapper;<span class="comment">//注入接口</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;String, String&gt; <span class="title function_">add</span><span class="params">(Map&lt;String, String&gt; data)</span> &#123;</span><br><span class="line">        <span class="comment">//1. 获取User</span></span><br><span class="line">        <span class="comment">//同InfoServiceImpl一样 如果授权成功 则从上下文中将User信息提取出来</span></span><br><span class="line">        <span class="type">UsernamePasswordAuthenticationToken</span> <span class="variable">authenticationToken</span> <span class="operator">=</span></span><br><span class="line">                (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();</span><br><span class="line">        <span class="type">UserDetailsImpl</span> <span class="variable">loginUser</span> <span class="operator">=</span> (UserDetailsImpl) authenticationToken.getPrincipal();</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> loginUser.getUser();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2. 获取data内容</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">title</span> <span class="operator">=</span> data.get(<span class="string">&quot;title&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">description</span> <span class="operator">=</span> data.get(<span class="string">&quot;description&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> data.get(<span class="string">&quot;content&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Map&lt;String,String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();<span class="comment">//定义return格式</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//语法检查</span></span><br><span class="line">        <span class="keyword">if</span>(title == <span class="literal">null</span> || title.length() == <span class="number">0</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;标题不能为空&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(title.length() &gt; <span class="number">100</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;标题长度不能大于100&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(description == <span class="literal">null</span> || description.length() == <span class="number">0</span>)&#123;</span><br><span class="line">            description = <span class="string">&quot;这个用户很懒，什么也没有留下&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(description.length() &gt; <span class="number">300</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;Bot描述的长度不能大于300&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(content == <span class="literal">null</span> || content.length() == <span class="number">0</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;代码不能为空&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(content.length() &gt; <span class="number">10000</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;代码长度不能大于10000&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3. 创建Bot对象</span></span><br><span class="line">        <span class="type">Date</span> <span class="variable">now</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">        <span class="comment">//id自增 因此不用传</span></span><br><span class="line">        <span class="comment">//创建时间和修改时间一致</span></span><br><span class="line">        <span class="type">Bot</span> <span class="variable">bot</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Bot</span>(<span class="literal">null</span>, user.getId(), title, description, content, <span class="number">1500</span>, now, now);</span><br><span class="line">        botMapper.insert(bot);</span><br><span class="line">        map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;success&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2）<code>service.impl.user.bot.RemoveServiceImpl.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RemoveServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">RemoveService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BotMapper botMapper;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;String, String&gt; <span class="title function_">remove</span><span class="params">(Map&lt;String, String&gt; data)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.获取当前User</span></span><br><span class="line">        <span class="type">UsernamePasswordAuthenticationToken</span> <span class="variable">authenticationToken</span> <span class="operator">=</span></span><br><span class="line">                (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();</span><br><span class="line">        <span class="type">UserDetailsImpl</span> <span class="variable">loginUser</span> <span class="operator">=</span> (UserDetailsImpl) authenticationToken.getPrincipal();</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> loginUser.getUser();</span><br><span class="line">        <span class="comment">//2.获取bot</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">bot_id</span> <span class="operator">=</span> Integer.parseInt(data.get(<span class="string">&quot;bot_id&quot;</span>));</span><br><span class="line">        <span class="type">Bot</span> <span class="variable">bot</span> <span class="operator">=</span> botMapper.selectById(bot_id);</span><br><span class="line"></span><br><span class="line">        Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.判断条件</span></span><br><span class="line">        <span class="keyword">if</span>(bot == <span class="literal">null</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;Bot不存在或已被删除&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!bot.getUserId().equals(user.getId()))&#123;<span class="comment">//比较数字对象用equals</span></span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;没有权限删除该Bot&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        botMapper.deleteById(bot_id);</span><br><span class="line">        map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;success&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3)<code>service.impl.user.bot.UpdateServiceImpl.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UpdateServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">UpdateService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BotMapper botMapper;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;String, String&gt; <span class="title function_">update</span><span class="params">(Map&lt;String, String&gt; data)</span> &#123;</span><br><span class="line">        <span class="comment">//1.获取当前User</span></span><br><span class="line">        <span class="type">UsernamePasswordAuthenticationToken</span> <span class="variable">authenticationToken</span></span><br><span class="line">                <span class="operator">=</span> (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();</span><br><span class="line">        <span class="type">UserDetailsImpl</span> <span class="variable">loginUser</span></span><br><span class="line">                <span class="operator">=</span> (UserDetailsImpl) authenticationToken.getPrincipal();</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> loginUser.getUser();</span><br><span class="line">        <span class="comment">//2.获取属性并检查</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">title</span> <span class="operator">=</span> data.get(<span class="string">&quot;title&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">description</span> <span class="operator">=</span> data.get(<span class="string">&quot;description&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> data.get(<span class="string">&quot;content&quot;</span>);</span><br><span class="line">        <span class="type">Date</span> <span class="variable">now</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">        <span class="comment">//语法检查</span></span><br><span class="line">        Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(title == <span class="literal">null</span> || title.length() == <span class="number">0</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;标题不能为空&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(title.length() &gt; <span class="number">100</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;标题长度不能大于100&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(description == <span class="literal">null</span> || description.length() == <span class="number">0</span>)&#123;</span><br><span class="line">            description = <span class="string">&quot;这个用户很懒，什么也没有留下&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(description.length() &gt; <span class="number">300</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;Bot描述的长度不能大于300&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(content == <span class="literal">null</span> || content.length() == <span class="number">0</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;代码不能为空&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(content.length() &gt; <span class="number">10000</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;代码长度不能大于10000&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.获取bot并更新</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">bot_id</span> <span class="operator">=</span> Integer.parseInt(data.get(<span class="string">&quot;bot_id&quot;</span>));</span><br><span class="line">        <span class="type">Bot</span> <span class="variable">bot</span> <span class="operator">=</span> botMapper.selectById(bot_id);</span><br><span class="line">        <span class="keyword">if</span>(bot == <span class="literal">null</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>,<span class="string">&quot;Bot不存在或已删除&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!bot.getUserId().equals(user.getId()))&#123;</span><br><span class="line">            map.put(<span class="string">&quot;error_message&quot;</span>, <span class="string">&quot;没有权限修改该Bot&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//注意 id userid不可改 rating不在此处修改</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            bot.setTitle(title);</span><br><span class="line">            bot.setDescription(description);</span><br><span class="line">            bot.setContent(content);</span><br><span class="line">            bot.setModifytime(now);</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;更新失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        botMapper.updateById(bot);</span><br><span class="line">        map.put(<span class="string">&quot;error_message&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4）<code>service.impl.user.bot.GetListServiceImpl.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetListServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">GetListService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BotMapper botMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Bot&gt; <span class="title function_">getlist</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//1.获取用户</span></span><br><span class="line">        <span class="type">UsernamePasswordAuthenticationToken</span> <span class="variable">authenticationToken</span> <span class="operator">=</span></span><br><span class="line">                (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();</span><br><span class="line">        <span class="type">UserDetailsImpl</span> <span class="variable">loginUser</span> <span class="operator">=</span> (UserDetailsImpl) authenticationToken.getPrincipal();</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> loginUser.getUser();</span><br><span class="line">        <span class="comment">//2.查询当前用户下的所有Bot</span></span><br><span class="line">        QueryWrapper&lt;Bot&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">QueryWrapper</span>();</span><br><span class="line">        queryWrapper.eq(<span class="string">&quot;user_id&quot;</span>,user.getId());</span><br><span class="line">        List&lt;Bot&gt; bots = botMapper.selectList(queryWrapper);</span><br><span class="line">        <span class="keyword">return</span> bots;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h3><p>1）<code>controller.user.bot.AddController.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AddController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AddService addService;<span class="comment">//将AddService接口注入</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/user/bot/add/&quot;)</span> <span class="comment">//处理涉及修改数据库的请求 用Post</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;String, String&gt; <span class="title function_">add</span> <span class="params">(<span class="meta">@RequestParam</span> Map&lt;String,String&gt; data)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> addService.add(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<p>在<code>views\user\bot\UserBotIndexView.vue</code>中创建如下代码：</p>
+<img src="/images/创建个人中心页面/image-20220730175603032.png" alt="image-20220730175603032" style="zoom:67%;" />
+
+<p>使用<code>zhou</code>进行登录，对应的<code>userID</code>为7</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220730175652505.png" alt="image-20220730175652505"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220730175706824.png" alt="image-20220730175706824"></p>
+<p>2）<code>controller.user.bot.RemoveController.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RemoveController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RemoveService removeService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/user/bot/remove/&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;String,String&gt; <span class="title function_">remove</span> <span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, String&gt; data)</span>&#123;</span><br><span class="line">        <span class="comment">//data中只保存botid的信息</span></span><br><span class="line">        <span class="keyword">return</span> removeService.remove(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3）<code>controller.user.bot.UpdateController.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UpdateController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UpdateService updateService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/user/bot/update/&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;String, String&gt; <span class="title function_">update</span> <span class="params">(<span class="meta">@RequestParam</span> Map&lt;String,String&gt; data)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> updateService.update(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4）<code>controller.user.bot.GetListController.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetListController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> GetListService getListService;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/user/bot/getlist&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Bot&gt; <span class="title function_">getlist</span> <span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getListService.getlist();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="前端实现"><a href="#前端实现" class="headerlink" title="前端实现"></a>前端实现</h2><p>接下来实现“我的Bot”页面</p>
+<p>在个人中心页面，要能对Bot进行增删改查</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220730161935590.png" alt="image-20220730161935590"></p>
+<h3 id="展示列表"><a href="#展示列表" class="headerlink" title="展示列表"></a>展示列表</h3><p>依然是使用Grid system进行布局，Grid system将一行分成12份，我们设置头像占3份，其余占9份</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-3&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card-body&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">&quot;$store.state.user.photo&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width:100%&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-9&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card-header&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;font-size:130%&quot;</span>&gt;</span>我的Bot<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary float-end&quot;</span>&gt;</span>创建<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card-body&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-tag">div</span><span class="selector-class">.card</span>&#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>样式如下：</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803163606182.png" alt="image-20220803163606182"></p>
+<p>现在需要显示bot列表，就需要通过Ajax来请求后端的api：<code>/user/bot/getlist/</code></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803164320577.png" alt="image-20220803164320577"></p>
+<p>然后将获取到的bots渲染到前端</p>
+<p>首先添加一个表格样式：</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803164531213.png" alt="image-20220803164531213"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803175914899.png" alt="image-20220803175914899"></p>
+<p>此时，前端就将后端数据库中的结果遍历出来（当前登录的是7号用户）</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803175658935.png" alt="image-20220803175658935"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803175725945.png" alt="image-20220803175725945"></p>
+<h3 id="创建Bot"><a href="#创建Bot" class="headerlink" title="创建Bot"></a>创建Bot</h3><p>设想是点击创建之后，可以有一个悬浮窗，我们在悬浮窗中创建。</p>
+<p>用到Bootstrap的Modal组件</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803180128323.png" alt="image-20220803180128323"></p>
+<p>使用其中一个demo进行修改</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803180638349.png" alt="image-20220803180638349"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803181249268.png" alt="image-20220803181249268"></p>
+<p>效果如下：</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803181301330.png" alt="image-20220803181301330"></p>
+<p>现在需要继续在里面添加Form表单</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803181623641.png" alt="image-20220803181623641"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803195744539.png" alt="image-20220803195744539"></p>
+<p>效果如下：</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803195722573.png" alt="image-20220803195722573"></p>
+<p>在<code>script</code>中，借助<code>reactive</code>定义一个<code>Bot</code>对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; reactive &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="comment">// 定义一个Bot对象</span></span><br><span class="line"><span class="keyword">const</span> botadd = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">    <span class="attr">title</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">description</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">content</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">error_message</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>并在前端通过<code>v-model</code>将输入的内容与对象的属性绑定</p>
+<p>在点击创建的时候，触发<code>add_bot</code>函数，定义如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义函数——创建bot</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add_bot</span> = (<span class="params"></span>) =&gt;&#123;</span><br><span class="line">    botadd.<span class="property">error_message</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    $.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>:<span class="string">&quot;http://localhost:3000/user/bot/add/&quot;</span>,</span><br><span class="line">        <span class="attr">type</span>:<span class="string">&quot;post&quot;</span>,</span><br><span class="line">        <span class="attr">data</span>:&#123;</span><br><span class="line">            <span class="attr">title</span>:botadd.<span class="property">title</span>,</span><br><span class="line">            <span class="attr">description</span>:botadd.<span class="property">description</span>,</span><br><span class="line">            <span class="attr">content</span>:botadd.<span class="property">content</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">headers</span>:&#123;</span><br><span class="line">            <span class="title class_">Authorization</span>:<span class="string">&quot;Bearer &quot;</span> + store.<span class="property">state</span>.<span class="property">user</span>.<span class="property">token</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">success</span>(<span class="params">resp</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(resp.<span class="property">error_message</span> === <span class="string">&quot;success&quot;</span>)&#123;</span><br><span class="line">                <span class="title function_">refresh_bots</span>();</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                botadd.<span class="property">error_message</span> = resp.<span class="property">error_message</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：凡是没有放行的url，也就是需要确保登录正常才能访问，在提交请求的时候，必须要添加授权验证信息：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">headers</span>:&#123;</span><br><span class="line">            <span class="title class_">Authorization</span>:<span class="string">&quot;Bearer &quot;</span> + store.<span class="property">state</span>.<span class="property">user</span>.<span class="property">token</span>,</span><br><span class="line">        &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>目前只有登录和注册页面放行：</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803201514876.png" alt="image-20220803201514876"></p>
+<p>只有对这两个url发起的请求不需要添加<code>headers</code></p>
+<p>在点击“创建”按钮，触发<code>add_bot</code>事件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;add_bot&quot;</span>&gt;</span>创建&lt;/button</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803201645383.png" alt="image-20220803201645383"></p>
+<p>测试成功。</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803201904298.png" alt="image-20220803201904298"></p>
+<p>优化：创建之后</p>
+<ul>
+<li>自动关闭悬浮窗</li>
+<li>清空表单中的内容</li>
+</ul>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803202429396.png" alt="image-20220803202429396"></p>
+<p>另外有个问题时间不一致：</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803202518882.png" alt="image-20220803202518882"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803202531284.png" alt="image-20220803202531284"></p>
+<p>在<code>Pojo</code>中修改时区，然后重启项目即可。</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803202734494.png" alt="image-20220803202734494"></p>
+<h3 id="删除Bot"><a href="#删除Bot" class="headerlink" title="删除Bot"></a>删除Bot</h3><p>定义<code>remove_bot</code>函数，注意带有参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//定义函数——删除Bot</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">remove_bot</span> = (<span class="params">bot</span>)=&gt;&#123;</span><br><span class="line">    $.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>:<span class="string">&quot;http://localhost:3000/user/bot/remove/&quot;</span>,</span><br><span class="line">        <span class="attr">type</span>:<span class="string">&quot;post&quot;</span>,</span><br><span class="line">        <span class="attr">headers</span>:&#123;</span><br><span class="line">            <span class="title class_">Authorization</span>:<span class="string">&quot;Bearer &quot;</span> + store.<span class="property">state</span>.<span class="property">user</span>.<span class="property">token</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">data</span>:&#123;</span><br><span class="line">            <span class="attr">bot_id</span>:bot.<span class="property">id</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">success</span>(<span class="params">resp</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(resp.<span class="property">error_message</span> == <span class="string">&quot;success&quot;</span>)&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;删除成功&quot;</span>);</span><br><span class="line">                <span class="title function_">refresh_bots</span>();</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="title function_">alert</span>(resp.<span class="property">error_message</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>前端通过<code>@click</code>绑定事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;tbody&gt;</span><br><span class="line">    &lt;tr v-for=&quot;bot in bots&quot; :key=&quot;bot.id&quot;&gt;</span><br><span class="line">        &lt;td&gt;&#123;&#123; bot.title &#125;&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&#123;&#123; bot.createtime &#125;&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;</span><br><span class="line">            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;</span><br><span class="line">                    style=&quot;margin-right:10px&quot;&gt;修改&lt;/button&gt;</span><br><span class="line">            &lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot; @click=&quot;remove_bot(bot)&quot;&gt;删除&lt;/button&gt;</span><br><span class="line">        &lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/tbody&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改Bot"><a href="#修改Bot" class="headerlink" title="修改Bot"></a>修改Bot</h3><p>修改的逻辑和添加基本一致</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义函数——修改bot</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">update_bot</span> = (<span class="params">bot</span>) =&gt; &#123;</span><br><span class="line">    bot.<span class="property">error_message</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    $.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>: <span class="string">&quot;http://localhost:3000/user/bot/update/&quot;</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;post&quot;</span>,</span><br><span class="line">        <span class="attr">data</span>: &#123;</span><br><span class="line">            <span class="attr">bot_id</span>:bot.<span class="property">id</span>,</span><br><span class="line">            <span class="attr">title</span>: bot.<span class="property">title</span>,</span><br><span class="line">            <span class="attr">description</span>: bot.<span class="property">description</span>,</span><br><span class="line">            <span class="attr">content</span>: bot.<span class="property">content</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="title class_">Authorization</span>: <span class="string">&quot;Bearer &quot;</span> + store.<span class="property">state</span>.<span class="property">user</span>.<span class="property">token</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">success</span>(<span class="params">resp</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (resp.<span class="property">error_message</span> === <span class="string">&quot;success&quot;</span>) &#123;</span><br><span class="line">                <span class="title class_">Modal</span>.<span class="title function_">getInstance</span>(<span class="string">&#x27;#update-bot-btn-&#x27;</span> + bot.<span class="property">id</span>).<span class="title function_">hide</span>();</span><br><span class="line">                <span class="title function_">alert</span>(<span class="string">&quot;修改成功&quot;</span>);</span><br><span class="line">                <span class="title function_">refresh_bots</span>();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                bot.<span class="property">error_message</span> = resp.<span class="property">error_message</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在前端，需要将每一个<code>bot</code>对应的<code>Modal</code>框都不一样，因此需要添加一个id字段</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803210955149.png" alt="image-20220803210955149"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803211231932.png" alt="image-20220803211231932"></p>
+<p>每一个<code>bot</code>与每一个模态框绑定起来，这样点击对应的bot之后，在<code>Modal</code>框中展示出相应的的内容</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803211408078.png" alt="image-20220803211408078"></p>
+<p>否则的话，不管点击哪个<code>bot</code>，因为只有一个<code>Modal</code>框，展示的都只是第一个<code>bot</code>的内容！</p>
+<h3 id="代码编辑器"><a href="#代码编辑器" class="headerlink" title="代码编辑器"></a>代码编辑器</h3><p>希望将编写代码的区域换成代码编辑器</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803212149775.png" alt="image-20220803212149775"></p>
+<p>在<code>vue</code>控制台安装依赖：<code>vue3-ace-editor</code></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803212300911.png" alt="image-20220803212300911"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803213335451.png" alt="image-20220803213335451"></p>
+<p>解决方法是，使用管理员打开<code>powershell</code></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803213640148.png" alt="image-20220803213640148"></p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803213657557.png" alt="image-20220803213657557"></p>
+<p>集成依赖，并将其注册为VUE选项的组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">VAceEditor</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vue3-ace-editor&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ace <span class="keyword">from</span> <span class="string">&#x27;ace-builds&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    data,</span><br><span class="line">    methods,</span><br><span class="line">    ...</span><br><span class="line">    <span class="attr">components</span>: &#123;</span><br><span class="line">        <span class="title class_">VAceEditor</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>setup</code>中添加</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ace.<span class="property">config</span>.<span class="title function_">set</span>(</span><br><span class="line">    <span class="string">&quot;basePath&quot;</span>, </span><br><span class="line">    <span class="string">&quot;https://cdn.jsdelivr.net/npm/ace-builds@&quot;</span> + <span class="built_in">require</span>(<span class="string">&#x27;ace-builds&#x27;</span>).<span class="property">version</span> + <span class="string">&quot;/src-noconflict/&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后用下面这段代码替换代码区域</p>
+<p>(对于修改而言，是<code>v-model:value=&quot;bot.content&quot;</code>)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">VAceEditor</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-model:value</span>=<span class="string">&quot;botadd.content&quot;</span></span></span><br><span class="line"><span class="tag">    @<span class="attr">init</span>=<span class="string">&quot;editorInit&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">lang</span>=<span class="string">&quot;c_cpp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">theme</span>=<span class="string">&quot;textmate&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&quot;height: 300px&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>实现效果</p>
+<p><img src="/images/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/image-20220803214828599.png" alt="image-20220803214828599"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/24/Springboot-%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E9%A1%B5%E9%9D%A2/" data-id="cm8sja97c001f8ktbe6ngemx6" data-title="Springboot-创建个人中心页面" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/24/Springboot-%E5%AE%9E%E7%8E%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Springboot-实现微服务匹配系统
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/24/Springboot-%E9%85%8D%E7%BD%AEMySQL%E5%92%8C%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Springboot-配置MySQL和注册登录模块</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unreal-Engine/">Unreal Engine</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 18px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Springboot/" style="font-size: 18px;">Springboot</a> <a href="/tags/Unity3D/" style="font-size: 14px;">Unity3D</a> <a href="/tags/Unreal-Engine/" style="font-size: 12px;">Unreal Engine</a> <a href="/tags/Vue/" style="font-size: 12px;">Vue</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/03/28/WebSocket/">WebSocket</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%AE%89%E8%A3%85/">Docker安装</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">Docker项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Docker快速入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Lzh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

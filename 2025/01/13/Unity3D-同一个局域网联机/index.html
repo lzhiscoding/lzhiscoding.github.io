@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Unity3D-同一个局域网联机 | Lzh正在写代码</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="同一个局域网内联机联机如何实现？服务器判断： 玩家 a 移动，在其他玩家眼里也会动。一般通过一个中心服务器 Server 实现，首先玩家 a 的客户端 clientA 向 Server发送控制移动的输入，Server 判断玩家 a 能否移动，Server 判断完毕后，将结果发送给 ClientA 和 ClientB 等其他客户端。客户端接收到消息后再渲染出动画。问题就是有网络延迟。  客户端判断：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity3D-同一个局域网联机">
+<meta property="og:url" content="http://example.com/2025/01/13/Unity3D-%E5%90%8C%E4%B8%80%E4%B8%AA%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Lzh正在写代码">
+<meta property="og:description" content="同一个局域网内联机联机如何实现？服务器判断： 玩家 a 移动，在其他玩家眼里也会动。一般通过一个中心服务器 Server 实现，首先玩家 a 的客户端 clientA 向 Server发送控制移动的输入，Server 判断玩家 a 能否移动，Server 判断完毕后，将结果发送给 ClientA 和 ClientB 等其他客户端。客户端接收到消息后再渲染出动画。问题就是有网络延迟。  客户端判断：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/6784f3f0bfbf2.jpg">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/6784f3eee0005.jpg">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/6784f3ef143ab.jpg">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485f602d09.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/67850a7081795.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485f8e4531.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485f53fe1e.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485f537cf1.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485f57c402.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485f7ab594.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485f779ba8.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485f957b14.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485fba13eb.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485fbd7612.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/67850a6ea4a9a.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485fa6bbe8.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485fcc1980.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/6784860144e4a.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/678485fca57d1.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/67850a7125e3e.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/67850a6e3b81e.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/67850a72a8c8e.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/67850a704d808.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/13/67850a715b8d6.png">
+<meta property="article:published_time" content="2025-01-13T12:51:41.000Z">
+<meta property="article:modified_time" content="2025-02-06T11:24:11.475Z">
+<meta property="article:author" content="Lzh">
+<meta property="article:tag" content="Unity3D">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.helloimg.com/i/2025/01/13/6784f3f0bfbf2.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Lzh正在写代码" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lzh正在写代码</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Unity3D-同一个局域网联机" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/13/Unity3D-%E5%90%8C%E4%B8%80%E4%B8%AA%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA/" class="article-date">
+  <time class="dt-published" datetime="2025-01-13T12:51:41.000Z" itemprop="datePublished">2025-01-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Unity3D/">Unity3D</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Unity3D-同一个局域网联机
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="同一个局域网内联机"><a href="#同一个局域网内联机" class="headerlink" title="同一个局域网内联机"></a>同一个局域网内联机</h2><h3 id="联机如何实现？"><a href="#联机如何实现？" class="headerlink" title="联机如何实现？"></a>联机如何实现？</h3><p><strong>服务器判断：</strong></p>
+<p>玩家 a 移动，在其他玩家眼里也会动。一般通过一个中心服务器 Server 实现，首先玩家 a 的客户端 clientA 向 Server<br>发送控制移动的输入，Server 判断玩家 a 能否移动，Server 判断完毕后，将结果发送给 ClientA 和 ClientB 等其他<br>客户端。客户端接收到消息后再渲染出动画。问题就是有网络延迟。</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/6784f3f0bfbf2.jpg" alt="unity2-1.jpg"></p>
+<p><strong>客户端判断：</strong></p>
+<p>玩家 a 移动，在自己的客户端中判断是否能移动，然后将移动的消息传给 Server，但是 Server 不需要传回 ClinetA。<br>然后 Server 更新自己的信息，再同步发送到 ClientB 等其他客户端。问题就是客户端可以发送 Server 虚假的信息，<br>也就是外挂。</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/6784f3eee0005.jpg" alt="unity2-2.jpg"></p>
+<h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><p>多个客户端描述的同一个游戏场景，再 clinetA 中玩家 a,b,c 的坐标和 ClinetB 中 a,b,c 的坐标应该是一致的，<br>由于有网络延迟的存在，不可能完全一致。</p>
+<p>例如由于网络延迟的原因会造成玩家不同的运动轨迹</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/6784f3ef143ab.jpg" alt="unity2-3.jpg"></p>
+<p>权衡利弊后根据某个玩家的状态去同步其他玩家</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>在 unity 中实现了很多网络通信的包，除了 Server 和 Clinet 外，还有一个 host。host 就是主机，即 Server 和 Client 合二为一</p>
+<h3 id="安装网络资源包"><a href="#安装网络资源包" class="headerlink" title="安装网络资源包"></a>安装网络资源包</h3><p>com.unity.netcode.gameobjects（需要更新到 Unity 2021.3 及以后版本才能看到）</p>
+<ul>
+<li>工具栏：Windows-&gt;Package Manager</li>
+<li>左上角改为： Unity Registry，找到对应的包，右下角 install(已经安装则显示 Remove)</li>
+</ul>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485f602d09.png" alt="unity2-4.png"></p>
+<h3 id="配置网络组件"><a href="#配置网络组件" class="headerlink" title="配置网络组件"></a>配置网络组件</h3><p>创建空 Object，命名为 NetworkManager 管理所有需要联机同步的物体，添加组件(add component) NetwortkManager</p>
+<p>此时可能 NetworkManager 会有两个警告：安装包 Multiplaers Tools（按照上文方法）；选择 NetworkTrnasport 后即可消除</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/67850a7081795.png" alt="unity2-18.png"></p>
+<h3 id="添加需要同步的元素-Player"><a href="#添加需要同步的元素-Player" class="headerlink" title="添加需要同步的元素 Player"></a>添加需要同步的元素 Player</h3><p>在 Assets 里创建一个文件夹 Prefabs，将 Player 拖到这个文件夹里，此时可以删除掉左侧的 Player</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485f8e4531.png" alt="unity2-5.png"></p>
+<p>如果在 Clinet 中摧毁了一棵树，ClientB 怎么知道摧毁的是树而不是车？所以所有需要网络同步的物体需要有一个唯一 id</p>
+<p>给 Player 添加一个 NetworkObject 组件，就会有一个全局哈希值作为唯一编号</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485f53fe1e.png" alt="unity2-6.png"></p>
+<p>添加 Player 到 NetworkPrefabs，在 Default Network Prefabs</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485f537cf1.png" alt="unity2-7.png"></p>
+<p>在 Player 组件中再 add component 一个 Network Transform，用于选择需要同步的信息</p>
+<p>根据提示，在 Player 组件中再 add component 一个 Network Rigidbody</p>
+<p>此时 unity 可以自动帮我们同步 Player</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485f57c402.png" alt="unity2-8.png"></p>
+<p>除了同步玩家以外，还需要同步 Camera，双击Player，在Camera里同样也添加一个 Network Transform，用于选择需要同步的信息。<br>另外 Camera 的父组件 Player 已经有一个唯一编号，所以 Camera 不需要唯一编号</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485f7ab594.png" alt="unity2-9.png"></p>
+<h2 id="实现开局创建自动创建角色"><a href="#实现开局创建自动创建角色" class="headerlink" title="实现开局创建自动创建角色"></a>实现开局创建自动创建角色</h2><p>点击 NetworkManager，将 Player 拖到 Player Perfab 上</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485f779ba8.png" alt="unity2-10.png"></p>
+<p>此时点击运行游戏，会发现黑屏，原因是因为 Camera 是在 Player 上，开局并没有创建角色就没有 Camera</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485f957b14.png" alt="unity2-11.png"></p>
+<p>添加一个 Camera 用作展示初始界面，调整角度位置</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485fba13eb.png" alt="unity2-12.png"></p>
+<p>开始运行游戏，点击左侧 Don’tDestroyOnload，点击 NetworkManager，右侧会出现三个选项：<br>startHost、StartServer 和 StartClinet</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485fbd7612.png" alt="unity2-13.png"></p>
+<p>点击 starthost 发现自动创建了一个 Player，但是位置是初始位置，可以把Environment的纵坐标往下移动2个单位</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/67850a6ea4a9a.png" alt="unity2-19.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485fa6bbe8.png" alt="unity2-14.png"></p>
+<p>添加 ui，把 startHost、StartServer 和 StartClinet 作为按钮放入到游戏里。右键新建一个 ui&#x2F;canvas.<br>重命名为 menuUI。</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485fcc1980.png" alt="unity2-15.png"></p>
+<p>在 canvas 里添加按钮，右键 MenuUI 新建 Button，如果有提示需要 import 就按照提示 import</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/6784860144e4a.png" alt="unity2-16.png"></p>
+<p>此时运行游戏</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/678485fca57d1.png" alt="unity2-17.png"></p>
+<p>写按钮的逻辑：</p>
+<p>给 NetworkManager 添加一个脚本 NetworkManagerUI</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> Unity.Netcode; <span class="comment">// 引入 Unity Netcode 命名空间，用于网络功能</span></span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NetworkManagerUI</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 序列化字段，用于在 Unity 编辑器中绑定 UI 按钮</span></span><br><span class="line">    [<span class="meta">SerializeField</span>]</span><br><span class="line">    <span class="keyword">private</span> Button hostBtn; <span class="comment">// 用于启动主机的按钮</span></span><br><span class="line">    [<span class="meta">SerializeField</span>]</span><br><span class="line">    <span class="keyword">private</span> Button serverBtn; <span class="comment">// 用于启动服务器的按钮</span></span><br><span class="line">    [<span class="meta">SerializeField</span>]</span><br><span class="line">    <span class="keyword">private</span> Button clientBtn; <span class="comment">// 用于启动客户端的按钮</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Start 方法在游戏对象初始化时调用</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 为 &quot;Host&quot; 按钮添加点击事件监听器</span></span><br><span class="line">        hostBtn.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 调用 NetworkManager 的单例方法 StartHost，启动主机</span></span><br><span class="line">            <span class="comment">// 主机既是服务器又是客户端</span></span><br><span class="line">            NetworkManager.Singleton.StartHost();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 为 &quot;Server&quot; 按钮添加点击事件监听器</span></span><br><span class="line">        serverBtn.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 调用 NetworkManager 的单例方法 StartServer，启动纯服务器</span></span><br><span class="line">            <span class="comment">// 服务器不参与游戏逻辑，仅处理网络同步</span></span><br><span class="line">            NetworkManager.Singleton.StartServer();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 为 &quot;Client&quot; 按钮添加点击事件监听器</span></span><br><span class="line">        clientBtn.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 调用 NetworkManager 的单例方法 StartClient，启动客户端</span></span><br><span class="line">            <span class="comment">// 客户端连接到服务器并参与游戏</span></span><br><span class="line">            NetworkManager.Singleton.StartClient();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时点击相应的 button 就有相应的操作</p>
+<h2 id="禁用非本地玩家的组件"><a href="#禁用非本地玩家的组件" class="headerlink" title="禁用非本地玩家的组件"></a>禁用非本地玩家的组件</h2><p>此时直接运行 host 和 client，会发现两个角色会同时移动，并且 unity 中显示有多个 Audio 被使用的警告<br>原因是在一个 Player 中，没有禁用其他 Player 的输入控制和 Camera；并且开始菜单的 Camera 和本地 Player 的 Cameara 也会有冲突<br>在 Player 中添加一段脚本 PlayerSetup 解决此问题</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> Unity.Netcode; <span class="comment">// 引入 Unity Netcode 命名空间，用于网络功能</span></span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PlayerSetup 类用于设置玩家对象的初始状态</span></span><br><span class="line"><span class="comment">// 继承自 NetworkBehaviour，表示这是一个网络行为脚本</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerSetup</span> : <span class="title">NetworkBehaviour</span> <span class="comment">// 注意修改本行</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 序列化字段，用于在 Unity 编辑器中绑定需要禁用的组件</span></span><br><span class="line">    [<span class="meta">SerializeField</span>]</span><br><span class="line">    <span class="keyword">private</span> Behaviour[] componentsToDisable; <span class="comment">// 需要禁用的组件数组</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 场景主摄像机</span></span><br><span class="line">    <span class="keyword">private</span> Camera sceneCamera;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Start 方法在游戏对象初始化时调用</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 判断当前玩家对象是否为本机玩家</span></span><br><span class="line">        <span class="keyword">if</span> (!IsLocalPlayer) <span class="comment">// 如果不是本机玩家</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 遍历需要禁用的组件数组</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; componentsToDisable.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 禁用组件</span></span><br><span class="line">                componentsToDisable[i].enabled = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">// 如果是本机玩家</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 获取场景主摄像机</span></span><br><span class="line">            sceneCamera = Camera.main;</span><br><span class="line">            <span class="keyword">if</span> (sceneCamera != <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 关闭场景主摄像机</span></span><br><span class="line">                sceneCamera.gameObject.SetActive(<span class="literal">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// OnDisable 方法在游戏对象被禁用或销毁时调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnDisable</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 如果场景主摄像机存在</span></span><br><span class="line">        <span class="keyword">if</span> (sceneCamera != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 重新启用场景主摄像机</span></span><br><span class="line">            sceneCamera.gameObject.SetActive(<span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将需要被禁用的组件拖到列表中：</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/67850a7125e3e.png" alt="unity2-20.png"></p>
+<p>注意代码<code>sceneCamera = Camera.main;</code>需要把SceneCamera的tag改为main<br><img src="https://www.helloimg.com/i/2025/01/13/67850a6e3b81e.png" alt="unity2-21.png"></p>
+<p>此时开启两个窗口运行游戏，发现一个能移动，一个不行，这是因为unity默认是以服务器判断方式。Unity默认不信任客户端，没有授权，需要自己写一段脚本打开授权</p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/67850a72a8c8e.png" alt="unity2-22.png"></p>
+<p>在Assets&#x2F;Scripts&#x2F;Network&#x2F;里新建一个脚本ClientNetworkTransform.cs</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入必要的命名空间</span></span><br><span class="line"><span class="keyword">using</span> Unity.Netcode.Components;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个命名空间，用于组织代码</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Unity.Multiplayer.Sample.Utilities.ClientAuthority</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// [DisallowMultipleComponent] 是一个特性，表示这个脚本不允许在同一个GameObject上添加多个实例</span></span><br><span class="line">    [<span class="meta">DisallowMultipleComponent</span>]</span><br><span class="line">    <span class="comment">// 继承自 NetworkTransform，这是一个用于同步物体位置、旋转和缩放的网络组件</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ClientNetworkTransform</span> : <span class="title">NetworkTransform</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 重写 NetworkTransform 中的 OnIsServerAuthoritative 方法</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="built_in">bool</span> <span class="title">OnIsServerAuthoritative</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 返回 false，表示这个 NetworkTransform 不由服务器（Server）进行权威控制</span></span><br><span class="line">            <span class="comment">// 而是由客户端（Client）进行控制，即客户端拥有对该物体的位置、旋转和缩放的最终决定权</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码含义：重载<code>NetWorkTransform</code>中的授权函数<br>所以，要将用到<code>NetWorkTransform</code>的地方改为<code>ClientNetWorkTransform</code></p>
+<p><code>Player：</code><br>删除 <code>Network RigidBody</code>和<code>Network Trnasform</code><br>添加 <code>ClientNetworkTransform</code>和<code>Network RigidBody</code></p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/67850a704d808.png" alt="unity2-23.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/13/67850a715b8d6.png" alt="unity2-24.png"></p>
+<p>此时就实现了本地联机并且多个Player都可以移动</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/13/Unity3D-%E5%90%8C%E4%B8%80%E4%B8%AA%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA/" data-id="cm8sja97i00258ktbgrxj13fs" data-title="Unity3D-同一个局域网联机" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/14/Unity3D-%E9%A3%9E%E8%A1%8C%E4%B8%8E%E5%B0%84%E5%87%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Unity3D-飞行与射击
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/10/Unity3D-%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E5%92%8C%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Unity3D-项目创建和角色移动</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unreal-Engine/">Unreal Engine</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 18px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Springboot/" style="font-size: 18px;">Springboot</a> <a href="/tags/Unity3D/" style="font-size: 14px;">Unity3D</a> <a href="/tags/Unreal-Engine/" style="font-size: 12px;">Unreal Engine</a> <a href="/tags/Vue/" style="font-size: 12px;">Vue</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/03/28/WebSocket/">WebSocket</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%AE%89%E8%A3%85/">Docker安装</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">Docker项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Docker快速入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Lzh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

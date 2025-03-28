@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Vue实现个人空间-上 | Lzh正在写代码</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Vue实现个人空间Vue3——网站整体布局、用户动态页面1. 前端渲染逻辑前端渲染：只有第一次打开页面的时候，向服务器发送请求，服务器返回所有js， 之后再打开页面，前端用返回的js文件将页面渲染出来。 2. vue文件一个vue文件由三部分组成，html，js，csscss部分标签 ，加上scoped，不同组件之间的css选择器就不会相互影响到了。  3.组件化的框架 可以拆分实现    引入组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue实现个人空间-上">
+<meta property="og:url" content="http://example.com/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8A/index.html">
+<meta property="og:site_name" content="Lzh正在写代码">
+<meta property="og:description" content="Vue实现个人空间Vue3——网站整体布局、用户动态页面1. 前端渲染逻辑前端渲染：只有第一次打开页面的时候，向服务器发送请求，服务器返回所有js， 之后再打开页面，前端用返回的js文件将页面渲染出来。 2. vue文件一个vue文件由三部分组成，html，js，csscss部分标签 ，加上scoped，不同组件之间的css选择器就不会相互影响到了。  3.组件化的框架 可以拆分实现    引入组">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df8546a3e.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df8512fd2.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df84e4902.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df84d6841.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df8501d30.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df85a52d1.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df878d766.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df87eb321.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df884e433.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df889919c.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df8a7bab3.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df88775c9.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df8a57fc4.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df8adf4bf.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df8b714d2.png">
+<meta property="og:image" content="https://www.helloimg.com/i/2025/01/23/6791df8b435ed.png">
+<meta property="article:published_time" content="2025-01-23T06:29:10.000Z">
+<meta property="article:modified_time" content="2025-02-06T11:24:11.893Z">
+<meta property="article:author" content="Lzh">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.helloimg.com/i/2025/01/23/6791df8546a3e.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lzh正在写代码" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lzh正在写代码</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Vue实现个人空间-上" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8A/" class="article-date">
+  <time class="dt-published" datetime="2025-01-23T06:29:10.000Z" itemprop="datePublished">2025-01-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Vue实现个人空间-上
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Vue实现个人空间"><a href="#Vue实现个人空间" class="headerlink" title="Vue实现个人空间"></a>Vue实现个人空间</h1><h2 id="Vue3——网站整体布局、用户动态页面"><a href="#Vue3——网站整体布局、用户动态页面" class="headerlink" title="Vue3——网站整体布局、用户动态页面"></a>Vue3——网站整体布局、用户动态页面</h2><h3 id="1-前端渲染逻辑"><a href="#1-前端渲染逻辑" class="headerlink" title="1. 前端渲染逻辑"></a>1. 前端渲染逻辑</h3><p>前端渲染：只有第一次打开页面的时候，向服务器发送请求，服务器返回所有js， 之后再打开页面，前端用返回的js文件将页面渲染出来。</p>
+<h3 id="2-vue文件"><a href="#2-vue文件" class="headerlink" title="2. vue文件"></a>2. vue文件</h3><p>一个vue文件由三部分组成，html，js，css<br>css部分标签 ，加上<strong>scoped</strong>，不同组件之间的css选择器就不会相互影响到了。</p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df8546a3e.png" alt="vue1.png"></p>
+<h3 id="3-组件化的框架"><a href="#3-组件化的框架" class="headerlink" title="3.组件化的框架"></a>3.组件化的框架</h3><ul>
+<li>可以拆分实现</li>
+</ul>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df8512fd2.png" alt="vue2.png"></p>
+<ul>
+<li>引入组件的方式（根组件App.vue）</li>
+</ul>
+<p>项目初始化自带一个HelloWorld组件，引入方式如下</p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df84e4902.png" alt="vue3.png"></p>
+<h3 id="4-项目结构"><a href="#4-项目结构" class="headerlink" title="4.项目结构"></a>4.项目结构</h3><p>网页分为导航栏NavBar和内容Content。总共要实现六个页面，每个页面都可以用一个组件来实现</p>
+<ul>
+<li>NavBar</li>
+<li>Content<ul>
+<li>首页</li>
+<li>好友列表</li>
+<li>好友动态</li>
+<li>登录</li>
+<li>注册</li>
+<li>404</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-准备工作"><a href="#5-准备工作" class="headerlink" title="5.准备工作"></a>5.准备工作</h3><p>引入bootstrap，在根组件app.vue中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  import &#x27;bootstrap/dist/css/bootstrap.css&#x27;;</span><br><span class="line">  import &#x27;bootstrap/dist/js/bootstrap&#x27;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>引入后提示需要再装一个模块</p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df84d6841.png" alt="vue4.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df8501d30.png" alt="vue5.png"></p>
+<h3 id="6-实现导航栏"><a href="#6-实现导航栏" class="headerlink" title="6.实现导航栏"></a>6.实现导航栏</h3><ol>
+<li>实现导航栏组件——直接使用<a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">bootstrap</a>选取需要的元素，将组件export出去</li>
+</ol>
+<p>NavBar.vue</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 导航栏开始 --&gt;</span><br><span class="line">  &lt;nav class=&quot;navbar navbar-expand-lg bg-body-tertiary&quot;&gt;</span><br><span class="line">    &lt;!-- 容器，用于包裹导航栏内容 --&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">      &lt;!-- 品牌/logo --&gt;</span><br><span class="line">      &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Myspace&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!-- 响应式导航栏的切换按钮 --&gt;</span><br><span class="line">      &lt;button</span><br><span class="line">        class=&quot;navbar-toggler&quot;</span><br><span class="line">        type=&quot;button&quot;</span><br><span class="line">        data-bs-toggle=&quot;collapse&quot;</span><br><span class="line">        data-bs-target=&quot;#navbarText&quot;</span><br><span class="line">        aria-controls=&quot;navbarText&quot;</span><br><span class="line">        aria-expanded=&quot;false&quot;</span><br><span class="line">        aria-label=&quot;Toggle navigation&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;!-- 切换按钮的图标 --&gt;</span><br><span class="line">        &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!-- 导航栏内容，支持折叠 --&gt;</span><br><span class="line">      &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarText&quot;&gt;</span><br><span class="line">        &lt;!-- 导航栏左侧的链接 --&gt;</span><br><span class="line">        &lt;ul class=&quot;navbar-nav me-auto mb-2 mb-lg-0&quot;&gt;</span><br><span class="line">          &lt;!-- 首页链接 --&gt;</span><br><span class="line">          &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">            &lt;a class=&quot;nav-link active&quot; aria-current=&quot;page&quot; href=&quot;#&quot;&gt;首页&lt;/a&gt;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">          &lt;!-- 好友列表链接 --&gt;</span><br><span class="line">          &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">            &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;好友列表&lt;/a&gt;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">          &lt;!-- 用户动态链接 --&gt;</span><br><span class="line">          &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">            &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;用户动态&lt;/a&gt;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 导航栏右侧的链接 --&gt;</span><br><span class="line">        &lt;ul class=&quot;navbar-nav&quot;&gt;</span><br><span class="line">          &lt;!-- 登录链接 --&gt;</span><br><span class="line">          &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">            &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;登录&lt;/a&gt;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">          &lt;!-- 注册链接 --&gt;</span><br><span class="line">          &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">            &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;注册&lt;/a&gt;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line">  &lt;!-- 导航栏结束 --&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">// 导出组件</span><br><span class="line">export default &#123;</span><br><span class="line">  // 组件名称</span><br><span class="line">  name: &#x27;NavBar&#x27;,</span><br><span class="line">  // 注册子组件（当前没有子组件，所以为空）</span><br><span class="line">  components: &#123;&#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">/* 这里可以定义组件的样式 */</span><br><span class="line">/* scoped 表示样式仅作用于当前组件 */</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在根组件(app.vue)将实现的NavBar引入——引入路径，在components对象中添加组件名，同时在template中引入组件</li>
+</ol>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df85a52d1.png" alt="vue6.png"></p>
+<h3 id="7-写内容里的六个小组件"><a href="#7-写内容里的六个小组件" class="headerlink" title="7.写内容里的六个小组件"></a>7.写内容里的六个小组件</h3><p>对于一个比较大的组件，可以拆分为多个组件<br><strong>首页组件(HomeView.vue)</strong><br>可以在<a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">bootstrap</a>中找个card组件，然后用container包起来，container是用来动态调位置的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;home&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;card-body&quot;&gt;</span><br><span class="line">          首页</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">// @ is an alias to /src</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;HomeView&#x27;,</span><br><span class="line">  components: &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.container &#123;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>发现这一部分的html和css其实每个页面都一样，要将这块公共部分提取出来作为单独的组件，方便后期整体修改。</p>
+<p>可以将内容渲染到 slot标签中(slot可以用来获取子元素)：</p>
+<p>写一个组件ContentBase.vue</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 外层容器，用于包裹整个内容区域 --&gt;</span><br><span class="line">  &lt;div class=&quot;home&quot;&gt;</span><br><span class="line">    &lt;!-- Bootstrap 的容器，用于居中内容并添加响应式布局 --&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">      &lt;!-- 卡片组件，用于展示内容 --&gt;</span><br><span class="line">      &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">        &lt;!-- 卡片的主体部分 --&gt;</span><br><span class="line">        &lt;div class=&quot;card-body&quot;&gt;</span><br><span class="line">          &lt;!-- 插槽，用于接收父组件传递的内容 --&gt;</span><br><span class="line">          &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">// 导出组件</span><br><span class="line">export default &#123;</span><br><span class="line">  // 组件名称</span><br><span class="line">  name: &#x27;ContentBase&#x27;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">/* 自定义样式 */</span><br><span class="line">.container &#123;</span><br><span class="line">  /* 设置容器的上边距 */</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后修改HomeView.vue</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;ContentBase&gt;</span><br><span class="line">        首页</span><br><span class="line">    &lt;/ContentBase&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">  </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ContentBase from &#x27;@/components/ContentBase.vue&#x27;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#x27;HomeView&#x27;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        ContentBase,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">  </span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实现剩下的好友列表、好友动态、登录、注册、404，这里以好友列表为例，其他的都一样</p>
+<p>UserList.vue</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;ContentBase&gt;</span><br><span class="line">        好友列表</span><br><span class="line">    &lt;/ContentBase&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">  </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ContentBase from &#x27;@/components/ContentBase.vue&#x27;;</span><br><span class="line">  </span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#x27;UserList&#x27;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        ContentBase,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">  </span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-添加路由"><a href="#8-添加路由" class="headerlink" title="8.添加路由"></a>8.添加路由</h3><p>router&#x2F;index.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createRouter, createWebHistory &#125; <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">HomeView</span> <span class="keyword">from</span> <span class="string">&#x27;../views/HomeView.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">UserList</span> <span class="keyword">from</span> <span class="string">&#x27;../views/UserList.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">UserProfile</span> <span class="keyword">from</span> <span class="string">&#x27;../views/UserProfile.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">LoginView</span> <span class="keyword">from</span> <span class="string">&#x27;@/views/LoginView.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">RegisterView</span> <span class="keyword">from</span> <span class="string">&#x27;@/views/RegisterView.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">NotFoundView</span> <span class="keyword">from</span> <span class="string">&#x27;@/views/NotFoundView.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;home&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">HomeView</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/userlist&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;userlist&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">UserList</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/userprofile&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;userprofile&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">UserProfile</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/login&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;login&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">LoginView</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/register&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;register&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">RegisterView</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/notfound&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;notfound&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">NotFoundView</span></span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createRouter</span>(&#123;</span><br><span class="line">  <span class="attr">history</span>: <span class="title function_">createWebHistory</span>(),</span><br><span class="line">  routes</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-实现前端渲染的属性"><a href="#9-实现前端渲染的属性" class="headerlink" title="9.实现前端渲染的属性"></a>9.实现前端渲染的属性</h3><p>想要实现前端渲染，将原本的a标签换成<strong>router-link</strong>标签，有特殊的属性 <code>: to</code> ，注意在vue中绑定属性需要用冒号<code>:</code> 传入name。name就是在路由里面定义的name</p>
+<p>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link class=&quot;navbar-brand&quot; :to=&quot;&#123;name: &#x27;home&#x27;&#125;&quot;&gt;Myspace&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
+
+<p>点击 <code>&lt;router-link&gt;</code> 时，Vue Router 会动态更新页面内容，而不会重新加载整个页面。此时点击就会跳转到home对应的路径</p>
+<p>如果是下面的代码浏览器会重新加载整个页面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a class=&quot;navbar-brand&quot; href=&quot;/&quot;&gt;Myspace&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>现在将NavBar.vue全部用router-link</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;nav class=&quot;navbar navbar-expand-lg bg-body-tertiary&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;router-link class=&quot;navbar-brand&quot; :to=&quot;&#123;name: &#x27;home&#x27;&#125;&quot;&gt;Myspace&lt;/router-link&gt;</span><br><span class="line">        &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#navbarText&quot; aria-controls=&quot;navbarText&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;</span><br><span class="line">        &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">        &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarText&quot;&gt;</span><br><span class="line">        &lt;ul class=&quot;navbar-nav me-auto mb-2 mb-lg-0&quot;&gt;</span><br><span class="line">            &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">            &lt;router-link class=&quot;nav-link active&quot; aria-current=&quot;page&quot; :to=&quot;&#123;name: &#x27;home&#x27;&#125;&quot;&gt;首页&lt;/router-link&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">            &lt;router-link class=&quot;nav-link&quot; :to=&quot;&#123;name: &#x27;userlist&#x27;&#125;&quot;&gt;好友列表&lt;/router-link&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">            &lt;router-link class=&quot;nav-link&quot; :to=&quot;&#123;name: &#x27;userprofile&#x27;&#125;&quot;&gt;用户动态&lt;/router-link&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">        &lt;ul class=&quot;navbar-nav&quot;&gt;</span><br><span class="line">            &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">            &lt;router-link class=&quot;nav-link&quot; :to=&quot;&#123;name: &#x27;login&#x27;&#125;&quot;&gt;登录&lt;/router-link&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">            &lt;router-link class=&quot;nav-link&quot; :to=&quot;&#123;name: &#x27;register&#x27;&#125;&quot;&gt;注册&lt;/router-link&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;/nav&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#x27;NavBar&#x27;,</span><br><span class="line">    components: &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-用户动态页面的实现（三个组件）"><a href="#10-用户动态页面的实现（三个组件）" class="headerlink" title="10. 用户动态页面的实现（三个组件）"></a>10. 用户动态页面的实现（三个组件）</h3><p><img src="https://www.helloimg.com/i/2025/01/23/6791df878d766.png" alt="vue7.png"></p>
+<p>新建三个组件UserProfileInfo.vue、UserProfilePosts.vue和UserProfileWrite.vue</p>
+<p>可以用bootstrap的grid来布局</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;ContentBase&gt;</span><br><span class="line">    &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;col-3&quot;&gt;</span><br><span class="line">            用户信息</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-9&quot;&gt;</span><br><span class="line">            帖子列表</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;/ContentBase&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>现在来实现UserProfileInfo</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;card-body&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;col-3&quot;&gt;</span><br><span class="line">                    &lt;img class=&quot;img-fluid&quot; src=&quot;https://cdn.acwing.com/media/user/profile/photo/487342_lg_9a864c18d9.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;col-9&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;username&quot;&gt;Lzh is coding&lt;/div&gt;</span><br><span class="line">                    &lt;div class=&quot;fans&quot;&gt;fans: 999&lt;/div&gt;</span><br><span class="line">                    &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-sm&quot;&gt;follow&lt;/button&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default&#123;</span><br><span class="line">    name: &#x27;UserProfileInfo&#x27;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">img &#123;</span><br><span class="line">    border-radius: 50%;</span><br><span class="line">&#125;</span><br><span class="line">.username &#123;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">.fans &#123;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">    color: #666;</span><br><span class="line">&#125;</span><br><span class="line">button&#123;</span><br><span class="line">    padding: 2px,4px;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对于展示的个人信息、帖子列表都需要参数，这三个模块是相互交互的，对于这样的情况，需要将数据存到上层组件中。</p>
+<p>上层组件UserProfileView.vue：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">setup: function()&#123;</span><br><span class="line">    const user = reactive(&#123;</span><br><span class="line">        id: 1,</span><br><span class="line">        username: &#x27;LiuZihao&#x27;,</span><br><span class="line">        lastName: &#x27;Liu&#x27;,</span><br><span class="line">        firstName: &#x27;Zihao&#x27;,</span><br><span class="line">        followers: 0,</span><br><span class="line">        is_followed: false,</span><br><span class="line">    &#125;);</span><br><span class="line">    return&#123;</span><br><span class="line">        user,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用方式</p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df87eb321.png" alt="vue8.png"></p>
+<p>父组件传递</p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df884e433.png" alt="vue9.png"></p>
+<p>子组件接受</p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df889919c.png" alt="vue10.png"></p>
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;col-9&quot;&gt;</span><br><span class="line">     &lt;div class=&quot;username&quot;&gt;&#123;&#123;fullName&#125;&#125;&lt;/div&gt;</span><br><span class="line">     &lt;div class=&quot;fans&quot;&gt;&#123;&#123;user.followers&#125;&#125;&lt;/div&gt;</span><br><span class="line">     &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-sm&quot;&gt;follow&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实现关注按钮</p>
+<p>逻辑： 如果没有关注，则显示 “关注”；如果已经关注，则显示 “取消关注”字样<br>实现： 使用template的v-if</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button v-if=&quot;!user.is_followed&quot; type=&quot;button&quot; class=&quot;btn btn-secondary btn-sm&quot;&gt;follow me&lt;/button&gt;</span><br><span class="line">&lt;button v-if=&quot;user.is_followed&quot; type=&quot;button&quot; class=&quot;btn btn-secondary btn-sm&quot;&gt;unfollow me&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>关注完以后，还需要更新user状态，此时需要定义事件处理函数。</p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df8a7bab3.png" alt="vue11.png"></p>
+<p>将这两个函数绑定起来：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button v-on:click=&quot;follow&quot; v-if=&quot;!user.is_followed&quot; type=&quot;button&quot; class=&quot;btn btn-secondary btn-sm&quot;&gt;follow me&lt;/button&gt;</span><br><span class="line">&lt;button v-on:click=&quot;unfollow&quot; v-if=&quot;user.is_followed&quot; type=&quot;button&quot; class=&quot;btn btn-secondary btn-sm&quot;&gt;unfollow me&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>子组件要向父组件传递消息：<br>父组件：</p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df88775c9.png" alt="vue12.png"></p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df8a57fc4.png" alt="vue13.png"></p>
+<p>子组件：用context.emit可以出发父组件的事件</p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df8adf4bf.png" alt="vue14.png"></p>
+<p>UserProfileInfo</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;card-body&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;col-3&quot;&gt;</span><br><span class="line">                    &lt;img class=&quot;img-fluid&quot; src=&quot;https://cdn.acwing.com/media/user/profile/photo/487342_lg_9a864c18d9.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;col-9&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;username&quot;&gt;&#123;&#123;fullName&#125;&#125;&lt;/div&gt;</span><br><span class="line">                    &lt;div class=&quot;fans&quot;&gt;&#123;&#123;user.followers&#125;&#125;&lt;/div&gt;</span><br><span class="line">                    &lt;button v-on:click=&quot;follow&quot; v-if=&quot;!user.is_followed&quot; type=&quot;button&quot; class=&quot;btn btn-secondary btn-sm&quot;&gt;follow me&lt;/button&gt;</span><br><span class="line">                    &lt;button v-on:click=&quot;unfollow&quot; v-if=&quot;user.is_followed&quot; type=&quot;button&quot; class=&quot;btn btn-secondary btn-sm&quot;&gt;unfollow me&lt;/button&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;computed&#125; from &#x27;vue&#x27;;</span><br><span class="line"></span><br><span class="line">export default&#123;</span><br><span class="line">    name: &#x27;UserProfileInfo&#x27;,</span><br><span class="line">    props: &#123;</span><br><span class="line">        user: &#123;</span><br><span class="line">            type: Object,</span><br><span class="line">            required: true,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    setup: function(props,context)&#123;</span><br><span class="line">        let fullName = computed(() =&gt; &#123;</span><br><span class="line">            return props.user.lastName + &#x27; &#x27; + props.user.firstName;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        const follow=()=&gt;&#123;</span><br><span class="line">            context.emit(&#x27;follow&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        const unfollow=()=&gt;&#123;</span><br><span class="line">            context.emit(&#x27;unfollow&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return &#123;</span><br><span class="line">            fullName,</span><br><span class="line">            follow,</span><br><span class="line">            unfollow,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">img &#123;</span><br><span class="line">    border-radius: 50%;</span><br><span class="line">&#125;</span><br><span class="line">.username &#123;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">.fans &#123;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">    color: #666;</span><br><span class="line">&#125;</span><br><span class="line">button&#123;</span><br><span class="line">    padding: 2px,4px;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>UserProfile</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;ContentBase&gt;</span><br><span class="line">    &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;col-3&quot;&gt;</span><br><span class="line">            &lt;UserProfileInfo @follow=&quot;follow&quot; @unfollow=&quot;unfollow&quot; v-bind:user=&quot;user&quot;&gt;&lt;/UserProfileInfo&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-9&quot;&gt;</span><br><span class="line">            &lt;UserProfilePosts&gt;&lt;/UserProfilePosts&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;/ContentBase&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">  </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ContentBase from &#x27;@/components/ContentBase.vue&#x27;;</span><br><span class="line">import UserProfileInfo from &#x27;@/components/UserProfileInfo.vue&#x27;;</span><br><span class="line">import UserProfilePosts from &#x27;@/components/UserProfilePosts.vue&#x27;;</span><br><span class="line">import &#123; reactive &#125; from &#x27;vue&#x27;;</span><br><span class="line">  </span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#x27;UserProfile&#x27;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        ContentBase,</span><br><span class="line">        UserProfileInfo,</span><br><span class="line">        UserProfilePosts,</span><br><span class="line">    &#125;,</span><br><span class="line">    setup: function()&#123;</span><br><span class="line">        const user = reactive(&#123;</span><br><span class="line">            id: 1,</span><br><span class="line">            username: &#x27;LiuZihao&#x27;,</span><br><span class="line">            lastName: &#x27;Liu&#x27;,</span><br><span class="line">            firstName: &#x27;Zihao&#x27;,</span><br><span class="line">            followers: 0,</span><br><span class="line">            is_followed: false,</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        const follow=()=&gt;&#123;</span><br><span class="line">            if(user.is_followed)&#123;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            user.is_followed=true;</span><br><span class="line">            user.followers++;</span><br><span class="line">        &#125;   </span><br><span class="line"></span><br><span class="line">        const unfollow=()=&gt;&#123;</span><br><span class="line">            if(!user.is_followed)&#123;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            user.is_followed=false;</span><br><span class="line">            user.followers--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return&#123;</span><br><span class="line">            user,</span><br><span class="line">            follow,</span><br><span class="line">            unfollow,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">  </span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实现帖子列表</p>
+<p>UserProfilePosts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;card-body&quot;&gt;</span><br><span class="line">            &lt;div v-for=&quot;post in posts.posts&quot; :key=&quot;post.id&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;card single-post&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;card-body&quot;&gt;</span><br><span class="line">                        &lt;div&gt;&#123;&#123;post.content&#125;&#125;&lt;/div&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#x27;UserProfilePosts&#x27;,</span><br><span class="line">    props:&#123;</span><br><span class="line">        posts:&#123;</span><br><span class="line">            type:Object,</span><br><span class="line">            required:true,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.single-post&#123;</span><br><span class="line">    margin-top: 10px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实现发帖功能</p>
+<p>UserProfileWrite</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;card edit-field&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;card-body&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;mb-3&quot;&gt;</span><br><span class="line">                &lt;label for=&quot;edit-post&quot; class=&quot;form-label&quot;&gt;编辑&lt;/label&gt;</span><br><span class="line">                &lt;textarea v-model=&quot;content&quot; class=&quot;form-control&quot; id=&quot;edit-post&quot; rows=&quot;3&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">                &lt;button v-on:click=&quot;submit_post&quot; type=&quot;button&quot; class=&quot;btn btn-primary btn-sm&quot;&gt;发布&lt;/button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#x27;UserProfileWrite&#x27;,</span><br><span class="line">    setup(props,context)&#123;</span><br><span class="line">        let content=ref(&#x27;&#x27;);</span><br><span class="line"></span><br><span class="line">        const submit_post=()=&gt;&#123;</span><br><span class="line">            context.emit(&#x27;submit_post&#x27;,content.value);</span><br><span class="line">            content.value=&#x27;&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return &#123;</span><br><span class="line">            content,</span><br><span class="line">            submit_post,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.edit-field&#123;</span><br><span class="line">    margin-top: 20px;</span><br><span class="line">&#125;</span><br><span class="line">button&#123;</span><br><span class="line">    margin-top: 10px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>首先要获取textarea里的信息,利用v-model，v-model的标签与内容绑定起来</p>
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df8b714d2.png" alt="vue15.png"></p>
+<p>还需要一个触发函数。当click的时候，将textarea里的内容发成帖子。<br>父组件需要一个函数， 并把这个函数暴露给按钮页即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const submit_post=(content)=&gt;&#123;</span><br><span class="line">    posts.posts.unshift(&#123;</span><br><span class="line">        id:posts.count,</span><br><span class="line">        userId:1,</span><br><span class="line">        content:content,</span><br><span class="line">    &#125;);</span><br><span class="line">    posts.count++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.helloimg.com/i/2025/01/23/6791df8b435ed.png" alt="vue16.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8A/" data-id="cm8sja97t003u8ktb88gj01wc" data-title="Vue实现个人空间-上" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/23/Vue%E5%AE%9E%E7%8E%B0%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4-%E4%B8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Vue实现个人空间-下
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/22/Springboot-%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Springboot-项目创建</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell%E8%84%9A%E6%9C%AC/">Shell脚本</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity3D/">Unity3D</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unreal-Engine/">Unreal Engine</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity3D/" rel="tag">Unity3D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unreal-Engine/" rel="tag">Unreal Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 18px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Springboot/" style="font-size: 18px;">Springboot</a> <a href="/tags/Unity3D/" style="font-size: 14px;">Unity3D</a> <a href="/tags/Unreal-Engine/" style="font-size: 12px;">Unreal Engine</a> <a href="/tags/Vue/" style="font-size: 12px;">Vue</a> <a href="/tags/Web/" style="font-size: 14px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/03/28/WebSocket/">WebSocket</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%AE%89%E8%A3%85/">Docker安装</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">Docker项目部署</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/15/Docker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Docker快速入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Lzh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
